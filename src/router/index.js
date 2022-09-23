@@ -5,6 +5,10 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
+      redirect: "/day01",
+    },
+    {
+      path: "/day01",
       name: "day01",
       meta: {
         title: "Expanding Cards",
