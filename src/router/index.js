@@ -59,5 +59,13 @@ export const router = createRouter({
         },
       ],
     },
+    {
+      path: "/day04",
+      name: "day04",
+      meta: {
+        title: "Hidden Search Widget",
+      },
+      component: () => import("../views/Day04_HiddenSearchWidget/Index.vue"),
+    },
   ],
 })
