@@ -8,3 +8,4 @@
 - **day03：Rotating Navigation Animation：旋转的导航栏动画**
   - **Font Awesome 参考手册：https://www.runoob.com/font-awesome/fontawesome-reference.html**
 - **day04：Hidden Search Widget：隐藏搜索框工具**
+- **day05：Blurry Loading：模糊加载**

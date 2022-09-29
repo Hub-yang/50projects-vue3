@@ -1,13 +1,9 @@
 <template>
   <div class="container">
     <template v-for="(img, index) in cardList" :key="index">
-      <div
-        @click="toggleActive(index)"
-        :class="['panel', img.active ? 'active' : '']"
-        :style="{
-          backgroundImage: 'url(' + img.url + ')',
-        }"
-      >
+      <div @click="toggleActive(index)" :class="['panel', img.active ? 'active' : '']" :style="{
+        backgroundImage: 'url(' + img.url + ')',
+      }">
         <h3>{{ img.title }}</h3>
       </div>
     </template>

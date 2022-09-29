@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day03",
+      redirect: "/day05",
     },
     {
       path: "/day01",
@@ -66,6 +66,14 @@ export const router = createRouter({
         title: "Hidden Search Widget",
       },
       component: () => import("../views/Day04_HiddenSearchWidget/Index.vue"),
+    },
+    {
+      path: "/day05",
+      name: "day05",
+      meta: {
+        title: "Blurry Loading",
+      },
+      component: () => import("../views/Day05_BlurryLoading/Index.vue"),
     },
   ],
 })
