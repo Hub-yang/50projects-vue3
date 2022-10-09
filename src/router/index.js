@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day05",
+      redirect: "/day06",
     },
     {
       path: "/day01",
@@ -74,6 +74,14 @@ export const router = createRouter({
         title: "Blurry Loading",
       },
       component: () => import("../views/Day05_BlurryLoading/Index.vue"),
+    },
+    {
+      path: "/day06",
+      name: "day06",
+      meta: {
+        title: "Scroll Animation",
+      },
+      component: () => import("../views/day06_ScrollAnimation/Index.vue"),
     },
   ],
 })
