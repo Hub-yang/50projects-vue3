@@ -1,7 +1,7 @@
 <template>
   <div class="body">
     <h1>Scroll to see the animation</h1>
-    <div class="box" v-for="item in 13">
+    <div class="box" v-for="item in 15">
       <h2>Content</h2>
     </div>
   </div>
