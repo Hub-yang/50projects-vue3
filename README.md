@@ -9,3 +9,4 @@
   - **Font Awesome 参考手册：https://www.runoob.com/font-awesome/fontawesome-reference.html**
 - **day04：Hidden Search Widget：隐藏搜索框工具**
 - **day05：Blurry Loading：模糊加载**
+- **day06：scroll-animation：滚动动画**
