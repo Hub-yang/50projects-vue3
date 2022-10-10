@@ -15,9 +15,6 @@
 
 <script setup>
 import { ref, reactive, onMounted } from "vue"
-
-const url = "src/assets/imgs/002.jpg"
-
 const toggle = ref("")
 </script>
 
