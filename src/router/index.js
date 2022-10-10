@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day06",
+      redirect: "/day07",
     },
     {
       path: "/day01",
@@ -82,6 +82,14 @@ export const router = createRouter({
         title: "Scroll Animation",
       },
       component: () => import("../views/day06_ScrollAnimation/Index.vue"),
+    },
+    {
+      path: "/day07",
+      name: "day07",
+      meta: {
+        title: "Split Landing Page",
+      },
+      component: () => import("../views/Day07_SplitLandingPage/Index.vue"),
     },
   ],
 })

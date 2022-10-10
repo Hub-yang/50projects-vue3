@@ -10,3 +10,4 @@
 - **day04：Hidden Search Widget：隐藏搜索框工具**
 - **day05：Blurry Loading：模糊加载**
 - **day06：scroll-animation：滚动动画**
+- **day07：Split Landing Page：分离切换效果**
