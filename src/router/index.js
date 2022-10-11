@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day07",
+      redirect: "/day08",
     },
     {
       path: "/day01",
@@ -90,6 +90,14 @@ export const router = createRouter({
         title: "Split Landing Page",
       },
       component: () => import("../views/Day07_SplitLandingPage/Index.vue"),
+    },
+    {
+      path: "/day08",
+      name: "day08",
+      meta: {
+        title: "Form Input Wave",
+      },
+      component: () => import("../views/Day08_FormInputWave/Index.vue"),
     },
   ],
 })

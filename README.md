@@ -11,3 +11,4 @@
 - **day05：Blurry Loading：模糊加载**
 - **day06：scroll-animation：滚动动画**
 - **day07：Split Landing Page：分离切换效果**
+- **day08：Form Input Wave：表单输入及动画**
