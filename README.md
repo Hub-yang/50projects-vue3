@@ -13,3 +13,4 @@
 - **day07：Split Landing Page：分离切换效果**
 - **day08：Form Input Wave：表单输入及动画**
 - **day09：Sound Board：音板**
+- **day10：Dad Jokes：冷笑话**
