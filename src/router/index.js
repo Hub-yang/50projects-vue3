@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day11",
+      redirect: "/day12",
     },
     {
       path: "/day01",
@@ -122,6 +122,14 @@ export const router = createRouter({
         title: "Event KeyCodes",
       },
       component: () => import("../views/Day11_EventKeyCodes/Index.vue"),
+    },
+    {
+      path: "/day12",
+      name: "day12",
+      meta: {
+        title: "Faq Collapse",
+      },
+      component: () => import("../views/Day12_FaqCollapse/Index.vue"),
     },
   ],
 })
