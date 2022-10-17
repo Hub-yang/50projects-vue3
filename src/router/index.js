@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day12",
+      redirect: "/day13",
     },
     {
       path: "/day01",
@@ -130,6 +130,14 @@ export const router = createRouter({
         title: "Faq Collapse",
       },
       component: () => import("../views/Day12_FaqCollapse/Index.vue"),
+    },
+    {
+      path: "/day13",
+      name: "day13",
+      meta: {
+        title: "Random Choice Picker",
+      },
+      component: () => import("../views/Day13_RandomChoicePicker/Index.vue"),
     },
   ],
 })

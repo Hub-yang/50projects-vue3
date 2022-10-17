@@ -16,3 +16,4 @@
 - **day10：Dad Jokes：冷笑话**
 - **day11：Event KeyCodes：事件对象按键相关属性**
 - **day12：Faq Collapse:问题折叠卡片**
+- **day13：Random Choice Picker:随机选项标签创建**
