@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day13",
+      redirect: "/day14",
     },
     {
       path: "/day01",
@@ -138,6 +138,14 @@ export const router = createRouter({
         title: "Random Choice Picker",
       },
       component: () => import("../views/Day13_RandomChoicePicker/Index.vue"),
+    },
+    {
+      path: "/day14",
+      name: "day14",
+      meta: {
+        title: "Animated Navigation",
+      },
+      component: () => import("../views/Day14_AnimatedNavigation/Index.vue"),
     },
   ],
 })
