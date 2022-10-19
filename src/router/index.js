@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day14",
+      redirect: "/day15",
     },
     {
       path: "/day01",
@@ -146,6 +146,14 @@ export const router = createRouter({
         title: "Animated Navigation",
       },
       component: () => import("../views/Day14_AnimatedNavigation/Index.vue"),
+    },
+    {
+      path: "/day15",
+      name: "day15",
+      meta: {
+        title: "Incrementing Counter",
+      },
+      component: () => import("../views/Day15_IncrementingCounter/Index.vue"),
     },
   ],
 })
