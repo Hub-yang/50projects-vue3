@@ -20,3 +20,5 @@
 - **day14:Animated Navigation:动画导航**
 - **day15:Incrementing Counter:自增数字效果**
 - **day16:Drink Water:记录喝水效果**
+<!-- day17搁置 -->
+- **day18:Background Slider:背景轮播**
