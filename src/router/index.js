@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day18",
+      redirect: "/day19",
     },
     {
       path: "/day01",
@@ -170,6 +170,14 @@ export const router = createRouter({
         title: "Background Slider",
       },
       component: () => import("../views/Day18_BackgroundSlider/Index.vue"),
+    },
+    {
+      path: "/day19",
+      name: "day19",
+      meta: {
+        title: "Theme Clock",
+      },
+      component: () => import("../views/Day19_ThemeClock/Index.vue"),
     },
   ],
 })

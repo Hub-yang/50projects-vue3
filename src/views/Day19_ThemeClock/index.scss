@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css?family=Heebo:300&display=swap');
+
+.body {
+  font-family: 'Heebo', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  margin: 0;
+  transition: all 0.5s ease-in;
+  background-color: var(--primaryColor);
+
+
+  .toggle {
+    cursor: pointer;
+    background-color: var(--bgcolor);
+    color: var(--primaryColor);
+    border: 0;
+    border-radius: 4px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 100px;
+  }
+
+  .toggle:focus {
+    outline: none;
+  }
+
+  .clock-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    .clock {
+      position: relative;
+      width: 200px;
+      height: 200px;
+
+      .needle {
+        background-color: var(--bgcolor);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 65px;
+        width: 3px;
+        transform-origin: bottom center;
+        transition: all 0.5s ease-in;
+      }
+
+      .needle.hour {
+        transform: translate(-50%, -100%) rotate(0deg);
+        background-color: var(--bgcolor);
+      }
+
+      .needle.minute {
+        transform: translate(-50%, -100%) rotate(0deg);
+        height: 100px;
+        background-color: var(--bgcolor);
+      }
+
+      .needle.second {
+        transform: translate(-50%, -100%) rotate(0deg);
+        height: 100px;
+        background-color: #e74c3c;
+      }
+
+      .center-point {
+        background-color: #e74c3c;
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+      }
+
+      .center-point::after {
+        content: '';
+        background-color: var(--bgcolor);
+        width: 5px;
+        height: 5px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+      }
+    }
+
+    .time {
+      font-size: 60px;
+      color: var(--bgcolor);
+    }
+
+    .date {
+      color: #aaa;
+      font-size: 14px;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+  }
+}
