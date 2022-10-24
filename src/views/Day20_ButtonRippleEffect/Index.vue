@@ -1,7 +1,8 @@
 <template>
   <div class="body">
-    <button class="ripple" :style="{'--color':btn.color}" v-for="(btn, index) in btnList" :key="index"
-      @click="handleClick(index,$event)">{{btn.text}}<span v-show="btn.show" class="circle" ref="span"></span></button>
+    <button class="ripple" :style="{ '--color': btn.color }" v-for="(btn, index) in btnList" :key="index"
+      @click="handleClick(index, $event)">{{ btn.text }}<span v-show="btn.show" class="circle"
+        ref="span"></span></button>
   </div>
 </template>
 

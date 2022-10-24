@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day20",
+      redirect: "/day21",
     },
     {
       path: "/day01",
@@ -186,6 +186,14 @@ export const router = createRouter({
         title: "Button Ripple Effect",
       },
       component: () => import("../views/Day20_ButtonRippleEffect/Index.vue"),
+    },
+    {
+      path: "/day21",
+      name: "day21",
+      meta: {
+        title: "Drag N Drop",
+      },
+      component: () => import("../views/Day21_DragNDrop/Index.vue"),
     },
   ],
 })
