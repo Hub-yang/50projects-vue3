@@ -25,3 +25,4 @@
 - **day19:Theme Clock:主题时钟**
 - **day20:Button Ripple Effect:涟漪按钮**
 - **day21:Drag N Drop:拖拽卡片**
+- **day22:Drawing App:canvas 画板**

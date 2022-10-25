@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day21",
+      redirect: "/day22",
     },
     {
       path: "/day01",
@@ -194,6 +194,14 @@ export const router = createRouter({
         title: "Drag N Drop",
       },
       component: () => import("../views/Day21_DragNDrop/Index.vue"),
+    },
+    {
+      path: "/day22",
+      name: "day22",
+      meta: {
+        title: "Drawing App",
+      },
+      component: () => import("../views/Day22_DrawingApp/Index.vue"),
     },
   ],
 })
