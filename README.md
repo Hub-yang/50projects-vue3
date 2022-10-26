@@ -26,3 +26,4 @@
 - **day20:Button Ripple Effect:涟漪按钮**
 - **day21:Drag N Drop:拖拽卡片**
 - **day22:Drawing App:canvas 画板**
+- **day23:Kinetic Loader:加载动画**
