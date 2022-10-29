@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day24",
+      redirect: "/day25",
     },
     {
       path: "/day01",
@@ -218,6 +218,14 @@ export const router = createRouter({
         title: "Content Placeholder",
       },
       component: () => import("../views/Day24_ContentPlaceholder/Index.vue"),
+    },
+    {
+      path: "/day25",
+      name: "day25",
+      meta: {
+        title: "Sticky Navigation",
+      },
+      component: () => import("../views/Day25_StickyNavigation/Index.vue"),
     },
   ],
 })

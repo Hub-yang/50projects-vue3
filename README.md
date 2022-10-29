@@ -28,3 +28,4 @@
 - **day22:Drawing App:canvas 画板**
 - **day23:Kinetic Loader:加载动画**
 - **day24:Content Placeholder:内容占位符（骨架屏）**
+- **day25:Sticky Navigation:响应式导航栏**
