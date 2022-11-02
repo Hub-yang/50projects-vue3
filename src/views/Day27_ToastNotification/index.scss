@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+
+.body {
+  background-color: #35363A;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  margin: 0;
+
+  .btns {
+    display: flex;
+
+    .btn {
+      margin: 0 10px;
+      color: #fff;
+      font-family: inherit;
+      font-weight: bold;
+      padding: 1rem;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:focus {
+      outline: none;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn.info {
+      background-color: rebeccapurple;
+    }
+
+    .btn.success {
+      background-color: green;
+    }
+
+    .btn.error {
+      background-color: red;
+    }
+  }
+
+  #toasts {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .toast {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 1rem 2rem;
+    margin: 0.5rem;
+    
+  }
+
+  .toast.info {
+    color: rebeccapurple;
+  }
+
+  .toast.success {
+    color: green;
+  }
+
+  .toast.error {
+    color: red;
+  }
+}

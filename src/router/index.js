@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day26",
+      redirect: "/day27",
     },
     {
       path: "/day01",
@@ -235,6 +235,14 @@ export const router = createRouter({
         title: "Double Vertical Slider",
       },
       component: () => import("../views/Day26_DoubleVerticalSlider/Index.vue"),
+    },
+    {
+      path: "/day27",
+      name: "day27",
+      meta: {
+        title: "Toast Notification",
+      },
+      component: () => import("../views/Day27_ToastNotification/Index.vue"),
     },
   ],
 })

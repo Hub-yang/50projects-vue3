@@ -30,3 +30,4 @@
 - **day24:Content Placeholder:内容占位符（骨架屏）**
 - **day25:Sticky Navigation:响应式导航栏**
 - **day26:Double Vertical Slider:双向垂直滑块**
+- **day27:Toast Notification:面包屑消息通知**
