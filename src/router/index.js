@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day27",
+      redirect: "/day28",
     },
     {
       path: "/day01",
@@ -243,6 +243,14 @@ export const router = createRouter({
         title: "Toast Notification",
       },
       component: () => import("../views/Day27_ToastNotification/Index.vue"),
+    },
+    {
+      path: "/day28",
+      name: "day28",
+      meta: {
+        title: "Github Profiles",
+      },
+      component: () => import("../views/Day28_GithubProfiles/Index.vue"),
     },
   ],
 })
