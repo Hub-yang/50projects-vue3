@@ -32,3 +32,4 @@
 - **day26:Double Vertical Slider:双向垂直滑块**
 - **day27:Toast Notification:面包屑消息通知**
 - **day28:Github Profiles:github 搜索（用户简介）**
+- **day29:Double Click Heart:双击点赞**

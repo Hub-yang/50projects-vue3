@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day28",
+      redirect: "/day29",
     },
     {
       path: "/day01",
@@ -251,6 +251,14 @@ export const router = createRouter({
         title: "Github Profiles",
       },
       component: () => import("../views/Day28_GithubProfiles/Index.vue"),
+    },
+    {
+      path: "/day29",
+      name: "day29",
+      meta: {
+        title: "Double Click Heart",
+      },
+      component: () => import("../views/Day29_DoubleClickHeart/Index.vue"),
     },
   ],
 })
