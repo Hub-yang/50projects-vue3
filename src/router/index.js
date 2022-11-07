@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day29",
+      redirect: "/day30",
     },
     {
       path: "/day01",
@@ -259,6 +259,14 @@ export const router = createRouter({
         title: "Double Click Heart",
       },
       component: () => import("../views/Day29_DoubleClickHeart/Index.vue"),
+    },
+    {
+      path: "/day30",
+      name: "day30",
+      meta: {
+        title: "Auto Text Effect",
+      },
+      component: () => import("../views/Day30_AutoTextEffect/Index.vue"),
     },
   ],
 })
