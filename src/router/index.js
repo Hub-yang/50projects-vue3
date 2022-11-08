@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day30",
+      redirect: "/day31",
     },
     {
       path: "/day01",
@@ -267,6 +267,14 @@ export const router = createRouter({
         title: "Auto Text Effect",
       },
       component: () => import("../views/Day30_AutoTextEffect/Index.vue"),
+    },
+    {
+      path: "/day31",
+      name: "day31",
+      meta: {
+        title: "Password Generator",
+      },
+      component: () => import("../views/Day31_PasswordGenerator/Index.vue"),
     },
   ],
 })
