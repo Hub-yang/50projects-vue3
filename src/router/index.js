@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day31",
+      redirect: "/day32",
     },
     {
       path: "/day01",
@@ -275,6 +275,14 @@ export const router = createRouter({
         title: "Password Generator",
       },
       component: () => import("../views/Day31_PasswordGenerator/Index.vue"),
+    },
+    {
+      path: "/day32",
+      name: "day32",
+      meta: {
+        title: "Good Cheap Fast",
+      },
+      component: () => import("../views/Day32_GoodCheapFast/Index.vue"),
     },
   ],
 })
