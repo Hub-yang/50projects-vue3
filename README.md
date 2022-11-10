@@ -36,3 +36,4 @@
 - **day30:Auto Text Effect:自增文字效果**
 - **day31:Password Generator:密码生成器**
 - **day32:Good Cheap Fast:自定义 checkbox**
+- **day33:Notes App:网页便笺**
