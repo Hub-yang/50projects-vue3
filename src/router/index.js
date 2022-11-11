@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day33",
+      redirect: "/day34",
     },
     {
       path: "/day01",
@@ -291,6 +291,14 @@ export const router = createRouter({
         title: "Notes App",
       },
       component: () => import("../views/Day33_NotesApp/Index.vue"),
+    },
+    {
+      path: "/day34",
+      name: "day34",
+      meta: {
+        title: "Animated Countdown",
+      },
+      component: () => import("../views/Day34_AnimatedCountdown/Index.vue"),
     },
   ],
 })
