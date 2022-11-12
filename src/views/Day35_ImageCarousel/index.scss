@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+.body {
+  font-family: 'Roboto', sans-serif;
+  background-color: skyblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+
+  img {
+    width: var(--imgWidth);
+    height: 500px;
+    // 指定可替换元素（例如：<img> 或 <video>）的内容应该如何适应到其使用高度和宽度确定的框
+    object-fit: cover;
+  }
+
+  .carousel {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    height: 530px;
+    width: var(--imgWidth);
+    overflow: hidden;
+
+    .image-container {
+      display: flex;
+      transform: translateX(var(--translateX));
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .buttons-container {
+      display: flex;
+      justify-content: space-between;
+
+      .btn {
+        background-color: rebeccapurple;
+        color: #fff;
+        border: none;
+        padding: 0.5rem;
+        cursor: pointer;
+        width: 49.5%;
+        outline: none;
+
+        &:hover {
+          opacity: 0.9;
+          transition: .5s ease;
+        }
+
+      }
+    }
+  }
+}
