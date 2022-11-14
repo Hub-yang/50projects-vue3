@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day35",
+      redirect: "/day36",
     },
     {
       path: "/day01",
@@ -307,6 +307,14 @@ export const router = createRouter({
         title: "Image Carousel",
       },
       component: () => import("../views/Day35_ImageCarousel/Index.vue"),
+    },
+    {
+      path: "/day36",
+      name: "day36",
+      meta: {
+        title: "Hover Board",
+      },
+      component: () => import("../views/Day36_HoverBoard/Index.vue"),
     },
   ],
 })
