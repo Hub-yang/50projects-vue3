@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day36",
+      redirect: "/day38",
     },
     {
       path: "/day01",
@@ -315,6 +315,14 @@ export const router = createRouter({
         title: "Hover Board",
       },
       component: () => import("../views/Day36_HoverBoard/Index.vue"),
+    },
+    {
+      path: "/day38",
+      name: "day38",
+      meta: {
+        title: "Mobile Tab Navigation",
+      },
+      component: () => import("../views/Day38_MobileTabNavigation/Index.vue"),
     },
   ],
 })

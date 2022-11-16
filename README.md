@@ -40,3 +40,5 @@
 - **day34:Animated Countdown:动画倒计时效果**
 - **day35:Image Carousel:轮播图**
 - **day36:HoverBoard:鼠标滑动涟漪**
+<!-- day37搁置 -->
+- **day38:Mobile Tab Navigation:移动端导航栏**
