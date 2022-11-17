@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day38",
+      redirect: "/day40",
     },
     {
       path: "/day01",
@@ -323,6 +323,14 @@ export const router = createRouter({
         title: "Mobile Tab Navigation",
       },
       component: () => import("../views/Day38_MobileTabNavigation/Index.vue"),
+    },
+    {
+      path: "/day40",
+      name: "day40",
+      meta: {
+        title: "3d Background Boxes",
+      },
+      component: () => import("../views/Day40_3dBackgroundBoxes/Index.vue"),
     },
   ],
 })

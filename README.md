@@ -42,3 +42,5 @@
 - **day36:HoverBoard:鼠标滑动涟漪**
 <!-- day37搁置 -->
 - **day38:Mobile Tab Navigation:移动端导航栏**
+<!-- day39搁置 -->
+- **day40:3d Background Boxes:3d 背景图片**
