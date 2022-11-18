@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day40",
+      redirect: "/day41",
     },
     {
       path: "/day01",
@@ -331,6 +331,14 @@ export const router = createRouter({
         title: "3d Background Boxes",
       },
       component: () => import("../views/Day40_3dBackgroundBoxes/Index.vue"),
+    },
+    {
+      path: "/day41",
+      name: "day41",
+      meta: {
+        title: "Verify Account Ui",
+      },
+      component: () => import("../views/Day41_VerifyAccountUi/Index.vue"),
     },
   ],
 })

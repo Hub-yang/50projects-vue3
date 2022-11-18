@@ -44,3 +44,4 @@
 - **day38:Mobile Tab Navigation:移动端导航栏**
 <!-- day39搁置 -->
 - **day40:3d Background Boxes:3d 背景图片**
+- **day41:Verify Account Ui:验证码输入框 UI**
