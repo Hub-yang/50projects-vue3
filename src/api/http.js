@@ -20,3 +20,8 @@ export function getUserRepos(username) {
     method: "GET",
   })
 }
+
+// day42
+export function getItemList() {
+  return service("https://randomuser.me/api?results=50")
+}

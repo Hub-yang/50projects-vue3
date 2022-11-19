@@ -1,0 +1,45 @@
+<template>
+  <div class="body">
+    <div class="container">
+      <header class="header">
+        <h4 class="title">Live User Filter</h4>
+        <small class="subtitle">Search by name and/or location</small>
+        <input type="text" id="filter" placeholder="Search">
+      </header>
+
+      <ul id="result" class="user-list">
+
+        <li v-if="listItems.length" v-for="(item, index) in listItems" :key="index">
+          <img :src="item.picture.large" :alt="item.name.first">
+          <div class="user-info">
+            <h4>{{ item.name.first + " " + item.name.last }}</h4>
+            <p>{{ item.location.city + "," + item.location.country }}</p>
+          </div>
+        </li>
+        <li v-else>
+          <h3>Loading...</h3>
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, reactive, onMounted } from "vue"
+import { getItemList } from "../../api/http"
+const listItems = ref([])
+
+onMounted(() => {
+  getData()
+})
+
+async function getData() {
+  const { results } = await getItemList()
+  listItems.value = results
+}
+
+</script>
+
+<style scoped lang="scss">
+@import "./index.scss"
+</style>

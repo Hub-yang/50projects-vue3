@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+.body {
+  background-color: #f8f9fd;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  margin: 0;
+
+  .container {
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    width: 300px;
+
+    .header {
+      background-color: #3e57db;
+      color: #fff;
+      padding: 30px 20px;
+
+      .title {
+        margin: 0;
+      }
+
+      .subtitle {
+        display: inline-block;
+        margin: 5px 0 20px 0;
+        opacity: 0.8;
+      }
+
+      input {
+        background-color: rgba(0, 0, 0, 0.3);
+        border: 0;
+        border-radius: 50px;
+        color: #fff;
+        font-size: 14px;
+        padding: 10px 15px;
+        width: 100%;
+        outline: none;
+      }
+    }
+
+    .user-list {
+      background-color: #fff;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      max-height: 400px;
+      overflow-y: auto;
+
+      li {
+        display: flex;
+        padding: 20px;
+
+        &:not(:last-of-type) {
+          border-bottom: 1px solid #eee;
+        }
+
+        &.hide {
+          display: none;
+        }
+      }
+
+      img {
+        border-radius: 50%;
+        object-fit: cover;
+        height: 50px;
+        width: 50px;
+      }
+
+      .user-info {
+        margin-left: 10px;
+
+        h4 {
+          margin: 0 0 10px;
+        }
+
+        p {
+          font-size: 12px;
+        }
+      }
+
+
+    }
+
+  }
+
+}
