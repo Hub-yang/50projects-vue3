@@ -9,8 +9,7 @@
 
       <ul id="result" class="user-list">
 
-        <li v-if="listItems.length" v-for="(item, index) in (filteredList.length ? filteredList : listItems)"
-          :key="index">
+        <li v-if="listItems.length" v-for="(item, index) in (firstRender ? listItems : filteredList)" :key="index">
           <img :src="item.picture.large" :alt="item.name.first">
           <div class="user-info">
             <h4>{{ item.name.first + " " + item.name.last }}</h4>
@@ -31,6 +30,7 @@ import { getItemList } from "../../api/http"
 const listItems = ref([])
 const filteredList = ref([])
 const keyWords = ref("")
+const firstRender = ref(true)
 
 onMounted(() => {
   getData()
@@ -38,6 +38,7 @@ onMounted(() => {
 
 async function getData() {
   const { results } = await getItemList()
+  firstRender.value = false
   listItems.value = results
 }
 
