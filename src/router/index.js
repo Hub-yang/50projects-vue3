@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day42",
+      redirect: "/day43",
     },
     {
       path: "/day01",
@@ -347,6 +347,14 @@ export const router = createRouter({
         title: "Live User Filter",
       },
       component: () => import("../views/Day42_LiveUserFilter/Index.vue"),
+    },
+    {
+      path: "/day43",
+      name: "day43",
+      meta: {
+        title: "Feedback Ui Design",
+      },
+      component: () => import("../views/Day43_FeedbackUiDesign/Index.vue"),
     },
   ],
 })
