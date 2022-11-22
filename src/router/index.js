@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day43",
+      redirect: "/day44",
     },
     {
       path: "/day01",
@@ -355,6 +355,14 @@ export const router = createRouter({
         title: "Feedback Ui Design",
       },
       component: () => import("../views/Day43_FeedbackUiDesign/Index.vue"),
+    },
+    {
+      path: "/day44",
+      name: "day44",
+      meta: {
+        title: "Custom Range Slider",
+      },
+      component: () => import("../views/Day44_CustomRangeSlider/Index.vue"),
     },
   ],
 })

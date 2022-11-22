@@ -47,3 +47,4 @@
 - **day41:Verify Account Ui:验证码输入框 UI**
 - **day42:Live User Filter:列表筛选**
 - **day43:Feedback Ui Design:意见反馈 UI**
+- **day44:Custom Range Slider:自定义滑块**
