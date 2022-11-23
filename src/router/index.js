@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day44",
+      redirect: "/day45",
     },
     {
       path: "/day01",
@@ -363,6 +363,15 @@ export const router = createRouter({
         title: "Custom Range Slider",
       },
       component: () => import("../views/Day44_CustomRangeSlider/Index.vue"),
+    },
+    {
+      path: "/day45",
+      name: "day45",
+      meta: {
+        title: "Netflix Mobile Navigation",
+      },
+      component: () =>
+        import("../views/Day45_NetflixMobileNavigation/Index.vue"),
     },
   ],
 })
