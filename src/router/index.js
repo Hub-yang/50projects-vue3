@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day45",
+      redirect: "/day46",
     },
     {
       path: "/day01",
@@ -372,6 +372,14 @@ export const router = createRouter({
       },
       component: () =>
         import("../views/Day45_NetflixMobileNavigation/Index.vue"),
+    },
+    {
+      path: "/day46",
+      name: "day46",
+      meta: {
+        title: "Quiz App",
+      },
+      component: () => import("../views/Day46_QuizApp/Index.vue"),
     },
   ],
 })
