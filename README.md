@@ -50,3 +50,4 @@
 - **day44:Custom Range Slider:自定义滑块**
 - **day45:Netflix Mobile Navigation:侧边导航栏**
 - **day46:Quiz App:问答框**
+- **day47:Testimonial Box Switcher:简介卡片**

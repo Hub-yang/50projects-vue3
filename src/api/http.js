@@ -25,3 +25,8 @@ export function getUserRepos(username) {
 export function getItemList() {
   return service("https://randomuser.me/api?results=50")
 }
+
+// day47
+export function getUserList() {
+  return service("/mock/getuserlist")
+}
