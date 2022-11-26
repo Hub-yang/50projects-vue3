@@ -16,6 +16,7 @@ declare global {
   const getCurrentScope: typeof import('vue')['getCurrentScope']
   const getItemList: typeof import('../api/http.js')['getItemList']
   const getJokes: typeof import('../api/http.js')['getJokes']
+  const getRandomImg: typeof import('../api/http.js')['getRandomImg']
   const getUserInfo: typeof import('../api/http.js')['getUserInfo']
   const getUserList: typeof import('../api/http.js')['getUserList']
   const getUserRepos: typeof import('../api/http.js')['getUserRepos']

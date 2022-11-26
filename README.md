@@ -51,3 +51,4 @@
 - **day45:Netflix Mobile Navigation:侧边导航栏**
 - **day46:Quiz App:问答框**
 - **day47:Testimonial Box Switcher:简介卡片**
+- **day48:Random Image Feed:随机图片+懒加载**

@@ -30,3 +30,9 @@ export function getItemList() {
 export function getUserList() {
   return service("/mock/getuserlist")
 }
+// day48
+export function getRandomImg() {
+  return service(
+    "https://shibe.online/api/shibes?count=30&urls=true&httpsUrls=true"
+  )
+}
