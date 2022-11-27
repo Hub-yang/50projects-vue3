@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day48",
+      redirect: "/day49",
     },
     {
       path: "/day01",
@@ -391,12 +391,12 @@ export const router = createRouter({
         import("../views/Day47_TestimonialBoxSwitcher/Index.vue"),
     },
     {
-      path: "/day48",
-      name: "day48",
+      path: "/day49",
+      name: "day49",
       meta: {
-        title: "Random Image Feed",
+        title: "ToToList",
       },
-      component: () => import("../views/Day48_RandomImageFeed/Index.vue"),
+      component: () => import("../views/Day49_ToDoList/Index.vue"),
     },
   ],
 })
