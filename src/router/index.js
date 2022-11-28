@@ -5,7 +5,7 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/day49",
+      redirect: "/day50",
     },
     {
       path: "/day01",
@@ -397,6 +397,14 @@ export const router = createRouter({
         title: "ToToList",
       },
       component: () => import("../views/Day49_ToDoList/Index.vue"),
+    },
+    {
+      path: "/day50",
+      name: "day50",
+      meta: {
+        title: "Insect Catch Game",
+      },
+      component: () => import("../views/Day50_InsectCatchGame/Index.vue"),
     },
   ],
 })
