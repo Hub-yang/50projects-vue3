@@ -10,16 +10,15 @@
   </div>
 </template>
 
-<script setup>
-import { ref, reactive } from "vue"
+<script setup lang="ts">
 // 切换active
-const toggleActive = (index) => {
+const toggleActive = (index: number) => {
   cardList.value.forEach((item, i) => {
     item.active = i === index ? true : false
   })
 }
 // 卡片数据（注意vite下url的获取和使用）
-const cardList = ref([
+const cardList = ref<{ [prop: string]: any }[]>([
   {
     title: "one",
     active: true,

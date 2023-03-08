@@ -18,10 +18,15 @@
     "vue-virtual-scroller": "^2.0.0-beta.3"
   },
   "devDependencies": {
+    "@types/mockjs": "^1.0.7",
+    "@types/node": "^18.14.6",
+    "@types/vue": "^2.0.0",
     "@vitejs/plugin-vue": "^3.1.0",
+    "@vue/compiler-sfc": "^3.2.39",
     "mockjs": "^1.1.0",
     "sass": "^1.32.13",
     "sass-loader": "^10.0.5",
+    "typescript": "^4.9.5",
     "unplugin-auto-import": "^0.11.5",
     "vite": "^3.1.0"
   }

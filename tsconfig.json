@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "esnext", // 编译输出的 JavaScript 目标版本
+    "module": "esnext", // 使用的模块标准
+    "strict": true, // 开启所有严格类型检查选项
+    "jsx": "preserve", // 在编译期间保留 JSX 语法
+    "importHelpers": true, // 生成辅助函数以支持 ES6/ES2015 的 import/export 语法
+    "moduleResolution": "node", // 模块解析策略
+    "allowSyntheticDefaultImports": true, // 允许从没有设置默认导出的模块中默认导入
+    "esModuleInterop": true, // 支持 CommonJS 和 ES6 模块之间的互操作性
+    "sourceMap": true, // 生成 source map 文件
+    "skipLibCheck": true, // 不检查声明文件
+    "allowJs": true
+  },
+  "include": [
+    "src/**/*" // 包含的文件或目录
+  ],
+  "exclude": [
+    "node_modules", // 排除的文件或目录
+    "dist"
+  ]
+}

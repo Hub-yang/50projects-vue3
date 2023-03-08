@@ -8,7 +8,7 @@ import dayjs from "dayjs"
 
 // 设置title
 router.beforeEach((to, from, next) => {
-  document.title = to.meta.title
+  document.title = <string>to.meta.title
   next()
 })
 const app = createApp(App)

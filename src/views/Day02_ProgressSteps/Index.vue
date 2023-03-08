@@ -1,16 +1,8 @@
 <template>
   <div class="container">
     <div class="progress_container">
-      <div
-        :style="{ width: activesWidth + '%' }"
-        class="progress"
-        id="progress"
-      ></div>
-      <div
-        :class="['circle', circle.active ? 'active' : '']"
-        v-for="circle in circles"
-        :key="circle.id"
-      >
+      <div :style="{ width: activesWidth + '%' }" class="progress" id="progress"></div>
+      <div :class="['circle', circle.active ? 'active' : '']" v-for="circle in circles" :key="circle.id">
         {{ circle.id }}
       </div>
     </div>
@@ -18,21 +10,15 @@
     <button class="btn" id="prev" :disabled="currentActive == 1" @click="prev">
       Prev
     </button>
-    <button
-      class="btn"
-      id="next"
-      :disabled="currentActive == circles.length"
-      @click="next"
-    >
+    <button class="btn" id="next" :disabled="currentActive == circles.length" @click="next">
       Next
     </button>
   </div>
 </template>
 
-<script setup>
-import { ref, reactive, watch, computed } from "vue"
+<script setup lang="ts">
 
-const circles = reactive([
+const circles = reactive<any[]>([
   { id: 1, active: true },
   { id: 2, active: false },
   { id: 3, active: false },
@@ -40,9 +26,9 @@ const circles = reactive([
   { id: 5, active: false },
 ])
 
-const currentActive = ref(1)
+const currentActive = ref<number>(1)
 
-const activesWidth = ref(0)
+const activesWidth = ref<number>(0)
 
 const prev = () => {
   currentActive.value--

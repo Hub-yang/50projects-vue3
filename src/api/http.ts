@@ -7,14 +7,14 @@ export function getJokes() {
   })
 }
 
-export function getUserInfo(username) {
+export function getUserInfo(username: string) {
   return service({
     url: `https://api.github.com/users/${username}`,
     method: "GET",
   })
 }
 
-export function getUserRepos(username) {
+export function getUserRepos(username: string) {
   return service({
     url: `https://api.github.com/users/${username}/repos?sort=created`,
     method: "GET",
