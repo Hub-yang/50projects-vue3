@@ -1,4 +1,4 @@
-### **前端 50 天 50 个练手小项目，vue3+vite 版本，查漏补缺，自习使用**
+### **前端 50 天 50 个练手小项目，vue3+vite+ts 版本**
 
 **源项目地址:https://github.com/bradtraversy/50projects50days**
 **源项目 demo 地址:https://50projects50days.com/**
