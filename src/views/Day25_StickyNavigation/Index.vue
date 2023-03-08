@@ -55,17 +55,16 @@
   </div>
 </template>
 
-<script setup>
-import { ref, reactive, onMounted } from "vue"
-const nav = ref()
-const navActive = ref(false)
+<script setup lang="ts">
+const nav = ref<HTMLElement>()
+const navActive = ref<boolean>(false)
 const navList = reactive([
   { id: 0, active: true, title: "Home" },
   { id: 1, active: false, title: "About" },
   { id: 2, active: false, title: "Services" },
   { id: 3, active: false, title: "Contact" },
 ])
-const url = ref(
+const url = ref<string>(
   "https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
 )
 
@@ -74,14 +73,14 @@ onMounted(() => {
 })
 
 function fixNav() {
-  if (window.scrollY > nav.value.offsetHeight + 150) {
+  if (window.scrollY > (nav.value as HTMLElement).offsetHeight + 150) {
     navActive.value = true
   } else {
     navActive.value = false
   }
 }
 
-function handleClick(idx) {
+function handleClick(idx: number) {
   navList.forEach((nav) => {
     if (nav.id === idx) {
       nav.active = true

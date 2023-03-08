@@ -1,8 +1,16 @@
 <template>
   <div class="container">
     <div class="progress_container">
-      <div :style="{ width: activesWidth + '%' }" class="progress" id="progress"></div>
-      <div :class="['circle', circle.active ? 'active' : '']" v-for="circle in circles" :key="circle.id">
+      <div
+        :style="{ width: activesWidth + '%' }"
+        class="progress"
+        id="progress"
+      ></div>
+      <div
+        :class="['circle', circle.active ? 'active' : '']"
+        v-for="circle in circles"
+        :key="circle.id"
+      >
         {{ circle.id }}
       </div>
     </div>
@@ -10,15 +18,19 @@
     <button class="btn" id="prev" :disabled="currentActive == 1" @click="prev">
       Prev
     </button>
-    <button class="btn" id="next" :disabled="currentActive == circles.length" @click="next">
+    <button
+      class="btn"
+      id="next"
+      :disabled="currentActive == circles.length"
+      @click="next"
+    >
       Next
     </button>
   </div>
 </template>
 
 <script setup lang="ts">
-
-const circles = reactive<any[]>([
+const circles = reactive<{ id: number; active: boolean }[]>([
   { id: 1, active: true },
   { id: 2, active: false },
   { id: 3, active: false },
@@ -48,7 +60,7 @@ const next = () => {
   update()
 }
 
-const actives = computed(() => {
+const actives = computed<{ id: number; active: boolean }[]>(() => {
   return circles.filter((item) => item.active == true)
 })
 

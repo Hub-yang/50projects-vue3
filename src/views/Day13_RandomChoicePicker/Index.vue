@@ -5,43 +5,54 @@
         Enter all of the choices divided by a comma (','). <br />
         Press enter when you're done
       </h3>
-      <textarea v-focus placeholder="Enter choices here..." id="textarea" v-model.trim="text"
-        @keyup="handleKeyup"></textarea>
+      <textarea
+        v-focus
+        placeholder="Enter choices here..."
+        id="textarea"
+        v-model.trim="text"
+        @keyup="handleKeyup"
+      ></textarea>
 
       <div id="tags">
-        <span :class="['tag',tag.highlight ? 'highlight' : '']" v-for="(tag, index) in tag.list"
-          :key="index">{{tag.value}}</span>
+        <span
+          :class="['tag', item.highlight ? 'highlight' : '']"
+          v-for="(item, index) in tag.list"
+          :key="index"
+          >{{ item.value }}</span
+        >
       </div>
     </div>
   </div>
 </template>
 
-<script setup>
-import { ref, reactive, handleError } from "vue"
-
+<script setup lang="ts">
+interface Listitem {
+  value: string
+  highlight: boolean
+}
 const vFocus = {
-  mounted(el) {
+  mounted(el: HTMLElement) {
     el.focus()
-  }
+  },
 }
 
-const text = ref("")
+const text = ref<string>("")
 
-let tag = reactive({
-  list: []
+let tag = reactive<{ list: any[] }>({
+  list: [],
 })
 
-function handleKeyup(event) {
+function handleKeyup(event: Event) {
   createTags(text.value)
-  if (event.key == 'Enter') {
+  if ((event as any).key == "Enter") {
     text.value = ""
     randomSelect()
   }
 }
 
-function createTags(value) {
+function createTags(value: string) {
   let tags = value.split(",").filter((tag) => tag.trim() !== "")
-  const resList = []
+  const resList: Listitem[] = []
   tags.forEach((tag) => {
     const obj = { value: tag, highlight: false }
     resList.push(obj)
@@ -75,11 +86,11 @@ function randomSelect() {
   }, times * 100)
 }
 
-function pickRandomTag() {
+function pickRandomTag(): Listitem {
   return tag.list[Math.floor(Math.random() * tag.list.length)]
 }
 </script>
 
 <style scoped lang="scss">
-@import "./index.scss"
+@import "./index.scss";
 </style>

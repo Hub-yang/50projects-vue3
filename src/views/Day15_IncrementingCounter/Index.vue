@@ -1,18 +1,37 @@
 <template>
   <div class="body">
-    <div class="counter-container" v-for="(item, index) in targetList" :key="index">
+    <div
+      class="counter-container"
+      v-for="(item, index) in targetList"
+      :key="index"
+    >
       <i :class="[`fab fa-3x ${item.class}`]"></i>
-      <div class="counter">{{item.initial}}</div>
-      <span>{{item.content}}</span>
+      <div class="counter">{{ item.initial }}</div>
+      <span>{{ item.content }}</span>
     </div>
   </div>
 </template>
 
-<script setup>
-import { ref, reactive, onMounted } from "vue"
-const targetList = reactive([
-  { class: "fa-twitter", initial: 0, target: 12000, content: "Twitter Followers" },
-  { class: "fa-youtube", initial: 0, target: 5000, content: "YouTube Subscribers" },
+<script setup lang="ts">
+interface Listitem {
+  class: string
+  initial: number
+  target: number
+  content: string
+}
+const targetList = reactive<Listitem[]>([
+  {
+    class: "fa-twitter",
+    initial: 0,
+    target: 12000,
+    content: "Twitter Followers",
+  },
+  {
+    class: "fa-youtube",
+    initial: 0,
+    target: 5000,
+    content: "YouTube Subscribers",
+  },
   { class: "fa-facebook", initial: 0, target: 7500, content: "Facebook Fans" },
 ])
 
@@ -26,7 +45,7 @@ function update() {
   })
 }
 
-function updateCounter(counter) {
+function updateCounter(counter: Listitem) {
   const target = counter.target
   const c = counter.initial
 
@@ -44,5 +63,5 @@ function updateCounter(counter) {
 </script>
 
 <style scoped lang="scss">
-@import "./index.scss"
+@import "./index.scss";
 </style>

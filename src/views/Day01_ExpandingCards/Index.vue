@@ -1,9 +1,13 @@
 <template>
   <div class="container">
     <template v-for="(img, index) in cardList" :key="index">
-      <div @click="toggleActive(index)" :class="['panel', img.active ? 'active' : '']" :style="{
-        backgroundImage: 'url(' + img.url + ')',
-      }">
+      <div
+        @click="toggleActive(index)"
+        :class="['panel', img.active ? 'active' : '']"
+        :style="{
+          backgroundImage: 'url(' + img.url + ')',
+        }"
+      >
         <h3>{{ img.title }}</h3>
       </div>
     </template>
@@ -11,8 +15,9 @@
 </template>
 
 <script setup lang="ts">
+let toggleActive: (index: number) => void
 // 切换active
-const toggleActive = (index: number) => {
+toggleActive = (index) => {
   cardList.value.forEach((item, i) => {
     item.active = i === index ? true : false
   })

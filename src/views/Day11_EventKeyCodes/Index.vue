@@ -1,22 +1,20 @@
 <template>
   <div class="body">
     <div id="insert">
-      <div v-if="!flag" class="key">
-        Press any key to get the keyCode
-      </div>
+      <div v-if="!flag" class="key">Press any key to get the keyCode</div>
       <template v-else>
         <div class="key">
-          {{key ==' ' ? 'Space' : key}}
+          {{ key == " " ? "Space" : key }}
           <small>event.key</small>
         </div>
 
         <div class="key">
-          {{keyCode}}
+          {{ keyCode }}
           <small>event.keyCode</small>
         </div>
 
         <div class="key">
-          {{code}}
+          {{ code }}
           <small>event.code</small>
         </div>
       </template>
@@ -24,14 +22,12 @@
   </div>
 </template>
 
-<script setup>
-import { ref, reactive, toRefs, onMounted } from "vue"
-
-const flag = ref(false)
-const keyInfo = reactive({
+<script setup lang="ts">
+const flag = ref<boolean>(false)
+const keyInfo = reactive<{ key: string; keyCode: number; code: string }>({
   key: "",
   keyCode: 0,
-  code: ""
+  code: "",
 })
 
 onMounted(() => {
@@ -40,17 +36,16 @@ onMounted(() => {
 
 const { key, keyCode, code } = toRefs(keyInfo)
 
-function handlerKeyDown(event) {
+function handlerKeyDown(event: Event) {
   flag.value = true
   if (event) {
-    keyInfo.key = event.key
-    keyInfo.keyCode = event.keyCode
-    keyInfo.code = event.code
+    keyInfo.key = (event as any).key
+    keyInfo.keyCode = (event as any).keyCode
+    keyInfo.code = (event as any).code
   }
 }
-
 </script>
 
 <style scoped lang="scss">
-@import "./index.scss"
+@import "./index.scss";
 </style>

@@ -6,30 +6,39 @@
 
       <div class="cup">
         <div class="remained" v-show="!(fullCups === totalCups)">
-          <span>{{liters}}L</span>
+          <span>{{ liters }}L</span>
           <small>Remained</small>
         </div>
 
-        <div class="percentage" :style="{height:percentageHeight+'px'}" v-show="fullCups">{{proportion}}%</div>
+        <div
+          class="percentage"
+          :style="{ height: percentageHeight + 'px' }"
+          v-show="fullCups"
+        >
+          {{ proportion }}%
+        </div>
       </div>
     </div>
     <div class="right_area">
       <p class="text">Select how many glasses of water that you have drank</p>
 
       <div class="cups">
-        <div :class="['cup cup-small',!cup.isFull || 'full']" v-for="(cup, idx) in cupsList" :key="idx"
-          @click="highlightCups(idx)">
-          {{cup.capacity}}
-          ml</div>
+        <div
+          :class="['cup cup-small', !cup.isFull || 'full']"
+          v-for="(cup, idx) in cupsList"
+          :key="idx"
+          @click="highlightCups(idx)"
+        >
+          {{ cup.capacity }}
+          ml
+        </div>
       </div>
     </div>
   </div>
 </template>
 
-<script setup>
-import { reactive, computed } from "vue"
-
-const cupsList = reactive([
+<script setup lang="ts">
+const cupsList = reactive<{ capacity: number; isFull: boolean }[]>([
   { capacity: 250, isFull: false },
   { capacity: 250, isFull: false },
   { capacity: 250, isFull: false },
@@ -40,8 +49,8 @@ const cupsList = reactive([
   { capacity: 250, isFull: false },
 ])
 
-function highlightCups(idx) {
-  if (idx === 7 && cupsList[idx].isFull) idx--;
+function highlightCups(idx: number) {
+  if (idx === 7 && cupsList[idx].isFull) idx--
   else if (cupsList[idx].isFull && !cupsList[idx + 1].isFull) {
     idx--
   }
@@ -55,27 +64,26 @@ function highlightCups(idx) {
   })
 }
 
-const fullCups = computed(() => {
-  return cupsList.filter(cup => cup.isFull).length
+const fullCups = computed<number>(() => {
+  return cupsList.filter((cup) => cup.isFull).length
 })
 
-const percentageHeight = computed(() => {
+const percentageHeight = computed<number>(() => {
   if (fullCups.value === 0) return 0
-  else return (fullCups.value / totalCups * 330)
+  else return (fullCups.value / totalCups) * 330
 })
 
-const proportion = computed(() => {
-  return fullCups.value / totalCups * 100
+const proportion = computed<number>(() => {
+  return (fullCups.value / totalCups) * 100
 })
 
-const liters = computed(() => {
-  return 2 - (250 * fullCups.value / 1000)
+const liters = computed<number>(() => {
+  return 2 - (250 * fullCups.value) / 1000
 })
 
-const totalCups = cupsList.length
-
+const totalCups: number = cupsList.length
 </script>
 
 <style scoped lang="scss">
-@import "./index.scss"
+@import "./index.scss";
 </style>

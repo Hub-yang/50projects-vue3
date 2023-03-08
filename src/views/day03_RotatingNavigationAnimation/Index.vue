@@ -29,20 +29,24 @@
   </div>
 </template>
 
-<script setup>
-import { ref, reactive } from "vue"
-import { useRouter } from "vue-router"
+<script setup lang="ts">
+interface NavItem {
+  id: number
+  path: string
+  class: string
+  name: string
+}
 
-const navList = reactive([
+const navList = reactive<NavItem[]>([
   { id: 1, path: "/day03/page01", class: "fas fa-home", name: "Home" },
   { id: 2, path: "/day03/page02", class: "fas fa-user-alt", name: "About" },
   { id: 3, path: "/day03/page03", class: "fas fa-envelope", name: "Contact" },
 ])
-const showNav = ref(false)
+const showNav = ref<boolean>(false)
 
 const router = useRouter()
 
-const switchNav = (path) => {
+const switchNav = (path: string): void => {
   showNav.value = false
   router.push(path)
 }

@@ -1,18 +1,20 @@
 <template>
-  <div class="body" :style="{backgroundImage: 'url(' + url + ')'}" ref="bg">
-  </div>
+  <div
+    class="body"
+    :style="{ backgroundImage: 'url(' + url + ')' }"
+    ref="bg"
+  ></div>
   <div class="loading-text" ref="loading">{{ load }}%</div>
 </template>
 
-<script setup>
-import { ref, reactive, shallowRef } from "vue"
-const url = ref('src/assets/imgs/009.jpg')
+<script setup lang="ts">
+const url = ref<string>("src/assets/imgs/009.jpg")
 
-const load = ref(0)
+const load = ref<number>(0)
 
-const loading = shallowRef(null)
+const loading = shallowRef<any>(null)
 
-const bg = shallowRef(null)
+const bg = shallowRef<any>(null)
 
 const timer = setInterval(blurring, 30)
 
@@ -26,11 +28,17 @@ function blurring() {
   bg.value.style.filter = `blur(${scale(load.value, 0, 100, 30, 0)}px)`
 }
 
-function scale(num, in_min, in_max, out_min, out_max) {
+function scale(
+  num: number,
+  in_min: number,
+  in_max: number,
+  out_min: number,
+  out_max: number
+): number | void {
   return ((num - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min
 }
 </script>
 
 <style scoped lang="scss">
-@import "./index.scss"
+@import "./index.scss";
 </style>

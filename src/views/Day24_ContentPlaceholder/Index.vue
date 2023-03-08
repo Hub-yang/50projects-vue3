@@ -52,10 +52,8 @@
   </div>
 </template>
 
-<script setup>
-import { ref, reactive, onMounted } from "vue"
-
-const info = reactive({
+<script setup lang="ts">
+const info = reactive<{ [prop: string]: string }>({
   srcOne: "",
   srcTwo: "",
   title: "",
@@ -63,7 +61,7 @@ const info = reactive({
   name: "",
   date: "",
 })
-const showPlaceHolder = ref(true)
+const showPlaceHolder = ref<boolean>(true)
 
 onMounted(() => {
   setTimeout(() => {

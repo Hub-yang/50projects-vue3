@@ -1,48 +1,52 @@
 <template>
   <div class="body">
-    <canvas ref="canvas" width="800" height="650" @mousedown="handleMouseDown" @mouseup="handleMouseUp"
-      @mousemove="handleMouseMove"></canvas>
+    <canvas
+      ref="canvas"
+      width="800"
+      height="650"
+      @mousedown="handleMouseDown"
+      @mouseup="handleMouseUp"
+      @mousemove="handleMouseMove"
+    ></canvas>
     <div class="toolbox">
       <button id="decrease" @click="handleClick('-')">-</button>
       <span id="size">{{ size }}</span>
       <button id="increase" @click="handleClick('+')">+</button>
-      <input type="color" id="color" v-model.lazy="color">
+      <input type="color" id="color" v-model.lazy="color" />
       <button id="clear" @click="clear">X</button>
     </div>
   </div>
 </template>
 
-<script setup>
-import { ref, onMounted } from "vue"
-
-const canvas = ref(null)
-let ctx = undefined
-const isPressed = ref(false)
-const x = ref(0)
-const y = ref(0)
-const size = ref(10)
-const color = ref("#000000")
+<script setup lang="ts">
+const canvas = ref<any>(null)
+let ctx: CanvasRenderingContext2D
+const isPressed = ref<boolean>(false)
+const x = ref<number>(0)
+const y = ref<number>(0)
+const size = ref<number>(10)
+const color = ref<string>("#000000")
 
 onMounted(() => {
   ctx = canvas.value.getContext("2d")
 })
 
-function handleMouseDown(e) {
+function handleMouseDown(e: Event) {
   isPressed.value = true
-  x.value = e.offsetX
-  y.value = e.offsetY
+  x.value = (e as any).offsetX
+  y.value = (e as any).offsetY
 }
 
 function handleMouseUp() {
   isPressed.value = false
-  x.value = undefined
-  y.value = undefined
+  x.value = 0
+  y.value = 0
 }
 
-function handleMouseMove(e) {
+function handleMouseMove(e: Event) {
   if (isPressed.value) {
-    const x2 = e.offsetX
-    const y2 = e.offsetY
+    const x2 = (e as any).offsetX
+    const y2 = (e as any).offsetY
 
     drawCircle(x2, y2)
     drawLine(x.value, y.value, x2, y2)
@@ -52,14 +56,14 @@ function handleMouseMove(e) {
   }
 }
 
-function drawCircle(x, y) {
+function drawCircle(x: number, y: number) {
   ctx.beginPath()
   ctx.arc(x, y, size.value, 0, Math.PI * 2)
   ctx.fillStyle = color.value
   ctx.fill()
 }
 
-function drawLine(x1, y1, x2, y2) {
+function drawLine(x1: number, y1: number, x2: number, y2: number) {
   ctx.beginPath()
   ctx.moveTo(x1, y1)
   ctx.lineTo(x2, y2)
@@ -68,12 +72,12 @@ function drawLine(x1, y1, x2, y2) {
   ctx.stroke()
 }
 
-function handleClick(type) {
-  if (type == '-') {
+function handleClick(type: string) {
+  if (type == "-") {
     if (size.value > 5) {
       size.value -= 5
     }
-  } else if (type == '+') {
+  } else if (type == "+") {
     if (size.value < 50) {
       size.value += 5
     }
@@ -86,5 +90,5 @@ function clear() {
 </script>
 
 <style scoped lang="scss">
-@import "./index.scss"
+@import "./index.scss";
 </style>

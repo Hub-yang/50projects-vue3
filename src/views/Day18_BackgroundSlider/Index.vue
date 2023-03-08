@@ -1,8 +1,12 @@
 <template>
-  <div class="body" :style="{backgroundImage: 'url(' + bgImgUrl + ')'}">
+  <div class="body" :style="{ backgroundImage: 'url(' + bgImgUrl + ')' }">
     <div class="slider-container">
-      <div v-for="(img, index) in imgList" :key="index" :class="['slide',img.active ? 'active' : '']"
-        :style="{backgroundImage: 'url(' + img.url + ')'}"></div>
+      <div
+        v-for="(img, index) in imgList"
+        :key="index"
+        :class="['slide', img.active ? 'active' : '']"
+        :style="{ backgroundImage: 'url(' + img.url + ')' }"
+      ></div>
 
       <button class="arrow left-arrow" id="left" @click="leftClick">
         <i class="fas fa-arrow-left"></i>
@@ -15,22 +19,20 @@
   </div>
 </template>
 
-<script setup>
-import { ref, reactive, onMounted } from "vue"
-
-const imgList = reactive([
+<script setup lang="ts">
+const imgList = reactive<{ active: boolean; url: string }[]>([
   { active: true, url: "src/assets/imgs/001.jpg" },
   { active: false, url: "src/assets/imgs/002.jpg" },
   { active: false, url: "src/assets/imgs/003.png" },
   { active: false, url: "src/assets/imgs/004.jpg" },
 ])
 
-let activeSlide = ref(0)
-let bgImgUrl = ref('')
+let activeSlide = ref<number>(0)
+let bgImgUrl = ref<string>("")
 
 publicFn()
 
-function leftClick() {
+function leftClick(): void {
   activeSlide.value--
 
   if (activeSlide.value < 0) {
@@ -40,7 +42,7 @@ function leftClick() {
   publicFn()
 }
 
-function rightClick() {
+function rightClick(): void {
   activeSlide.value++
 
   if (activeSlide.value > imgList.length - 1) {
@@ -52,11 +54,11 @@ function rightClick() {
 
 function publicFn() {
   bgImgUrl.value = imgList[activeSlide.value].url
-  imgList.forEach((slide) => slide.active = false)
+  imgList.forEach((slide) => (slide.active = false))
   imgList[activeSlide.value].active = true
 }
 </script>
 
 <style scoped lang="scss">
-@import "./index.scss"
+@import "./index.scss";
 </style>

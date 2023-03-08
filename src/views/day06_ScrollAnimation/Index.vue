@@ -7,25 +7,22 @@
   </div>
 </template>
 
-<script setup>
-import {onMounted } from "vue"
-
+<script setup lang="ts">
 onMounted(() => {
   checkBoxes()
-  window.addEventListener('scroll',checkBoxes)
+  window.addEventListener("scroll", checkBoxes)
 })
-
 
 function checkBoxes() {
   const boxs = document.querySelectorAll(".box")
   const triggerBottom = (window.innerHeight / 5) * 4
 
-  boxs.forEach(box => {
+  boxs.forEach((box) => {
     const boxTop = box.getBoundingClientRect().top
 
-    if(boxTop<triggerBottom){
+    if (boxTop < triggerBottom) {
       box.classList.add("show")
-    }else{
+    } else {
       box.classList.remove("show")
     }
   })
@@ -33,5 +30,5 @@ function checkBoxes() {
 </script>
 
 <style scoped lang="scss">
-@import "./index.scss"
+@import "./index.scss";
 </style>

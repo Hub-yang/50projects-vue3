@@ -1,7 +1,7 @@
 <template>
   <div class="body">
-    <div :class="['search',showSearchBar ? 'active' : '']">
-      <input type="text" class="input" placeholder="Search..." ref="input">
+    <div :class="['search', showSearchBar ? 'active' : '']">
+      <input type="text" class="input" placeholder="Search..." ref="input" />
       <button class="btn" @click="handleSearchBar">
         <i class="fas fa-search"></i>
       </button>
@@ -9,19 +9,17 @@
   </div>
 </template>
 
-<script setup>
-import { ref, reactive } from "vue"
+<script setup lang="ts">
+const showSearchBar = ref<boolean>(false)
 
-const showSearchBar = ref(false)
+const input = ref<any>(null)
 
-const input = ref(null)
-
-function handleSearchBar() {
+function handleSearchBar(): void {
   input.value.focus()
   showSearchBar.value = !showSearchBar.value
 }
 </script>
 
 <style scoped lang="scss">
-@import "./index.scss"
+@import "./index.scss";
 </style>

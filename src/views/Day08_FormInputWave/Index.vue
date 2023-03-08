@@ -6,16 +6,24 @@
         <div class="form-control">
           <input type="text" required />
           <label>
-            <span v-for="(letter, idx) in 'Email'" :key="idx"
-              :style="{transitionDelay: `${idx*50}ms`}">{{letter}}</span>
+            <span
+              v-for="(letter, idx) in 'Email'"
+              :key="idx"
+              :style="{ transitionDelay: `${idx * 50}ms` }"
+              >{{ letter }}</span
+            >
           </label>
         </div>
 
         <div class="form-control">
           <input type="password" required />
           <label>
-            <span v-for="(letter, idx) in 'Password'" :key="idx"
-              :style="{transitionDelay: `${idx*50}ms`}">{{letter}}</span>
+            <span
+              v-for="(letter, idx) in 'Password'"
+              :key="idx"
+              :style="{ transitionDelay: `${idx * 50}ms` }"
+              >{{ letter }}</span
+            >
           </label>
         </div>
 
@@ -27,11 +35,6 @@
   </div>
 </template>
 
-<script setup>
-import { onMounted } from "vue"
-
-</script>
-
 <style scoped lang="scss">
-@import "./index.scss"
+@import "./index.scss";
 </style>

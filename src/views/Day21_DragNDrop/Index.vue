@@ -1,42 +1,58 @@
 <template>
   <div class="body">
-    <div class="empty" @dragover.prevent @dragenter.prevent="dragEnter" @dragleave="dragLeave" @drop="dragDrop">
-      <div class="fill" ref="drag" draggable="true" @dragstart="handleDragStart" @dragend="handleDragEnd"></div>
+    <div
+      class="empty"
+      @dragover.prevent
+      @dragenter.prevent="dragEnter"
+      @dragleave="dragLeave"
+      @drop="dragDrop"
+    >
+      <div
+        class="fill"
+        ref="drag"
+        draggable="true"
+        @dragstart="handleDragStart"
+        @dragend="handleDragEnd"
+      ></div>
     </div>
-    <div class="empty" v-for="item in 4" @dragover.prevent @dragenter.prevent="dragEnter" @dragleave="dragLeave"
-      @drop="dragDrop"></div>
+    <div
+      class="empty"
+      v-for="item in 4"
+      @dragover.prevent
+      @dragenter.prevent="dragEnter"
+      @dragleave="dragLeave"
+      @drop="dragDrop"
+    ></div>
   </div>
 </template>
 
-<script setup>
-import { ref } from "vue"
+<script setup lang="ts">
+const drag = ref<any>(null)
 
-const drag = ref()
-
-function handleDragStart(e) {
-  let targetEl = e.target
-  targetEl.className += ' hold'
-  setTimeout(() => targetEl.className = 'invisible')
+function handleDragStart(e: Event) {
+  let targetEl = e.target as HTMLElement
+  targetEl.className += " hold"
+  setTimeout(() => (targetEl.className = "invisible"))
 }
 
-function handleDragEnd(e) {
-  e.target.className = "fill"
+function handleDragEnd(e: Event) {
+  ;(e.target as HTMLElement).className = "fill"
 }
 
-function dragEnter(e) {
-  e.currentTarget.className += " hovered"
+function dragEnter(e: Event) {
+  ;(e.currentTarget as HTMLElement).className += " hovered"
 }
 
-function dragLeave(e) {
-  e.currentTarget.className = "empty"
+function dragLeave(e: Event) {
+  ;(e.currentTarget as HTMLElement).className = "empty"
 }
 
-function dragDrop(e) {
-  e.currentTarget.className = "empty"
-  e.currentTarget.append(drag.value)
+function dragDrop(e: Event) {
+  ;(e.currentTarget as HTMLElement).className = "empty"
+  ;(e.currentTarget as HTMLElement).append(drag.value)
 }
 </script>
 
 <style scoped lang="scss">
-@import "./index.scss"
+@import "./index.scss";
 </style>
