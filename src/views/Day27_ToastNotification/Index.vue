@@ -15,10 +15,10 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const messages = ["Message One", "Message Two", "Message Three", "Message Four"]
 
-function createNotification(message = null, type) {
+function createNotification(message: any, type: string) {
   const toasts = document.getElementById("toasts")
   const notif = document.createElement("div")
   notif.classList.add("toast")
@@ -26,7 +26,7 @@ function createNotification(message = null, type) {
 
   notif.innerText = message ? message : getRandomMessage()
 
-  toasts.appendChild(notif)
+  toasts?.appendChild(notif)
 
   setTimeout(() => {
     notif.remove()

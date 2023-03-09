@@ -51,23 +51,22 @@
   </div>
 </template>
 
-<script setup>
-import { ref } from "vue"
+<script setup lang="ts">
 import { getUserInfo, getUserRepos } from "../../api/http"
 
-const user = ref({})
+const user = ref<{ [prop: string]: string }>({})
 const errMsg = ref("")
-const repoList = ref([])
+const repoList = ref<{ [prop: string]: string }[]>([])
 const username = ref("")
 const loading = ref(false)
 
-async function getUser(username) {
+async function getUser(username: string): Promise<void> {
   try {
     user.value = await getUserInfo(username)
     loading.value = false
     // 获取项目信息
     getRepos(username)
-  } catch (error) {
+  } catch (error: any) {
     loading.value = false
     if (error.response.status == 404) {
       errMsg.value = "No profile with this username"

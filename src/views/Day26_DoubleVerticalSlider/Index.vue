@@ -40,10 +40,8 @@
   </div>
 </template>
 
-<script setup>
-import { ref, reactive, computed } from "vue"
-
-const imgList = reactive([
+<script setup lang="ts">
+const imgList = reactive<{ url: string }[]>([
   {
     url: "https://images.unsplash.com/photo-1508768787810-6adc1f613514?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e27f6661df21ed17ab5355b28af8df4e&auto=format&fit=crop&w=1350&q=80",
   },
@@ -58,22 +56,24 @@ const imgList = reactive([
   },
 ])
 
-const titleList = reactive([
+const titleList = reactive<{ one: string; two: string; color: string }[]>([
   { one: "Nature flower", two: "all in pink", color: "#fd3555" },
   { one: "Bluuue Sky", two: "with it's mountains", color: "#2a86ba" },
   { one: "Lonely castle", two: "in the wilderness", color: "#252e33" },
   { one: "Flying eagle", two: "in the sunset", color: "#ffb866" },
 ])
 
-const activeSlideIndex = ref(0)
-const sliderContainer = ref()
+const activeSlideIndex = ref<number>(0)
+const sliderContainer = ref<HTMLElement>()
 const initializeTop = `-${(imgList.length - 1) * 100}vh`
-const sliderHeight = ref(0)
+const sliderHeight = ref<number>(0)
 
-const transform = computed(() => activeSlideIndex.value * sliderHeight.value)
+const transform = computed<number>(
+  () => activeSlideIndex.value * sliderHeight.value
+)
 
-function changeSlide(direction) {
-  sliderHeight.value = sliderContainer.value.clientHeight
+function changeSlide(direction: string): void {
+  sliderHeight.value = (sliderContainer.value as HTMLElement).clientHeight
   if (direction === "up") {
     activeSlideIndex.value++
     if (activeSlideIndex.value > imgList.length - 1) {
