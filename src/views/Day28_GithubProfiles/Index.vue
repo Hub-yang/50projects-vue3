@@ -62,7 +62,7 @@ const loading = ref(false)
 
 async function getUser(username: string): Promise<void> {
   try {
-    user.value = await getUserInfo(username)
+    user.value = (await getUserInfo(username)) as any
     loading.value = false
     // 获取项目信息
     getRepos(username)
@@ -74,9 +74,9 @@ async function getUser(username: string): Promise<void> {
   }
 }
 
-async function getRepos(username) {
+async function getRepos(username: string) {
   try {
-    const repos = await getUserRepos(username)
+    const repos = (await getUserRepos(username)) as any
     repoList.value = repos.slice(0, 5)
     loading.value = false
   } catch (error) {
