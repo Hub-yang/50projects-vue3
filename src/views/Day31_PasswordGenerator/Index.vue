@@ -38,15 +38,19 @@
   </div>
 </template>
 
-<script setup>
-import { ref, reactive } from "vue"
-const resPassword = ref("")
-const length = ref(5)
-const hasLower = ref(true)
-const hasUpper = ref(true)
-const hasNumber = ref(true)
-const hasSymbol = ref(true)
-const randomFunc = {
+<script setup lang="ts">
+interface RandomFunc {
+  lower: () => string
+  upper: () => string
+  number: () => string
+  symbol: () => string
+}
+const resPassword = ref<string>("")
+const length = ref<number>(5)
+const hasLower = ref<boolean>(true)
+const hasUpper = ref<boolean>(true)
+const hasSymbol = ref<boolean>(true)
+const randomFunc: RandomFunc = {
   lower: getRandomLower,
   upper: getRandomUpper,
   number: getRandomNumber,
@@ -54,7 +58,7 @@ const randomFunc = {
 }
 
 // 复制密码
-async function handleCopy(text) {
+async function handleCopy(text: string): Promise<void> {
   if (resPassword.value) {
     await navigator.clipboard.writeText(text)
     alert("密码已复制到剪切板！")
@@ -62,7 +66,7 @@ async function handleCopy(text) {
 }
 
 // 生成密码
-function handleClick() {
+function handleClick(): void {
   resPassword.value = generatePassword(
     hasLower.value,
     hasUpper.value,
@@ -72,9 +76,16 @@ function handleClick() {
   )
 }
 
-function generatePassword(lower, upper, number, symbol, length) {
+function generatePassword(
+  lower: boolean,
+  upper: boolean,
+  number: boolean,
+  symbol: boolean,
+  length: number
+) {
   let generatedPassword = ""
-  const typesCount = lower + upper + number + symbol
+  const typesCount =
+    Number(lower) + Number(upper) + Number(number) + Number(symbol)
   const typesArr = ["lower", "upper", "number", "symbol"]
 
   if (typesCount === 0) {

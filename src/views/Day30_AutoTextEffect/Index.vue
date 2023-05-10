@@ -11,15 +11,13 @@
   </div>
 </template>
 
-<script setup>
-import { ref, reactive, computed, onMounted } from "vue"
+<script setup lang="ts">
+const speed = ref<number>(1)
+const text: string = "We Love Programming!"
+const idx = ref<number>(1)
+const curText = ref<string>("")
 
-const speed = ref(1)
-const text = "We Love Programming!"
-const idx = ref(1)
-const curText = ref("")
-
-const initSpeed = computed(() => {
+const initSpeed = computed<number>(() => {
   if (speed.value >= 10) speed.value = 10
   if (speed.value <= 1) speed.value = 1
   return speed.value

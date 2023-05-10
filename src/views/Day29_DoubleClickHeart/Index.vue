@@ -11,15 +11,13 @@
   </div>
 </template>
 
-<script setup>
-import { ref, nextTick } from "vue"
+<script setup lang="ts">
+const clicks = ref<number>(0)
+const showHeart = ref<boolean>(false)
+const heart = ref<HTMLElement>()
+let clickTime: number = 0
 
-const clicks = ref(0)
-const showHeart = ref(false)
-const heart = ref()
-let clickTime = 0
-
-const clickToHeart = (e) => {
+const clickToHeart = (e: Event) => {
   console.log("click")
   // if (clickTime === 0) {
   //   clickTime = new Date().getTime()
@@ -34,7 +32,7 @@ const clickToHeart = (e) => {
   createHeart(e)
 }
 
-const createHeart = (e) => {
+const createHeart = (e: Event) => {
   // showHeart.value = true
   // const colorList = ["red", "green", "blue", "orange", "purple"]
   // const x = e.clientX
@@ -58,11 +56,11 @@ const createHeart = (e) => {
   heart.classList.add("fa-heart")
 
   const colorList = ["red", "green", "blue", "orange", "purple"]
-  const x = e.clientX
-  const y = e.clientY
+  const x = (e as any).clientX
+  const y = (e as any).clientY
 
-  const leftOffset = e.target.offsetLeft
-  const topOffset = e.target.offsetTop
+  const leftOffset = (e.target as any).offsetLeft
+  const topOffset = (e.target as any).offsetTop
 
   const xInside = x - leftOffset
   const yInside = y - topOffset
@@ -72,7 +70,7 @@ const createHeart = (e) => {
   heart.style.color =
     colorList[Math.floor(Math.random() * (colorList.length - 1))]
 
-  loveMe.appendChild(heart)
+  loveMe!.appendChild(heart)
 
   clicks.value++
 
