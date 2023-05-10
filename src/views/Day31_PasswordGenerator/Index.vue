@@ -49,6 +49,7 @@ const resPassword = ref<string>("")
 const length = ref<number>(5)
 const hasLower = ref<boolean>(true)
 const hasUpper = ref<boolean>(true)
+const hasNumber = ref<boolean>(true)
 const hasSymbol = ref<boolean>(true)
 const randomFunc: RandomFunc = {
   lower: getRandomLower,
