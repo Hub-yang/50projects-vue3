@@ -15,19 +15,19 @@
         </div>
         <div class="setting">
           <label>是否包含大写字母</label>
-          <input type="checkbox" id="uppercase" v-model="hasUpper" />
+          <input type="checkbox" id="uppercase" v-model="config.upper" />
         </div>
         <div class="setting">
           <label>是否包含小写字母</label>
-          <input type="checkbox" id="lowercase" v-model="hasLower" />
+          <input type="checkbox" id="lowercase" v-model="config.lower" />
         </div>
         <div class="setting">
           <label>是否包含数字</label>
-          <input type="checkbox" id="numbers" v-model="hasNumber" />
+          <input type="checkbox" id="numbers" v-model="config.number" />
         </div>
         <div class="setting">
           <label>是否包含符号</label>
-          <input type="checkbox" id="symbols" v-model="hasSymbol" />
+          <input type="checkbox" id="symbols" v-model="config.symbol" />
         </div>
       </div>
 
@@ -44,13 +44,27 @@ interface RandomFunc {
   upper: () => string
   number: () => string
   symbol: () => string
+  [key: string]: any
 }
+
 const resPassword = ref<string>("")
 const length = ref<number>(5)
-const hasLower = ref<boolean>(true)
-const hasUpper = ref<boolean>(true)
-const hasNumber = ref<boolean>(true)
-const hasSymbol = ref<boolean>(true)
+
+interface passwordConfig {
+  lower: boolean
+  upper: boolean
+  number: boolean
+  symbol: boolean
+  [key: string]: any
+}
+
+const config = reactive<passwordConfig>({
+  lower: true,
+  upper: true,
+  number: true,
+  symbol: true,
+})
+
 const randomFunc: RandomFunc = {
   lower: getRandomLower,
   upper: getRandomUpper,
@@ -69,24 +83,18 @@ async function handleCopy(text: string): Promise<void> {
 // 生成密码
 function handleClick(): void {
   resPassword.value = generatePassword(
-    hasLower.value,
-    hasUpper.value,
-    hasNumber.value,
-    hasSymbol.value,
+    config,
     length.value
   )
 }
 
 function generatePassword(
-  lower: boolean,
-  upper: boolean,
-  number: boolean,
-  symbol: boolean,
+  config: passwordConfig,
   length: number
 ) {
   let generatedPassword = ""
   const typesCount =
-    Number(lower) + Number(upper) + Number(number) + Number(symbol)
+    Number(config.lower) + Number(config.upper) + Number(config.number) + Number(config.symbol)
   const typesArr = ["lower", "upper", "number", "symbol"]
 
   if (typesCount === 0) {
@@ -99,7 +107,9 @@ function generatePassword(
     typesArr.sort(() => Math.random() - 0.5)
     console.log(typesArr)
     typesArr.forEach((type) => {
-      generatedPassword += randomFunc[type]()
+      if (config[type]) {
+        generatedPassword += randomFunc[type]()
+      }
     })
   }
 
