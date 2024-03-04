@@ -1,36 +1,5 @@
-<template>
-  <div class="container">
-    <div class="progress_container">
-      <div
-        :style="{ width: activesWidth + '%' }"
-        class="progress"
-        id="progress"
-      ></div>
-      <div
-        :class="['circle', circle.active ? 'active' : '']"
-        v-for="circle in circles"
-        :key="circle.id"
-      >
-        {{ circle.id }}
-      </div>
-    </div>
-
-    <button class="btn" id="prev" :disabled="currentActive == 1" @click="prev">
-      Prev
-    </button>
-    <button
-      class="btn"
-      id="next"
-      :disabled="currentActive == circles.length"
-      @click="next"
-    >
-      Next
-    </button>
-  </div>
-</template>
-
 <script setup lang="ts">
-const circles = reactive<{ id: number; active: boolean }[]>([
+const circles = reactive<{ id: number, active: boolean }[]>([
   { id: 1, active: true },
   { id: 2, active: false },
   { id: 3, active: false },
@@ -42,36 +11,65 @@ const currentActive = ref<number>(1)
 
 const activesWidth = ref<number>(0)
 
-const prev = () => {
+function prev() {
   currentActive.value--
-  if (currentActive.value < 0) {
+  if (currentActive.value < 0)
     currentActive.value = 0
-  }
 
   update()
 }
 
-const next = () => {
+function next() {
   currentActive.value++
-  if (currentActive.value > circles.length) {
+  if (currentActive.value > circles.length)
     currentActive.value = circles.length
-  }
 
   update()
 }
 
-const actives = computed<{ id: number; active: boolean }[]>(() => {
-  return circles.filter((item) => item.active == true)
+const actives = computed<{ id: number, active: boolean }[]>(() => {
+  return circles.filter(item => item.active === true)
 })
 
 function update() {
   circles.forEach((circle, idx) => {
-    circle.active = idx < currentActive.value ? true : false
+    circle.active = idx < currentActive.value
   })
 
   activesWidth.value = ((actives.value.length - 1) / (circles.length - 1)) * 100
 }
 </script>
+
+<template>
+  <div class="container">
+    <div class="progress_container">
+      <div
+        id="progress"
+        :style="{ width: `${activesWidth}%` }"
+        class="progress"
+      />
+      <div
+        v-for="circle in circles" :key="circle.id"
+        class="circle"
+        :class="[circle.active ? 'active' : '']"
+      >
+        {{ circle.id }}
+      </div>
+    </div>
+
+    <button id="prev" class="btn" :disabled="currentActive === 1" @click="prev">
+      Prev
+    </button>
+    <button
+      id="next"
+      class="btn"
+      :disabled="currentActive === circles.length"
+      @click="next"
+    >
+      Next
+    </button>
+  </div>
+</template>
 
 <style scoped lang="scss">
 @import "./index.scss";

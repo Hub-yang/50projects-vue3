@@ -1,3 +1,14 @@
+<script setup>
+onMounted(() => {
+  getImgList()
+})
+
+const imgList = ref([])
+async function getImgList() {
+  imgList.value = await getRandomImg()
+}
+</script>
+
 <template>
   <div class="body">
     <h1>Random Image Feed</h1>
@@ -9,20 +20,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-
-onMounted(() => {
-  getImgList()
-})
-
-
-const imgList = ref([])
-const getImgList = async () => {
-  imgList.value = await getRandomImg()
-}
-
-</script>
 
 <style scoped lang="scss">
 @import "./index.scss";

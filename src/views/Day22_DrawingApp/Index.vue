@@ -1,23 +1,3 @@
-<template>
-  <div class="body">
-    <canvas
-      ref="canvas"
-      width="800"
-      height="650"
-      @mousedown="handleMouseDown"
-      @mouseup="handleMouseUp"
-      @mousemove="handleMouseMove"
-    ></canvas>
-    <div class="toolbox">
-      <button id="decrease" @click="handleClick('-')">-</button>
-      <span id="size">{{ size }}</span>
-      <button id="increase" @click="handleClick('+')">+</button>
-      <input type="color" id="color" v-model.lazy="color" />
-      <button id="clear" @click="clear">X</button>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 const canvas = ref<any>(null)
 let ctx: CanvasRenderingContext2D
@@ -25,10 +5,10 @@ const isPressed = ref<boolean>(false)
 const x = ref<number>(0)
 const y = ref<number>(0)
 const size = ref<number>(10)
-const color = ref<string>("#000000")
+const color = ref<string>('#000000')
 
 onMounted(() => {
-  ctx = canvas.value.getContext("2d")
+  ctx = canvas.value.getContext('2d')
 })
 
 function handleMouseDown(e: Event) {
@@ -73,14 +53,13 @@ function drawLine(x1: number, y1: number, x2: number, y2: number) {
 }
 
 function handleClick(type: string) {
-  if (type == "-") {
-    if (size.value > 5) {
+  if (type === '-') {
+    if (size.value > 5)
       size.value -= 5
-    }
-  } else if (type == "+") {
-    if (size.value < 50) {
+  }
+  else if (type === '+') {
+    if (size.value < 50)
       size.value += 5
-    }
   }
 }
 
@@ -88,6 +67,32 @@ function clear() {
   ctx.clearRect(0, 0, canvas.value.width, canvas.value.height)
 }
 </script>
+
+<template>
+  <div class="body">
+    <canvas
+      ref="canvas"
+      width="800"
+      height="650"
+      @mousedown="handleMouseDown"
+      @mouseup="handleMouseUp"
+      @mousemove="handleMouseMove"
+    />
+    <div class="toolbox">
+      <button id="decrease" @click="handleClick('-')">
+        -
+      </button>
+      <span id="size">{{ size }}</span>
+      <button id="increase" @click="handleClick('+')">
+        +
+      </button>
+      <input id="color" v-model.lazy="color" type="color">
+      <button id="clear" @click="clear">
+        X
+      </button>
+    </div>
+  </div>
+</template>
 
 <style scoped lang="scss">
 @import "./index.scss";

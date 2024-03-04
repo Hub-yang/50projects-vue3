@@ -1,22 +1,73 @@
+<script setup lang="ts">
+const nav = ref<HTMLElement>()
+const navActive = ref<boolean>(false)
+const navList = reactive([
+  { id: 0, active: true, title: 'Home' },
+  { id: 1, active: false, title: 'About' },
+  { id: 2, active: false, title: 'Services' },
+  { id: 3, active: false, title: 'Contact' },
+])
+const url = ref<string>(
+  'https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+)
+
+onMounted(() => {
+  window.addEventListener('scroll', fixNav)
+})
+
+function fixNav() {
+  if (window.scrollY > (nav.value as HTMLElement).offsetHeight + 150)
+    navActive.value = true
+  else
+    navActive.value = false
+}
+
+function handleClick(idx: number) {
+  navList.forEach((nav) => {
+    if (nav.id === idx)
+      nav.active = true
+    else
+      nav.active = false
+
+    switch (idx) {
+      case 0:
+        url.value
+          = 'https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+        break
+      case 1:
+        url.value = 'src/assets/imgs/004.jpg'
+        break
+      case 2:
+        url.value = 'src/assets/imgs/005.jpg'
+        break
+      case 3:
+        url.value = 'src/assets/imgs/001.jpg'
+        break
+    }
+  })
+}
+</script>
+
 <template>
   <div class="body">
-    <nav :class="['nav', navActive ? 'active' : '']" ref="nav">
+    <nav ref="nav" class="nav" :class="[navActive ? 'active' : '']">
       <div class="container">
-        <h1 class="logo"><a href="#">My Website</a></h1>
+        <h1 class="logo">
+          <a href="#">My Website</a>
+        </h1>
         <ul>
-          <li v-for="(nav, index) in navList" :key="nav.id">
+          <li v-for="(navItem, index) in navList" :key="navItem.id">
             <a
               href="#"
-              :class="[nav.active ? 'current' : '']"
+              :class="[navItem.active ? 'current' : '']"
               @click="handleClick(index)"
-              >{{ nav.title }}</a
-            >
+            >{{ navItem.title }}</a>
           </li>
         </ul>
       </div>
     </nav>
 
-    <div class="hero" :style="{ backgroundImage: 'url(' + url + ')' }">
+    <div class="hero" :style="{ backgroundImage: `url(${url})` }">
       <div class="container">
         <h1>Welcome To My Website</h1>
         <p>
@@ -54,58 +105,6 @@
     </section>
   </div>
 </template>
-
-<script setup lang="ts">
-const nav = ref<HTMLElement>()
-const navActive = ref<boolean>(false)
-const navList = reactive([
-  { id: 0, active: true, title: "Home" },
-  { id: 1, active: false, title: "About" },
-  { id: 2, active: false, title: "Services" },
-  { id: 3, active: false, title: "Contact" },
-])
-const url = ref<string>(
-  "https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-)
-
-onMounted(() => {
-  window.addEventListener("scroll", fixNav)
-})
-
-function fixNav() {
-  if (window.scrollY > (nav.value as HTMLElement).offsetHeight + 150) {
-    navActive.value = true
-  } else {
-    navActive.value = false
-  }
-}
-
-function handleClick(idx: number) {
-  navList.forEach((nav) => {
-    if (nav.id === idx) {
-      nav.active = true
-    } else {
-      nav.active = false
-    }
-
-    switch (idx) {
-      case 0:
-        url.value =
-          "https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-        break
-      case 1:
-        url.value = "src/assets/imgs/004.jpg"
-        break
-      case 2:
-        url.value = "src/assets/imgs/005.jpg"
-        break
-      case 3:
-        url.value = "src/assets/imgs/001.jpg"
-        break
-    }
-  })
-}
-</script>
 
 <style scoped lang="scss">
 @import "./index.scss";

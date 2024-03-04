@@ -1,10 +1,10 @@
-import { createApp } from "vue"
-import { router } from "./router"
-import "./styles/init.css"
-import App from "./App.vue"
-import "./mock"
-import VueLazyload from "vue-lazyload"
-import dayjs from "dayjs"
+import { createApp } from 'vue'
+import dayjs from 'dayjs'
+import VueLazyload from 'vue-lazyload'
+import { router } from './router'
+import './styles/init.css'
+import App from './App.vue'
+import './mock'
 
 // 设置title
 router.beforeEach((to, from, next) => {
@@ -14,4 +14,4 @@ router.beforeEach((to, from, next) => {
 const app = createApp(App)
 
 app.config.globalProperties.dayjs = dayjs
-app.use(router).use(VueLazyload).mount("#app")
+app.use(router).use(VueLazyload).mount('#app')

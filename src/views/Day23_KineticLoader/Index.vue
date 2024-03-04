@@ -1,6 +1,6 @@
 <template>
   <div class="body">
-    <div class="kinetic"></div>
+    <div class="kinetic" />
   </div>
 </template>
 

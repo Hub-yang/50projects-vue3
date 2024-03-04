@@ -1,14 +1,3 @@
-<template>
-  <div class="body">
-    <div :class="['search', showSearchBar ? 'active' : '']">
-      <input type="text" class="input" placeholder="Search..." ref="input" />
-      <button class="btn" @click="handleSearchBar">
-        <i class="fas fa-search"></i>
-      </button>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 const showSearchBar = ref<boolean>(false)
 
@@ -19,6 +8,17 @@ function handleSearchBar(): void {
   showSearchBar.value = !showSearchBar.value
 }
 </script>
+
+<template>
+  <div class="body">
+    <div class="search" :class="[showSearchBar ? 'active' : '']">
+      <input ref="input" type="text" class="input" placeholder="Search...">
+      <button class="btn" @click="handleSearchBar">
+        <i class="fas fa-search" />
+      </button>
+    </div>
+  </div>
+</template>
 
 <style scoped lang="scss">
 @import "./index.scss";

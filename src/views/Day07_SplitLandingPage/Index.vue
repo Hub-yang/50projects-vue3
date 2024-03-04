@@ -1,13 +1,16 @@
+<script setup lang="ts">
+const toggle = ref<string>('')
+</script>
+
 <template>
   <div class="body">
     <div
-      :class="[
-        'container',
-        toggle == 'left'
+      class="container" :class="[
+        toggle === 'left'
           ? 'hover-left'
-          : toggle == 'right'
-          ? 'hover-right'
-          : '',
+          : toggle === 'right'
+            ? 'hover-right'
+            : '',
       ]"
     >
       <div
@@ -29,10 +32,6 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-const toggle = ref<string>("")
-</script>
 
 <style scoped lang="scss">
 @import "./index.scss";

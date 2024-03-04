@@ -1,15 +1,30 @@
 {
   "name": "50projects50days-master",
-  "private": true,
-  "version": "0.0.0",
   "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "author": {
+    "name": "Hubery Yang",
+    "email": "mochenghualeishuai@gmail.com"
+  },
+  "keywords": [
+    "javascript",
+    "js practice",
+    "Vue3 practice",
+    "Vite practice"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepare": "husky",
+    "commitlint": "commitlint --edit"
   },
   "dependencies": {
     "axios": "^1.1.2",
+    "chalk": "^5.3.0",
     "dayjs": "^1.11.6",
     "nanoid": "^4.0.0",
     "vue": "^3.2.37",
@@ -18,16 +33,31 @@
     "vue-virtual-scroller": "^2.0.0-beta.3"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^2.7.0",
+    "@commitlint/cli": "^19.0.3",
+    "@commitlint/config-conventional": "^19.0.3",
     "@types/mockjs": "^1.0.7",
     "@types/node": "^18.14.6",
     "@types/vue": "^2.0.0",
     "@vitejs/plugin-vue": "^3.1.0",
     "@vue/compiler-sfc": "^3.2.39",
+    "eslint": "^8.57.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
     "mockjs": "^1.1.0",
     "sass": "^1.32.13",
     "sass-loader": "^10.0.5",
     "typescript": "^4.9.5",
     "unplugin-auto-import": "^0.11.5",
     "vite": "^3.1.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint --edit $1"
+    }
+  },
+  "lint-staged": {
+    "*": "eslint . --fix"
   }
 }
