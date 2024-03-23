@@ -11,13 +11,11 @@ const navList = reactive<NavItem[]>([
   { id: 2, path: '/day03/page02', class: 'fas fa-user-alt', name: 'About' },
   { id: 3, path: '/day03/page03', class: 'fas fa-envelope', name: 'Contact' },
 ])
-const showNav = ref<boolean>(false)
-
-const router = useRouter()
+const showNav = ref(false)
 
 function switchNav(path: string): void {
   showNav.value = false
-  router.push(path)
+  useRouter().push(path)
 }
 </script>
 

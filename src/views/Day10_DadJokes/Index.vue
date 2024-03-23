@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { getJokes } from '../../api/http'
 
-const joke = ref<string>('')
+const joke = ref('')
 
-onMounted(() => {
-  generateJoke()
-})
+onMounted(() => generateJoke())
 
 async function generateJoke() {
   joke.value = ''

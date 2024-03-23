@@ -7,9 +7,7 @@ export default defineConfig({
   plugins: [
     vue(),
     AutoImport({
-      imports: ['vue', 'pinia', 'vue-router'],
-      // 指定配置文件生成的位置与文件名
-      dts: './src/automatic/auto-imports.d.ts',
+      imports: ['vue', 'pinia', 'vue-router', '@vueuse/core'],
       dirs: ['./src/api/**'],
       resolvers: [],
     }),

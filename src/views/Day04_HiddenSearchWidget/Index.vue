@@ -1,10 +1,10 @@
 <script setup lang="ts">
-const showSearchBar = ref<boolean>(false)
+const showSearchBar = ref(false)
 
-const input = ref<any>(null)
+const input = ref<HTMLDivElement | null>(null)
 
 function handleSearchBar(): void {
-  input.value.focus()
+  (input.value as HTMLDivElement).focus()
   showSearchBar.value = !showSearchBar.value
 }
 </script>

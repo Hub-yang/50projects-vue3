@@ -8,8 +8,7 @@ const audioList = reactive<{ id: string, src: string }[]>([
   { id: 'wrong', src: 'src/views/Day09_SoundBoard/audios/wrong.mp3' },
 ])
 
-type List = [string, string, string, string, string, string]
-const btnList: List = ['applause', 'boo', 'gasp', 'tada', 'victory', 'wrong']
+const btnList = ['applause', 'boo', 'gasp', 'tada', 'victory', 'wrong']
 
 function play(sound: string): void {
   stopSongs()

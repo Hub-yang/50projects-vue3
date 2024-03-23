@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const toggle = ref<string>('')
+const toggle = ref('')
 </script>
 
 <template>

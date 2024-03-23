@@ -6,8 +6,10 @@ const curText = ref<string>('')
 
 const initSpeed = computed<number>(() => {
   if (speed.value >= 10)
+    // eslint-disable-next-line vue/no-side-effects-in-computed-properties
     speed.value = 10
   if (speed.value <= 1)
+    // eslint-disable-next-line vue/no-side-effects-in-computed-properties
     speed.value = 1
   return speed.value
 })

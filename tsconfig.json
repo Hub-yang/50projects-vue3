@@ -13,7 +13,8 @@
     "skipLibCheck": true
   },
   "include": [
-    "src/**/*" // 包含的文件或目录
+    "src/**/*", // 包含的文件或目录
+    "auto-imports.d.ts"
   ],
   "exclude": [
     "node_modules", // 排除的文件或目录

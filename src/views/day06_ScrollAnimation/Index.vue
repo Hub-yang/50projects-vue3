@@ -1,5 +1,5 @@
 <script setup lang="ts">
-onMounted(() => {
+onBeforeMount(() => {
   checkBoxes()
   window.addEventListener('scroll', checkBoxes)
 })
@@ -10,7 +10,6 @@ function checkBoxes() {
 
   boxs.forEach((box) => {
     const boxTop = box.getBoundingClientRect().top
-
     if (boxTop < triggerBottom)
       box.classList.add('show')
     else

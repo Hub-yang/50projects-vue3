@@ -30,7 +30,7 @@ const cardList = ref<{ [prop: string]: any }[]>([
 // 切换active
 function toggleActive(index: number) {
   cardList.value.forEach((item, i) => {
-    item.active = i === index
+    item.active = (i === index)
   })
 }
 </script>

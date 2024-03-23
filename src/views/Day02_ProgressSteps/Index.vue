@@ -7,9 +7,8 @@ const circles = reactive<{ id: number, active: boolean }[]>([
   { id: 5, active: false },
 ])
 
-const currentActive = ref<number>(1)
-
-const activesWidth = ref<number>(0)
+const currentActive = ref(1)
+const activesWidth = ref(0)
 
 function prev() {
   currentActive.value--
@@ -27,9 +26,9 @@ function next() {
   update()
 }
 
-const actives = computed<{ id: number, active: boolean }[]>(() => {
-  return circles.filter(item => item.active === true)
-})
+const actives = computed<{ id: number, active: boolean }[]>(() =>
+  circles.filter(item => item.active === true),
+)
 
 function update() {
   circles.forEach((circle, idx) => {
