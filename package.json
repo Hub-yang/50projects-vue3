@@ -47,7 +47,8 @@
     "sass": "^1.72.0",
     "typescript": "^4.9.5",
     "unplugin-auto-import": "^0.11.5",
-    "vite": "^3.2.8"
+    "vite": "^3.2.8",
+    "vite-plugin-vue-devtools": "^7.0.25"
   },
   "husky": {
     "hooks": {
