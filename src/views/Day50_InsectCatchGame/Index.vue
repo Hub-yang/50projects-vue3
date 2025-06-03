@@ -40,7 +40,7 @@ function createInsect() {
   insect.style.top = `${y}px`
   insect.style.left = `${x}px`
   insect.innerHTML = `<img src="${curInsect.value.src}" alt="${curInsect.value.alt
-    }" style="transform: rotate(${Math.random() * 360}deg)" />`
+  }" style="transform: rotate(${Math.random() * 360}deg)" />`
 
   insect.addEventListener('click', catchInsect)
 

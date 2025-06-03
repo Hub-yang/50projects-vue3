@@ -155,9 +155,9 @@ class GameControl {
     // 防止掉头
     const isTurnAround
       = (e.key === 'ArrowUp' && this.direction === 'ArrowDown')
-      || (e.key === 'ArrowDown' && this.direction === 'ArrowUp')
-      || (e.key === 'ArrowLeft' && this.direction === 'ArrowRight')
-      || (e.key === 'ArrowRight' && this.direction === 'ArrowLeft')
+        || (e.key === 'ArrowDown' && this.direction === 'ArrowUp')
+        || (e.key === 'ArrowLeft' && this.direction === 'ArrowRight')
+        || (e.key === 'ArrowRight' && this.direction === 'ArrowLeft')
 
     if (isTurnAround)
       return

@@ -28,6 +28,7 @@ async function getRepos(username: string) {
     loading.value = false
   }
   catch (error) {
+    console.error(`${error}`)
     loading.value = false
     errMsg.value = 'Problem fetching repos'
   }
