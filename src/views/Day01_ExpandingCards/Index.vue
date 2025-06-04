@@ -1,33 +1,38 @@
 <script setup lang="ts">
-// 卡片数据（注意vite下url的获取和使用）
-const cardList = ref<{ [prop: string]: any }[]>([
+interface CardItem {
+  title: string
+  active: boolean
+  url: string
+}
+// url动态路径
+const cardList = ref<CardItem[]>([
   {
     title: 'one',
     active: true,
-    url: new URL('../../assets/imgs/001.jpg', import.meta.url).href,
+    url: new URL('~/assets/imgs/001.jpg', import.meta.url).href,
   },
   {
     title: 'two',
     active: false,
-    url: 'src/assets/imgs/002.jpg',
+    url: new URL('~/assets/imgs/002.jpg', import.meta.url).href,
   },
   {
     title: 'three',
     active: false,
-    url: 'src/assets/imgs/003.png',
+    url: new URL('~/assets/imgs/003.png', import.meta.url).href,
   },
   {
     title: 'four',
     active: false,
-    url: 'src/assets/imgs/004.jpg',
+    url: new URL('~/assets/imgs/004.jpg', import.meta.url).href,
   },
   {
     title: 'five',
     active: false,
-    url: 'src/assets/imgs/005.jpg',
+    url: new URL('~/assets/imgs/005.jpg', import.meta.url).href,
   },
 ])
-// 切换active
+
 function toggleActive(index: number) {
   cardList.value.forEach((item, i) => {
     item.active = (i === index)
@@ -37,20 +42,19 @@ function toggleActive(index: number) {
 
 <template>
   <div class="container">
-    <template v-for="(img, index) in cardList" :key="index">
-      <div
-        class="panel" :class="[img.active ? 'active' : '']"
-        :style="{
-          backgroundImage: `url(${img.url})`,
-        }"
-        @click="toggleActive(index)"
-      >
-        <h3>{{ img.title }}</h3>
-      </div>
-    </template>
+    <div
+      v-for="({ url, title, active }, idx) in cardList" :key="title"
+      class="panel" :class="[active ? 'active' : '']"
+      :style="{
+        backgroundImage: `url(${url})`,
+      }"
+      @click="toggleActive(idx)"
+    >
+      <h3>{{ title }}</h3>
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@use './index.scss';
 </style>

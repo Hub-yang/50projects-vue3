@@ -8,7 +8,7 @@ import './mock'
 
 // 设置title
 router.beforeEach((to, from, next) => {
-  document.title = <string>to.meta.title
+  document.title = to.meta.title as string
   next()
 })
 const app = createApp(App)

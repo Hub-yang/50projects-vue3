@@ -6,6 +6,8 @@ interface NavItem {
   name: string
 }
 
+const router = useRouter()
+
 const navList = reactive<NavItem[]>([
   { id: 1, path: '/day03/page01', class: 'fas fa-home', name: 'Home' },
   { id: 2, path: '/day03/page02', class: 'fas fa-user-alt', name: 'About' },
@@ -13,9 +15,9 @@ const navList = reactive<NavItem[]>([
 ])
 const showNav = ref(false)
 
-function switchNav(path: string): void {
+function switchNav(path: string) {
   showNav.value = false
-  useRouter().push(path)
+  router.push(path)
 }
 </script>
 
@@ -51,5 +53,5 @@ function switchNav(path: string): void {
 </template>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@use './index.scss';
 </style>

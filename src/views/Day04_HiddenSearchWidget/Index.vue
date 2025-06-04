@@ -3,7 +3,7 @@ const showSearchBar = ref(false)
 
 const input = ref<HTMLDivElement | null>(null)
 
-function handleSearchBar(): void {
+function handleSearchBar() {
   (input.value as HTMLDivElement).focus()
   showSearchBar.value = !showSearchBar.value
 }
@@ -21,5 +21,5 @@ function handleSearchBar(): void {
 </template>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@use './index.scss';
 </style>

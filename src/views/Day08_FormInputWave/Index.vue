@@ -8,7 +8,7 @@
           <label>
             <span
               v-for="(letter, idx) in 'Email'"
-              :key="idx"
+              :key="letter + idx"
               :style="{ transitionDelay: `${idx * 50}ms` }"
             >{{ letter }}</span>
           </label>
@@ -19,7 +19,7 @@
           <label>
             <span
               v-for="(letter, idx) in 'Password'"
-              :key="idx"
+              :key="letter + idx"
               :style="{ transitionDelay: `${idx * 50}ms` }"
             >{{ letter }}</span>
           </label>
@@ -38,5 +38,5 @@
 </template>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@use './index.scss';
 </style>

@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import { routes } from '../../router/index'
+import { routes } from '~/router'
 
 const _routes = routes.slice(2)
 
@@ -23,30 +23,30 @@ for (let i = 0; i < _routes.length / 5; i++) {
 </template>
 
 <style scoped lang="scss">
-.nav_container{
+.nav_container {
   padding: 12px;
   box-sizing: border-box;
   width: 100vw;
   height: 100vh;
-  .base_row{
+  .base_row {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
     height: 100px;
     margin-bottom: 12px;
-    .base_col{
+    .base_col {
       width: 18%;
       height: 100%;
-      background:skyblue;
+      background: skyblue;
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all ease .3s;
+      transition: all ease 0.3s;
       cursor: pointer;
-      &:hover{
-        transition: all ease .3s;
+      &:hover {
+        transition: all ease 0.3s;
         background: #000;
         color: white;
       }

@@ -16,7 +16,7 @@
     background: white;
 
     .fill {
-      background-image: url("../../assets//imgs/cover.png");
+      background-image: url('../../assets//imgs/cover.png');
       height: 145px;
       width: 145px;
       background-size: cover;
@@ -24,8 +24,6 @@
       background-repeat: no-repeat;
       cursor: pointer;
     }
-
-
   }
 
   .hold {

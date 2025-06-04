@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getJokes } from '../../api/http'
+import { getJokes } from '~/api/http'
 
 const joke = ref('')
 
@@ -7,8 +7,8 @@ onMounted(() => generateJoke())
 
 async function generateJoke() {
   joke.value = ''
-  const res = (await getJokes()) as any
-  joke.value = res.joke
+  const { joke: data = '' } = await getJokes()
+  joke.value = data
 }
 </script>
 
@@ -27,5 +27,5 @@ async function generateJoke() {
 </template>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@use './index.scss';
 </style>

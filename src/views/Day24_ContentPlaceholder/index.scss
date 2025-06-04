@@ -11,7 +11,6 @@
   overflow: hidden;
   margin: 0;
 
-
   .card {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
@@ -70,11 +69,7 @@
 }
 
 .animated-bg {
-  background-image: linear-gradient(to right,
-      #f6f7f8 0%,
-      #edeef1 10%,
-      #f6f7f8 20%,
-      #f6f7f8 100%);
+  background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 10%, #f6f7f8 20%, #f6f7f8 100%);
   background-size: 200% 100%;
   animation: bgPos 1s linear infinite;
 }

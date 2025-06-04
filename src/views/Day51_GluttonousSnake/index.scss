@@ -10,7 +10,7 @@ $bg-color: #b7d4a8;
 }
 
 body {
-  font: bold 20px "Courier";
+  font: bold 20px 'Courier';
 }
 
 //设置主窗口的样式
@@ -44,7 +44,7 @@ body {
 
     // 设置蛇的样式
     #snake {
-      &>div {
+      & > div {
         width: 10px;
         height: 10px;
         background-color: #000;
@@ -71,7 +71,7 @@ body {
       justify-content: space-between;
       align-content: space-between;
 
-      &>div {
+      & > div {
         width: 4px;
         height: 4px;
         background-color: black;

@@ -23,7 +23,7 @@
     padding: 1rem;
   }
 
-  .toolbox>* {
+  .toolbox > * {
     background-color: #fff;
     border: none;
     display: inline-flex;
@@ -37,7 +37,7 @@
     cursor: pointer;
   }
 
-  .toolbox>*:last-child {
+  .toolbox > *:last-child {
     margin-left: auto;
   }
 }

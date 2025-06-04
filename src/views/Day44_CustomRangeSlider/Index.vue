@@ -34,5 +34,5 @@ function scale(num, in_min, in_max, out_min, out_max) {
 </template>
 
 <style scoped lang="scss">
-@import "./index.scss"
+@import './index.scss';
 </style>

@@ -15,7 +15,9 @@
   transition: 0.4s;
 
   .slider-container {
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    box-shadow:
+      0 3px 6px rgba(0, 0, 0, 0.16),
+      0 3px 6px rgba(0, 0, 0, 0.23);
     height: 70vh;
     width: 70vw;
     position: relative;
@@ -38,7 +40,6 @@
       opacity: 1;
     }
 
-
     .arrow {
       position: fixed;
       background-color: transparent;
@@ -50,7 +51,7 @@
       top: 50%;
       transform: translateY(-50%);
       cursor: pointer;
-      transition: all .3s ease;
+      transition: all 0.3s ease;
     }
 
     .arrow:focus {

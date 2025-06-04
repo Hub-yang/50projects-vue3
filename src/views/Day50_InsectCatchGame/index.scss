@@ -28,7 +28,7 @@
     outline: none;
 
     &:hover {
-      opacity: .9;
+      opacity: 0.9;
     }
   }
 
@@ -70,7 +70,6 @@
           }
 
           &:active {
-
             background-color: rgba(255, 255, 255, 0.7);
           }
 
@@ -117,8 +116,6 @@
     }
   }
 
-
-
   .insect {
     cursor: pointer;
     display: flex;
@@ -131,7 +128,6 @@
     transition: transform 0.3s ease-in-out;
 
     &.caught {
-
       transform: translate(-50%, -50%) scale(0);
     }
 

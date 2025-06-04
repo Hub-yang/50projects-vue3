@@ -5,17 +5,12 @@ const toggle = ref('')
 <template>
   <div class="body">
     <div
-      class="container" :class="[
-        toggle === 'left'
-          ? 'hover-left'
-          : toggle === 'right'
-            ? 'hover-right'
-            : '',
-      ]"
+      class="container"
+      :class="[toggle || '']"
     >
       <div
         class="split left"
-        @mouseenter="toggle = 'left'"
+        @mouseenter="toggle = 'hover-left'"
         @mouseleave="toggle = ''"
       >
         <h1>Title One</h1>
@@ -23,7 +18,7 @@ const toggle = ref('')
       </div>
       <div
         class="split right"
-        @mouseenter="toggle = 'right'"
+        @mouseenter="toggle = 'hover-right'"
         @mouseleave="toggle = ''"
       >
         <h1>Title Two</h1>
@@ -34,5 +29,5 @@ const toggle = ref('')
 </template>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@use './index.scss';
 </style>

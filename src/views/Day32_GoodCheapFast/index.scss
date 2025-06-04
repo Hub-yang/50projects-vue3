@@ -43,11 +43,11 @@
       }
     }
 
-    .toggle:checked+.label {
+    .toggle:checked + .label {
       background-color: #8e44ad;
     }
 
-    .toggle:checked+.label>.ball {
+    .toggle:checked + .label > .ball {
       animation: slideOn 0.3s linear forwards;
     }
   }

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const url = ref('src/assets/imgs/009.jpg')
+const url = new URL('~/assets/imgs/009.jpg', import.meta.url).href
 const load = ref(0)
 const loading = shallowRef<any>(null)
 const bg = shallowRef<any>(null)
@@ -35,5 +35,5 @@ function scale(
 </template>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@use './index.scss';
 </style>

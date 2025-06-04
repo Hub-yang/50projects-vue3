@@ -1,5 +1,6 @@
 <script setup lang="ts">
-const circles = reactive<{ id: number, active: boolean }[]>([
+interface Item { id: number, active: boolean }
+const circles = reactive<Item[]>([
   { id: 1, active: true },
   { id: 2, active: false },
   { id: 3, active: false },
@@ -26,9 +27,7 @@ function next() {
   update()
 }
 
-const actives = computed<{ id: number, active: boolean }[]>(() =>
-  circles.filter(item => item.active === true),
-)
+const actives = computed<Item[]>(() => circles.filter(item => item.active === true))
 
 function update() {
   circles.forEach((circle, idx) => {
@@ -48,28 +47,34 @@ function update() {
         class="progress"
       />
       <div
-        v-for="circle in circles" :key="circle.id"
+        v-for="{ id: key, active } in circles" :key
         class="circle"
-        :class="[circle.active ? 'active' : '']"
+        :class="[active ? 'active' : '']"
       >
-        {{ circle.id }}
+        {{ key }}
       </div>
     </div>
-
-    <button id="prev" class="btn" :disabled="currentActive === 1" @click="prev">
-      Prev
-    </button>
-    <button
-      id="next"
-      class="btn"
-      :disabled="currentActive === circles.length"
-      @click="next"
-    >
-      Next
-    </button>
+    <div class="btns">
+      <button
+        id="prev"
+        class="btn"
+        :disabled="currentActive === 1"
+        @click="prev"
+      >
+        Prev
+      </button>
+      <button
+        id="next"
+        class="btn"
+        :disabled="currentActive === circles.length"
+        @click="next"
+      >
+        Next
+      </button>
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@use './index.scss';
 </style>

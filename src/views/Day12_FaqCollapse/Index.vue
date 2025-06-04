@@ -74,5 +74,5 @@ function toggleActive(index: number): void {
 </template>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@import './index.scss';
 </style>

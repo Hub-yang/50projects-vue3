@@ -39,5 +39,5 @@ function handleClick(index: number, e: Event) {
 </template>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@import './index.scss';
 </style>

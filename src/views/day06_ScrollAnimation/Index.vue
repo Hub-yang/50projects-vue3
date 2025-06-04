@@ -1,5 +1,6 @@
 <script setup lang="ts">
-onBeforeMount(() => {
+onMounted(async () => {
+  await nextTick()
   checkBoxes()
   window.addEventListener('scroll', checkBoxes)
 })
@@ -21,12 +22,12 @@ function checkBoxes() {
 <template>
   <div class="body">
     <h1>Scroll to see the animation</h1>
-    <div v-for="item in 15" :key="item" class="box">
+    <div v-for="key in 15" :key class="box">
       <h2>Content</h2>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@use './index.scss';
 </style>

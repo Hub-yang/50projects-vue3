@@ -1,6 +1,6 @@
 import service from './request'
 
-export function getJokes() {
+export function getJokes(): Promise<{ joke: string }> {
   return service({
     url: 'https://icanhazdadjoke.com',
     method: 'GET',

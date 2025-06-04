@@ -1,6 +1,3 @@
-<script setup>
-</script>
-
 <template>
   <div class="content">
     <h1>Amazing Article 001</h1>
@@ -35,5 +32,5 @@
 </template>
 
 <style scoped lang="scss">
-@import "../index.scss";
+@use '../index.scss';
 </style>
