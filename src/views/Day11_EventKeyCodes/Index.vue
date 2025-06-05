@@ -1,50 +1,53 @@
 <script setup lang="ts">
-const flag = ref<boolean>(false)
-const keyInfo = reactive<{ key: string, keyCode: number, code: string }>({
+interface KeyItem {
+  key: string
+  keyCode: number
+  code: string
+}
+const flag = ref(false)
+const keyInfo = reactive<KeyItem>({
   key: '',
   keyCode: 0,
   code: '',
 })
 
-onMounted(() => {
-  window.addEventListener('keydown', handlerKeyDown)
-})
+window.addEventListener('keydown', handlerKeyDown, { capture: true })
 
 const { key, keyCode, code } = toRefs(keyInfo)
 
-function handlerKeyDown(event: Event) {
+function handlerKeyDown(e: KeyboardEvent) {
   flag.value = true
-  if (event) {
-    keyInfo.key = (event as any).key
-    keyInfo.keyCode = (event as any).keyCode
-    keyInfo.code = (event as any).code
+  e.preventDefault()
+  e.stopImmediatePropagation()
+  if (e) {
+    keyInfo.key = e.key
+    keyInfo.keyCode = e.keyCode
+    keyInfo.code = e.code
   }
 }
 </script>
 
 <template>
   <div class="body">
-    <div id="insert">
-      <div v-if="!flag" class="key">
-        Press any key to get the keyCode
-      </div>
-      <template v-else>
-        <div class="key">
-          {{ key === " " ? "Space" : key }}
-          <small>event.key</small>
-        </div>
-
-        <div class="key">
-          {{ keyCode }}
-          <small>event.keyCode</small>
-        </div>
-
-        <div class="key">
-          {{ code }}
-          <small>event.code</small>
-        </div>
-      </template>
+    <div v-if="!flag" class="key">
+      Press any key to get the keyCode
     </div>
+    <template v-else>
+      <div class="key">
+        {{ key === " " ? "Space" : key }}
+        <small>event.key</small>
+      </div>
+
+      <div class="key">
+        {{ keyCode }}
+        <small>event.keyCode</small>
+      </div>
+
+      <div class="key">
+        {{ code }}
+        <small>event.code</small>
+      </div>
+    </template>
   </div>
 </template>
 

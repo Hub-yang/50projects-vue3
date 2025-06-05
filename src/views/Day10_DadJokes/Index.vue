@@ -16,10 +16,10 @@ async function generateJoke() {
   <div class="body">
     <div class="container">
       <h3>Don't Laugh Challenge</h3>
-      <div id="joke" class="joke">
+      <div class="joke">
         {{ joke || "Loading..." }}
       </div>
-      <button id="jokeBtn" class="btn" @click="generateJoke">
+      <button class="btn" @click="generateJoke">
         Get Another Joke
       </button>
     </div>

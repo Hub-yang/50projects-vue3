@@ -9,11 +9,8 @@ const vFocus = {
   },
 }
 
-const text = ref<string>('')
-
-const tag = reactive<{ list: any[] }>({
-  list: [],
-})
+const text = ref('')
+const tagList = ref<Listitem[]>([])
 
 function handleKeyup(event: Event) {
   createTags(text.value)
@@ -27,10 +24,10 @@ function createTags(value: string) {
   const tags = value.split(',').filter(tag => tag.trim() !== '')
   const resList: Listitem[] = []
   tags.forEach((tag) => {
-    const obj = { value: tag, highlight: false }
-    resList.push(obj)
+    const item = { value: tag, highlight: false }
+    resList.push(item)
   })
-  tag.list = resList
+  tagList.value = resList
 }
 
 function randomSelect() {
@@ -39,9 +36,8 @@ function randomSelect() {
   const interval = setInterval(() => {
     const randomTag = pickRandomTag()
 
-    if (randomTag !== undefined) {
+    if (randomTag) {
       randomTag.highlight = true
-
       setTimeout(() => {
         randomTag.highlight = false
       }, 100)
@@ -50,17 +46,15 @@ function randomSelect() {
 
   setTimeout(() => {
     clearInterval(interval)
-
     setTimeout(() => {
       const randomTag = pickRandomTag()
-
       randomTag.highlight = true
     }, 100)
   }, times * 100)
 }
 
 function pickRandomTag(): Listitem {
-  return tag.list[Math.floor(Math.random() * tag.list.length)]
+  return tagList.value[Math.floor(Math.random() * tagList.value.length)]
 }
 </script>
 
@@ -72,7 +66,6 @@ function pickRandomTag(): Listitem {
         Press enter when you're done
       </h3>
       <textarea
-        id="textarea"
         v-model.trim="text"
         v-focus
         placeholder="Enter choices here..."
@@ -81,10 +74,10 @@ function pickRandomTag(): Listitem {
 
       <div id="tags">
         <span
-          v-for="(item, index) in tag.list" :key="index"
+          v-for="({ highlight, value }, key) in tagList" :key
           class="tag"
-          :class="[item.highlight ? 'highlight' : '']"
-        >{{ item.value }}</span>
+          :class="[highlight ? 'highlight' : '']"
+        >{{ value }}</span>
       </div>
     </div>
   </div>
