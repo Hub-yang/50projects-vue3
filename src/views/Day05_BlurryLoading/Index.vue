@@ -26,7 +26,7 @@ function scale(
 <template>
   <div
     ref="bg"
-    class="body"
+    class="body base_container"
     :style="{ backgroundImage: `url(${url})` }"
   />
   <div ref="loading" class="loading-text">

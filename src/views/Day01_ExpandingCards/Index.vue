@@ -41,7 +41,7 @@ function toggleActive(index: number) {
 </script>
 
 <template>
-  <div class="container">
+  <div class="container base_container">
     <div
       v-for="({ url, title, active }, idx) in cardList" :key="title"
       class="panel" :class="[active ? 'active' : '']"

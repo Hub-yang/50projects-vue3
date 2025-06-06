@@ -10,7 +10,7 @@ function handleSearchBar() {
 </script>
 
 <template>
-  <div class="body">
+  <div class="body base_container">
     <div class="search" :class="[showSearchBar ? 'active' : '']">
       <input ref="input" type="text" class="input" placeholder="Search...">
       <button class="btn" @click="handleSearchBar">

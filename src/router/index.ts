@@ -3,15 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 export const routes = [
   {
     path: '/',
-    redirect: '/nav',
-  },
-  {
-    path: '/nav',
-    name: 'navigate',
-    meta: {
-      title: '导航',
-    },
-    component: () => import('~/views/index/index.vue'),
+    redirect: '/day01',
   },
   {
     path: '/day01',

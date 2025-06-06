@@ -5,7 +5,6 @@
   background-color: #333;
   color: #222;
   overflow-x: hidden;
-  height: 100vh;
   margin: 0;
 }
 
@@ -13,8 +12,6 @@
   background-color: #fafafa;
   transform-origin: top left;
   transition: transform 0.5s linear;
-  width: 100vw;
-
   padding: 50px;
 }
 
@@ -74,7 +71,7 @@
 
 nav {
   position: fixed;
-  bottom: 40px;
+  bottom: 90px;
   left: 0;
   z-index: 100;
 }

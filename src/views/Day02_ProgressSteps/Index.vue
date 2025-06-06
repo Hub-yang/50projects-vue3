@@ -39,7 +39,7 @@ function update() {
 </script>
 
 <template>
-  <div class="container">
+  <div class="container base_container">
     <div class="progress_container">
       <div
         id="progress"

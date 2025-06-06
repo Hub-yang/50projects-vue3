@@ -22,7 +22,7 @@ function switchNav(path: string) {
 </script>
 
 <template>
-  <div class="body">
+  <div class="body base_container">
     <div class="container" :class="[showNav ? 'show-nav' : '']">
       <div class="circle-container">
         <div class="circle">
