@@ -1,27 +1,27 @@
 <script setup lang="ts">
 const timer = ref<any>(null)
 
-const darkTheme = ref<boolean>(false)
+const darkTheme = ref(false)
 
-const primaryColor = ref<string>('#fff')
-const bgColor = ref<string>('#000')
+const primaryColor = ref('#fff')
+const bgColor = ref('#000')
 
-const theme = ref<string>('Dark mode')
+const theme = ref('Dark mode')
 
-const timeEl = ref<string>('')
-const dateEl = ref<string>('')
+const timeEl = ref('')
+const dateEl = ref('')
 
-const hourShow = ref<number>(0)
+const hourShow = ref(0)
 
-const minuteShow = ref<number>(0)
+const minuteShow = ref(0)
 
-const secondShow = ref<number>(0)
+const secondShow = ref(0)
 
-function handleClick(): void {
+function handleClick() {
   darkTheme.value = !darkTheme.value
   primaryColor.value = primaryColor.value === '#fff' ? '#000' : '#fff'
   bgColor.value = bgColor.value === '#000' ? '#fff' : '#000'
-  theme.value = theme.value = 'Dark mode' ? 'Light mode' : 'Dark mode'
+  theme.value = (theme.value === 'Dark mode') ? 'Light mode' : 'Dark mode'
 }
 
 function setTime() {
@@ -89,14 +89,12 @@ onMounted(() => {
   timer.value = setInterval(setTime, 1000)
 })
 
-onUnmounted(() => {
-  clearInterval(timer.value)
-})
+onUnmounted(() => clearInterval(timer.value))
 </script>
 
 <template>
   <div
-    class="body" :class="[darkTheme ? 'dark' : '']"
+    class="body base_container" :class="[darkTheme ? 'dark' : '']"
     :style="{ '--primaryColor': primaryColor }"
   >
     <button

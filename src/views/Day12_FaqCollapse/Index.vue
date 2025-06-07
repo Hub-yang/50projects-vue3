@@ -42,7 +42,7 @@ function toggleActive(index: number) {
 </script>
 
 <template>
-  <div class="body">
+  <div class="body base_container">
     <h1>Frequently Asked Questions</h1>
     <div class="faq-container">
       <div

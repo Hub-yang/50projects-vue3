@@ -42,4 +42,10 @@
   .box.show {
     transform: translateX(0);
   }
+
+  .pagenation {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
 }

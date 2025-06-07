@@ -13,7 +13,7 @@ async function generateJoke() {
 </script>
 
 <template>
-  <div class="body">
+  <div class="body base_container">
     <div class="container">
       <h3>Don't Laugh Challenge</h3>
       <div class="joke">

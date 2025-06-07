@@ -3,7 +3,7 @@ const toggle = ref('')
 </script>
 
 <template>
-  <div class="body">
+  <div class="body base_container">
     <div
       class="container"
       :class="[toggle || '']"

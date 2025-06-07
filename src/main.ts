@@ -4,6 +4,7 @@ import VueLazyload from 'vue-lazyload'
 import App from './App.vue'
 import { router } from './router'
 import './styles/init.css'
+
 import './mock'
 
 // 设置title

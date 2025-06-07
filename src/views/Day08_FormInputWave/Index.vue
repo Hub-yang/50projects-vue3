@@ -1,5 +1,5 @@
 <template>
-  <div class="body">
+  <div class="body base_container">
     <div class="container">
       <h1>Please Login</h1>
       <form>

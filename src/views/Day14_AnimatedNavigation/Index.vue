@@ -10,11 +10,11 @@ const navList: { title: string }[] = [
 </script>
 
 <template>
-  <div class="body">
+  <div class="body base_container">
     <nav id="nav" :class="[toggleActive ? 'active' : '']">
       <ul>
         <li v-for="(nav, index) in navList" :key="index">
-          <a href="#">{{ nav.title }}</a>
+          <span>{{ nav.title }}</span>
         </li>
       </ul>
       <button id="toggle" class="icon" @click="toggleActive = !toggleActive">

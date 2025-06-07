@@ -28,7 +28,7 @@ function handlerKeyDown(e: KeyboardEvent) {
 </script>
 
 <template>
-  <div class="body">
+  <div class="body base_container">
     <div v-if="!flag" class="key">
       Press any key to get the keyCode
     </div>

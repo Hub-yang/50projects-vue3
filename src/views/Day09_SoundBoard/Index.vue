@@ -24,7 +24,7 @@ function stopSongs() {
 </script>
 
 <template>
-  <div class="body">
+  <div class="body base_container">
     <audio v-for="{ id, src } in audioList" :id :key="id" :src />
     <button
       v-for="btn in btnList"

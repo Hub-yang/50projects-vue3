@@ -24,13 +24,15 @@ function scale(
 </script>
 
 <template>
-  <div
-    ref="bg"
-    class="body base_container"
-    :style="{ backgroundImage: `url(${url})` }"
-  />
-  <div ref="loading" class="loading-text">
-    {{ load }}%
+  <div class="base_container container">
+    <div
+      ref="bg"
+      class="body"
+      :style="{ backgroundImage: `url(${url})` }"
+    />
+    <div ref="loading" class="loading-text">
+      {{ load }}%
+    </div>
   </div>
 </template>
 

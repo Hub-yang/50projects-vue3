@@ -1,9 +1,12 @@
 <script setup lang="ts">
+import type { Directive } from 'vue'
+
 interface Listitem {
   value: string
   highlight: boolean
 }
-const vFocus = {
+
+const vFocus: Directive = {
   mounted(el: HTMLElement) {
     el.focus()
   },
@@ -59,7 +62,7 @@ function pickRandomTag(): Listitem {
 </script>
 
 <template>
-  <div class="body">
+  <div class="body base_container">
     <div class="container">
       <h3>
         Enter all of the choices divided by a comma (','). <br>

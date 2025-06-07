@@ -17,36 +17,27 @@ function highlightCups(idx: number) {
     idx--
 
   cupsList.forEach((cup, idx2) => {
-    if (idx2 <= idx)
-      cup.isFull = true
-    else
-      cup.isFull = false
+    cup.isFull = !!(idx2 <= idx)
   })
 }
 
-const fullCups = computed<number>(() => {
-  return cupsList.filter(cup => cup.isFull).length
-})
+const fullCups = computed(() => cupsList.filter(cup => cup.isFull).length)
 
-const totalCups: number = cupsList.length
+const totalCups = cupsList.length
 
-const percentageHeight = computed<number>(() => {
+const percentageHeight = computed(() => {
   if (fullCups.value === 0)
     return 0
   else return (fullCups.value / totalCups) * 330
 })
 
-const proportion = computed<number>(() => {
-  return (fullCups.value / totalCups) * 100
-})
+const proportion = computed(() => fullCups.value / totalCups * 100)
 
-const liters = computed<number>(() => {
-  return 2 - (250 * fullCups.value) / 1000
-})
+const liters = computed(() => 2 - (250 * fullCups.value) / 1000)
 </script>
 
 <template>
-  <div class="body">
+  <div class="body base_container">
     <div class="left_area">
       <h1>Drink Water</h1>
       <h3>Goal: 2 Liters</h3>

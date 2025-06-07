@@ -21,20 +21,14 @@ const targetList = reactive<Listitem[]>([
   { class: 'fa-facebook', initial: 0, target: 7500, content: 'Facebook Fans' },
 ])
 
-onMounted(() => {
-  update()
-})
+onMounted(() => update())
 
 function update() {
-  targetList.forEach((counter) => {
-    updateCounter(counter)
-  })
+  targetList.forEach(counter => updateCounter(counter))
 }
 
 function updateCounter(counter: Listitem) {
-  const target = counter.target
-  const c = counter.initial
-
+  const { target, initial: c } = counter
   const increment = target / 200
 
   if (c < target) {
@@ -50,17 +44,17 @@ function updateCounter(counter: Listitem) {
 </script>
 
 <template>
-  <div class="body">
+  <div class="body base_container">
     <div
-      v-for="(item, index) in targetList"
-      :key="index"
+      v-for="({ content, class: className, initial }) in targetList"
+      :key="content"
       class="counter-container"
     >
-      <i :class="[`fab fa-3x ${item.class}`]" />
+      <i :class="[`fab fa-3x ${className}`]" />
       <div class="counter">
-        {{ item.initial }}
+        {{ initial }}
       </div>
-      <span>{{ item.content }}</span>
+      <span>{{ content }}</span>
     </div>
   </div>
 </template>

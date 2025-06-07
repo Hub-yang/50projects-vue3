@@ -6,12 +6,12 @@ const imgList = reactive<{ active: boolean, url: string }[]>([
   { active: false, url: 'src/assets/imgs/004.jpg' },
 ])
 
-const activeSlide = ref<number>(0)
-const bgImgUrl = ref<string>('')
+const activeSlide = ref(0)
+const bgImgUrl = ref('')
 
 publicFn()
 
-function leftClick(): void {
+function leftClick() {
   activeSlide.value--
 
   if (activeSlide.value < 0)
@@ -20,7 +20,7 @@ function leftClick(): void {
   publicFn()
 }
 
-function rightClick(): void {
+function rightClick() {
   activeSlide.value++
 
   if (activeSlide.value > imgList.length - 1)
@@ -37,20 +37,20 @@ function publicFn() {
 </script>
 
 <template>
-  <div class="body" :style="{ backgroundImage: `url(${bgImgUrl})` }">
+  <div class="body base_container" :style="{ backgroundImage: `url(${bgImgUrl})` }">
     <div class="slider-container">
       <div
-        v-for="(img, index) in imgList"
-        :key="index"
-        class="slide" :class="[img.active ? 'active' : '']"
-        :style="{ backgroundImage: `url(${img.url})` }"
+        v-for="({ active, url }) in imgList"
+        :key="url"
+        class="slide base-main-h" :class="[active ? 'active' : '']"
+        :style="{ backgroundImage: `url(${url})` }"
       />
 
-      <button id="left" class="arrow left-arrow" @click="leftClick">
+      <button class="arrow left-arrow" @click="leftClick">
         <i class="fas fa-arrow-left" />
       </button>
 
-      <button id="right" class="arrow right-arrow" @click="rightClick">
+      <button class="arrow right-arrow" @click="rightClick">
         <i class="fas fa-arrow-right" />
       </button>
     </div>
