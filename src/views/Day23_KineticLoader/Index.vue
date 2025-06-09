@@ -1,9 +1,9 @@
 <template>
-  <div class="body">
+  <div class="body base_container">
     <div class="kinetic" />
   </div>
 </template>
 
 <style scoped lang="scss">
-@import './index.scss';
+@use './index.scss';
 </style>

@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const drag = ref<any>(null)
+import type { VNodeRef } from 'vue'
+
+const drag = ref<VNodeRef | null>(null)
 
 function handleDragStart(e: Event) {
   const targetEl = e.target as HTMLElement
@@ -26,7 +28,7 @@ function dragDrop(e: Event) {
 </script>
 
 <template>
-  <div class="body">
+  <div class="body base_container">
     <div
       class="empty"
       @dragover.prevent
@@ -55,5 +57,5 @@ function dragDrop(e: Event) {
 </template>
 
 <style scoped lang="scss">
-@import './index.scss';
+@use './index.scss';
 </style>

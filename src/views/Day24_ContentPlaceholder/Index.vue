@@ -7,12 +7,10 @@ const info = reactive<{ [prop: string]: string }>({
   name: '',
   date: '',
 })
-const showPlaceHolder = ref<boolean>(true)
+const showPlaceHolder = ref(true)
 
 onMounted(() => {
-  setTimeout(() => {
-    getData()
-  }, 2500)
+  setTimeout(() => getData(), 2500)
 })
 
 function getData() {
@@ -29,7 +27,7 @@ function getData() {
 </script>
 
 <template>
-  <div class="body">
+  <div class="body base_container">
     <div class="card">
       <div class="card-header" :class="[showPlaceHolder ? 'animated-bg' : '']">
         <img v-if="info.srcOne" :src="info.srcOne" alt="">
@@ -79,5 +77,5 @@ function getData() {
 </template>
 
 <style scoped lang="scss">
-@import './index.scss';
+@use './index.scss';
 </style>

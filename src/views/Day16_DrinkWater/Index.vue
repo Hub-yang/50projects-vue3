@@ -78,5 +78,5 @@ const liters = computed(() => 2 - (250 * fullCups.value) / 1000)
 </template>
 
 <style scoped lang="scss">
-@import './index.scss';
+@use './index.scss';
 </style>

@@ -1,20 +1,20 @@
 <script setup lang="ts">
-const canvas = ref<any>(null)
+import type { VNodeRef } from 'vue'
+
+const canvas = ref<VNodeRef | null>(null)
 let ctx: CanvasRenderingContext2D
-const isPressed = ref<boolean>(false)
-const x = ref<number>(0)
-const y = ref<number>(0)
-const size = ref<number>(10)
-const color = ref<string>('#000000')
+const isPressed = ref(false)
+const x = ref(0)
+const y = ref(0)
+const size = ref(10)
+const color = ref('#000000')
 
-onMounted(() => {
-  ctx = canvas.value.getContext('2d')
-})
+onMounted(() => ctx = canvas.value.getContext('2d'))
 
-function handleMouseDown(e: Event) {
+function handleMouseDown(e: MouseEvent) {
   isPressed.value = true
-  x.value = (e as any).offsetX
-  y.value = (e as any).offsetY
+  x.value = e.offsetX
+  y.value = e.offsetY
 }
 
 function handleMouseUp() {
@@ -23,10 +23,10 @@ function handleMouseUp() {
   y.value = 0
 }
 
-function handleMouseMove(e: Event) {
+function handleMouseMove(e: MouseEvent) {
   if (isPressed.value) {
-    const x2 = (e as any).offsetX
-    const y2 = (e as any).offsetY
+    const x2 = e.offsetX
+    const y2 = e.offsetY
 
     drawCircle(x2, y2)
     drawLine(x.value, y.value, x2, y2)
@@ -54,12 +54,10 @@ function drawLine(x1: number, y1: number, x2: number, y2: number) {
 
 function handleClick(type: string) {
   if (type === '-') {
-    if (size.value > 5)
-      size.value -= 5
+    size.value > 5 && (size.value -= 5)
   }
   else if (type === '+') {
-    if (size.value < 50)
-      size.value += 5
+    size.value < 50 && (size.value += 5)
   }
 }
 
@@ -69,7 +67,7 @@ function clear() {
 </script>
 
 <template>
-  <div class="body">
+  <div class="body base_container">
     <canvas
       ref="canvas"
       width="800"
@@ -79,15 +77,15 @@ function clear() {
       @mousemove="handleMouseMove"
     />
     <div class="toolbox">
-      <button id="decrease" @click="handleClick('-')">
+      <button @click="handleClick('-')">
         -
       </button>
-      <span id="size">{{ size }}</span>
-      <button id="increase" @click="handleClick('+')">
+      <span>{{ size }}</span>
+      <button @click="handleClick('+')">
         +
       </button>
-      <input id="color" v-model.lazy="color" type="color">
-      <button id="clear" @click="clear">
+      <input v-model.lazy="color" type="color">
+      <button @click="clear">
         X
       </button>
     </div>
@@ -95,5 +93,5 @@ function clear() {
 </template>
 
 <style scoped lang="scss">
-@import './index.scss';
+@use './index.scss';
 </style>
