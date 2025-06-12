@@ -7,9 +7,9 @@ const currentRouteIdx = ref(-1)
 
 watch(() => route.fullPath, (fullPath) => {
   const reg = /\/[^/]+(?=\/|$)/
-  const path = fullPath.match(reg)![0]
+  const path = fullPath.match(reg)?.[0]
   currentRouteIdx.value = routes.findIndex(item => item.path === path)
-}, { deep: true })
+}, { deep: true, immediate: true })
 
 function goPrev() {
   const prev = routes[currentRouteIdx.value - 1]

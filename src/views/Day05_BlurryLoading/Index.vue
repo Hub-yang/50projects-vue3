@@ -21,6 +21,7 @@ function scale(
 ): number | void {
   return ((num - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min
 }
+onUnmounted(() => clearInterval(timer))
 </script>
 
 <template>
