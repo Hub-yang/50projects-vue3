@@ -8,7 +8,7 @@ import './styles/init.css'
 import './mock'
 
 // 设置title
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _from, next) => {
   document.title = to.meta.title as string
   next()
 })

@@ -1,51 +1,28 @@
 <script setup lang="ts">
-const nav = ref<HTMLElement>()
-const navActive = ref<boolean>(false)
-const navList = reactive([
-  { id: 0, active: true, title: 'Home' },
-  { id: 1, active: false, title: 'About' },
-  { id: 2, active: false, title: 'Services' },
-  { id: 3, active: false, title: 'Contact' },
-])
-const url = ref<string>(
-  'https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-)
+import type { VNodeRef } from 'vue'
 
-onMounted(() => {
-  window.addEventListener('scroll', fixNav)
-})
+const nav = ref<VNodeRef | null>(null)
+const navActive = ref(false)
+const navList = reactive([
+  { active: true, title: 'Home', url: 'https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260' },
+  { active: false, title: 'About', url: 'src/assets/imgs/004.jpg' },
+  { active: false, title: 'Services', url: 'src/assets/imgs/005.jpg' },
+  { active: false, title: 'Contact', url: 'src/assets/imgs/001.jpg' },
+])
+
+onMounted(() => window.addEventListener('scroll', fixNav))
 
 function fixNav() {
-  if (window.scrollY > (nav.value as HTMLElement).offsetHeight + 150)
-    navActive.value = true
-  else
-    navActive.value = false
+  navActive.value = (window.scrollY > nav.value.offsetHeight + 150)
 }
 
-function handleClick(idx: number) {
+function handleClick(title: string) {
   navList.forEach((nav) => {
-    if (nav.id === idx)
-      nav.active = true
-    else
-      nav.active = false
-
-    switch (idx) {
-      case 0:
-        url.value
-          = 'https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
-        break
-      case 1:
-        url.value = 'src/assets/imgs/004.jpg'
-        break
-      case 2:
-        url.value = 'src/assets/imgs/005.jpg'
-        break
-      case 3:
-        url.value = 'src/assets/imgs/001.jpg'
-        break
-    }
+    nav.active = nav.title === title
   })
 }
+
+const url = computed(() => navList.find(nav => !!nav.active)?.url)
 </script>
 
 <template>
@@ -56,12 +33,12 @@ function handleClick(idx: number) {
           <a href="#">My Website</a>
         </h1>
         <ul>
-          <li v-for="(navItem, index) in navList" :key="navItem.id">
+          <li v-for="({ active, title }) in navList" :key="title">
             <a
               href="#"
-              :class="[navItem.active ? 'current' : '']"
-              @click="handleClick(index)"
-            >{{ navItem.title }}</a>
+              :class="[active ? 'current' : '']"
+              @click="handleClick(title)"
+            >{{ title }}</a>
           </li>
         </ul>
       </div>
@@ -107,5 +84,5 @@ function handleClick(idx: number) {
 </template>
 
 <style scoped lang="scss">
-@import './index.scss';
+@use './index.scss';
 </style>
