@@ -32,10 +32,12 @@ function checkBoxes() {
 
     <div class="pagenation">
       <button @click="$router.push('/day05')">
+        <i class="fas fa-arrow-left" />&nbsp;
         上一页
       </button>
       <button @click="$router.push('/day07')">
         下一页
+        &nbsp;<i class="fas fa-arrow-right" />
       </button>
     </div>
   </div>
@@ -43,4 +45,26 @@ function checkBoxes() {
 
 <style scoped lang="scss">
 @use './index.scss';
+
+.pagenation {
+  z-index: 999;
+  height: 70px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 30%;
+
+  button {
+    width: 50%;
+    height: 100%;
+    background: #252525;
+    border-radius: 0.5rem;
+    color: white;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+  }
+}
 </style>

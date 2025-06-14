@@ -1,16 +1,20 @@
 <script setup lang="ts">
-const messages = ['Message One', 'Message Two', 'Message Three', 'Message Four']
+import type { VNodeRef } from 'vue'
 
-function createNotification(message: any, type: string) {
-  const toasts = document.getElementById('toasts')
+const messages = ['Message One', 'Message Two', 'Message Three', 'Message Four']
+const messageBtns = [
+  { title: 'Show Info Notification', type: 'info' },
+  { title: 'Show Success Notification', type: 'success' },
+  { title: 'Show Error Notification', type: 'error' },
+]
+
+const toasts = ref<VNodeRef | null>(null)
+function createNotification(message: string, type: string) {
   const notif = document.createElement('div')
   notif.classList.add('toast')
   notif.classList.add(type)
-
   notif.textContent = message || getRandomMessage()
-
-  toasts?.appendChild(notif)
-
+  toasts.value.appendChild(notif)
   setTimeout(() => {
     notif.remove()
   }, 1000)
@@ -22,22 +26,16 @@ function getRandomMessage() {
 </script>
 
 <template>
-  <div class="body">
-    <div id="toasts" />
+  <div class="body base_container">
+    <div id="toasts" ref="toasts" />
     <div class="btns">
-      <button class="btn info" @click="createNotification(null, 'info')">
-        Show Info Notification
-      </button>
-      <button class="btn success" @click="createNotification(null, 'success')">
-        Show Success Notification
-      </button>
-      <button class="btn error" @click="createNotification(null, 'error')">
-        Show Error Notification
+      <button v-for="({ title, type }) in messageBtns" :key="type" :class="[`btn ${type}`]" @click="createNotification('', type)">
+        {{ title }}
       </button>
     </div>
   </div>
 </template>
 
 <style lang="scss">
-@import './index.scss';
+@use './index.scss';
 </style>
