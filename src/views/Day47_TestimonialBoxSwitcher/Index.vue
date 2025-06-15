@@ -63,7 +63,7 @@ async function getData() {
 </template>
 
 <style scoped lang="scss">
-@import './index.scss';
+@use './index.scss';
 
 .progress-bar {
   animation: grow v-bind(animateDelay) linear infinite;

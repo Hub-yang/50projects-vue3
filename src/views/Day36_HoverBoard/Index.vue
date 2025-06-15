@@ -38,7 +38,7 @@ function getRandomColor() {
 </template>
 
 <style lang="scss">
-@import './index.scss';
+@use './index.scss';
 .square {
   background-color: v-bind(bgColor);
 }

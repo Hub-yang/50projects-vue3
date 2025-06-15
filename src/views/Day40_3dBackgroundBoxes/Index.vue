@@ -24,5 +24,5 @@ function handleClick() {
 </template>
 
 <style  lang="scss">
-@import './index.scss';
+@use './index.scss';
 </style>

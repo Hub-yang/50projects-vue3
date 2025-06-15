@@ -37,5 +37,5 @@ onMounted(() => {
 </template>
 
 <style soped lang="scss">
-@import './index.scss';
+@use './index.scss';
 </style>
