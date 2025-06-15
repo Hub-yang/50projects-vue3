@@ -1,23 +1,27 @@
 <script setup lang="ts">
-import { getUserInfo, getUserRepos } from '../../api/http'
+import { getUserInfo, getUserRepos } from '~/api/http'
 
-const user = ref<{ [prop: string]: string }>({})
+interface AnyKey { [prop: string]: string }
+
+const user = ref<AnyKey>({})
 const errMsg = ref('')
-const repoList = ref<{ [prop: string]: string }[]>([])
+const repoList = ref<AnyKey[]>([])
 const username = ref('')
 const loading = ref(false)
 
 async function getUser(username: string): Promise<void> {
+  loading.value = true
   try {
     user.value = (await getUserInfo(username)) as any
-    loading.value = false
     // 获取项目信息
     getRepos(username)
   }
   catch (error: any) {
-    loading.value = false
     if (+error?.response?.status === 404)
       errMsg.value = 'No profile with this username'
+  }
+  finally {
+    loading.value = false
   }
 }
 
@@ -25,25 +29,22 @@ async function getRepos(username: string) {
   try {
     const repos = (await getUserRepos(username)) as any
     repoList.value = repos.slice(0, 5)
-    loading.value = false
   }
   catch (error) {
     console.error(`${error}`)
-    loading.value = false
     errMsg.value = 'Problem fetching repos'
   }
 }
 
 function handleSubmit() {
-  loading.value = true
   if (username.value)
     getUser(username.value)
 }
 </script>
 
 <template>
-  <div class="body">
-    <form id="form" class="user-form" @submit.prevent="handleSubmit">
+  <div class="body base_container">
+    <form class="user-form" @submit.prevent="handleSubmit">
       <input
         v-model.trim.lazy="username"
         type="text"
@@ -51,7 +52,7 @@ function handleSubmit() {
       >
     </form>
 
-    <main id="main">
+    <main>
       <div
         v-if="!Object.getOwnPropertyNames(user).length && !errMsg && loading"
       >
@@ -94,5 +95,5 @@ function handleSubmit() {
 </template>
 
 <style scoped lang="scss">
-@import './index.scss';
+@use './index.scss';
 </style>

@@ -30,9 +30,7 @@
     "dayjs": "^1.11.13",
     "nanoid": "^5.1.5",
     "vue": "^3.5.16",
-    "vue-lazyload": "^3.0.0",
-    "vue-router": "^4.5.1",
-    "vue-virtual-scroller": "1.1.2"
+    "vue-router": "^4.5.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.13.3",
