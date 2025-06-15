@@ -1,50 +1,44 @@
 <script setup lang="ts">
-const clicks = ref<number>(0)
+import type { VNodeRef } from 'vue'
 
-function clickToHeart(e: Event) {
+const clicks = ref(0)
+const loveMe = ref<VNodeRef | null>(null)
+let timer: number
+
+function clickToHeart(e: MouseEvent) {
   createHeart(e)
 }
 
-function createHeart(e: Event) {
-  const loveMe = document.querySelector('.loveMe')
+function createHeart(e: MouseEvent) {
   const heart = document.createElement('i')
   heart.classList.add('fas')
   heart.classList.add('fa-heart')
-
   const colorList = ['red', 'green', 'blue', 'orange', 'purple']
-  const x = (e as any).clientX
-  const y = (e as any).clientY
-
-  const leftOffset = (e.target as any).offsetLeft
-  const topOffset = (e.target as any).offsetTop
-
-  const xInside = x - leftOffset
-  const yInside = y - topOffset
-
-  heart.style.top = `${yInside}px`
-  heart.style.left = `${xInside}px`
+  const { clientX: x, clientY: y } = e
+  const { offsetLeft: leftOffset, offsetTop: topOffset } = e.target as any
+  heart.style.top = `${y - topOffset}px`
+  heart.style.left = `${x - leftOffset}px`
   heart.style.color
     = colorList[Math.floor(Math.random() * (colorList.length - 1))]
 
-  loveMe!.appendChild(heart)
-
+  loveMe.value.appendChild(heart)
   clicks.value++
-
-  setTimeout(() => heart.remove(), 1000)
+  timer = setTimeout(() => {
+    clearTimeout(timer)
+    heart.remove()
+  }, 1000)
 }
 </script>
 
 <template>
-  <div class="body">
+  <div class="body base_container">
     <h3>Double click on the image to <i class="fas fa-heart" /> it</h3>
     <small>You liked it <span id="times">{{ clicks }}</span> times</small>
 
-    <div class="loveMe" @click="clickToHeart">
-      <!-- <i v-if="showHeart" ref="heart" class="fas fa-heart"></i> -->
-    </div>
+    <div ref="loveMe" class="loveMe" @dblclick="clickToHeart" />
   </div>
 </template>
 
 <style lang="scss">
-@import './index.scss';
+@use './index.scss';
 </style>

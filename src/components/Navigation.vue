@@ -42,7 +42,7 @@ function goNext() {
   width: 100%;
   display: flex;
   background: #080808;
-  padding: 12px 12px 18px 12px;
+  padding: 12px;
   box-sizing: border-box;
   justify-content: space-between;
   gap: 12px;

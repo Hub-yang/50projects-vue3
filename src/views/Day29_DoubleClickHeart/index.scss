@@ -4,14 +4,12 @@
   font-family: 'Oswald', sans-serif;
   text-align: center;
   overflow: hidden;
-  margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 199vw;
   background-color: skyblue;
+  user-select: none;
 
   h3 {
     margin-bottom: 10px;
