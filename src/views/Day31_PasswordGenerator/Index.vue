@@ -1,44 +1,3 @@
-
-<template>
-  <div class="body">
-    <div class="container">
-      <h2>密码生成器</h2>
-      <div class="result-container">
-        <span id="result">{{ resPassword }}</span>
-        <button class="btn" id="clipboard" @click="handleCopy(resPassword)">
-          <i class="far fa-clipboard"></i>
-        </button>
-      </div>
-      <div class="settings">
-        <div class="setting">
-          <label>密码长度</label>
-          <input type="number" id="length" min="4" max="20" v-model="length" />
-        </div>
-        <div class="setting">
-          <label>是否包含大写字母</label>
-          <input type="checkbox" id="uppercase" v-model="config.upper" />
-        </div>
-        <div class="setting">
-          <label>是否包含小写字母</label>
-          <input type="checkbox" id="lowercase" v-model="config.lower" />
-        </div>
-        <div class="setting">
-          <label>是否包含数字</label>
-          <input type="checkbox" id="numbers" v-model="config.number" />
-        </div>
-        <div class="setting">
-          <label>是否包含符号</label>
-          <input type="checkbox" id="symbols" v-model="config.symbol" />
-        </div>
-      </div>
-
-      <button class="btn btn-large" id="generate" @click="handleClick">
-        生成密码
-      </button>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 interface RandomFunc {
   lower: () => string
@@ -48,10 +7,6 @@ interface RandomFunc {
   [key: string]: any
 }
 
-const resPassword = ref<string>("")
-
-const length = ref<number>(5)
-
 interface passwordConfig {
   lower: boolean
   upper: boolean
@@ -59,6 +14,9 @@ interface passwordConfig {
   symbol: boolean
   [key: string]: any
 }
+const resPassword = ref('')
+const length = ref(5)
+let timer: number
 
 const config = reactive<passwordConfig>({
   lower: true,
@@ -67,6 +25,10 @@ const config = reactive<passwordConfig>({
   symbol: true,
 })
 
+const tootipShow = ref(false)
+const tootipType = ref('success')
+const tootipText = ref('')
+
 const randomFunc: RandomFunc = {
   lower: getRandomLower,
   upper: getRandomUpper,
@@ -74,12 +36,22 @@ const randomFunc: RandomFunc = {
   symbol: getRandomSymbol,
 }
 
+function onTootipOpen(options: { type?: string, msg: string, duration?: number }) {
+  const { type = 'success', msg = '', duration = 2000 } = options
+  tootipType.value = type
+  tootipText.value = msg
+  tootipShow.value = true
+  clearTimeout(timer)
+  timer = setTimeout(() => tootipShow.value = false, duration)
+}
+
 // 复制密码
 async function handleCopy(text: string): Promise<void> {
   if (resPassword.value) {
     await navigator.clipboard.writeText(text)
-    // eslint-disable-next-line no-alert
-    alert('密码已复制到剪切板！')
+    onTootipOpen({
+      msg: '拷贝成功',
+    })
   }
 }
 
@@ -87,21 +59,23 @@ async function handleCopy(text: string): Promise<void> {
 function handleClick(): void {
   resPassword.value = generatePassword(
     config,
-    length.value
+    length.value,
   )
 }
 
 function generatePassword(
   config: passwordConfig,
-  length: number
+  length: number,
 ) {
-  let generatedPassword = ""
-  const typesCount =
-    Number(config.lower) + Number(config.upper) + Number(config.number) + Number(config.symbol)
-  const typesArr = ["lower", "upper", "number", "symbol"]
+  let generatedPassword = ''
+  const typesCount
+    = Number(config.lower) + Number(config.upper) + Number(config.number) + Number(config.symbol)
+  const typesArr = ['lower', 'upper', 'number', 'symbol']
   if (typesCount === 0) {
-    // eslint-disable-next-line no-alert
-    alert('至少选择一项')
+    onTootipOpen({
+      type: 'error',
+      msg: '至少选择一项！',
+    })
     return ''
   }
 
@@ -136,6 +110,49 @@ function getRandomSymbol() {
   return symbols[Math.floor(Math.random() * symbols.length)]
 }
 </script>
+
+<template>
+  <div class="body base_container">
+    <div class="tootip" :class="[tootipType]" :style="{ top: tootipShow ? '10px' : '-50px' }">
+      {{ tootipText }}
+    </div>
+    <div class="container">
+      <h2>密码生成器</h2>
+      <div class="result-container">
+        <span id="result">{{ resPassword }}</span>
+        <button id="clipboard" class="btn" @click="handleCopy(resPassword)">
+          <i class="far fa-clipboard" />
+        </button>
+      </div>
+      <div class="settings">
+        <div class="setting">
+          <label>密码长度</label>
+          <input id="length" v-model="length" type="number" min="4" max="20">
+        </div>
+        <div class="setting">
+          <label>是否包含大写字母</label>
+          <input id="uppercase" v-model="config.upper" type="checkbox">
+        </div>
+        <div class="setting">
+          <label>是否包含小写字母</label>
+          <input id="lowercase" v-model="config.lower" type="checkbox">
+        </div>
+        <div class="setting">
+          <label>是否包含数字</label>
+          <input id="numbers" v-model="config.number" type="checkbox">
+        </div>
+        <div class="setting">
+          <label>是否包含符号</label>
+          <input id="symbols" v-model="config.symbol" type="checkbox">
+        </div>
+      </div>
+
+      <button id="generate" class="btn btn-large" @click="handleClick">
+        生成密码
+      </button>
+    </div>
+  </div>
+</template>
 
 <style scoped lang="scss">
 @use './index.scss';
