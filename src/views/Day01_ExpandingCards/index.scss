@@ -1,8 +1,6 @@
 .container {
   display: flex;
   align-items: center;
-  height: 100vh;
-  width: 90vw;
 
   .panel {
     background-size: cover;
@@ -34,11 +32,9 @@
   }
 
   .panel.active {
-    flex: 5
+    flex: 5;
   }
 }
-
-
 
 @media (max-width: 480px) {
   .container {

@@ -1,57 +1,60 @@
+<script setup lang="ts">
+interface CardItem {
+  title: string
+  active: boolean
+  url: string
+}
+// url动态路径
+const cardList = ref<CardItem[]>([
+  {
+    title: 'one',
+    active: true,
+    url: new URL('~/assets/imgs/001.jpg', import.meta.url).href,
+  },
+  {
+    title: 'two',
+    active: false,
+    url: new URL('~/assets/imgs/002.jpg', import.meta.url).href,
+  },
+  {
+    title: 'three',
+    active: false,
+    url: new URL('~/assets/imgs/003.png', import.meta.url).href,
+  },
+  {
+    title: 'four',
+    active: false,
+    url: new URL('~/assets/imgs/004.jpg', import.meta.url).href,
+  },
+  {
+    title: 'five',
+    active: false,
+    url: new URL('~/assets/imgs/005.jpg', import.meta.url).href,
+  },
+])
+
+function toggleActive(index: number) {
+  cardList.value.forEach((item, i) => {
+    item.active = (i === index)
+  })
+}
+</script>
+
 <template>
-  <div class="container">
-    <template v-for="(img, index) in cardList" :key="index">
-      <div
-        @click="toggleActive(index)"
-        :class="['panel', img.active ? 'active' : '']"
-        :style="{
-          backgroundImage: 'url(' + img.url + ')',
-        }"
-      >
-        <h3>{{ img.title }}</h3>
-      </div>
-    </template>
+  <div class="container base_container">
+    <div
+      v-for="({ url, title, active }, idx) in cardList" :key="title"
+      class="panel" :class="[active ? 'active' : '']"
+      :style="{
+        backgroundImage: `url(${url})`,
+      }"
+      @click="toggleActive(idx)"
+    >
+      <h3>{{ title }}</h3>
+    </div>
   </div>
 </template>
 
-<script setup lang="ts">
-let toggleActive: (index: number) => void
-// 切换active
-toggleActive = (index) => {
-  cardList.value.forEach((item, i) => {
-    item.active = i === index ? true : false
-  })
-}
-// 卡片数据（注意vite下url的获取和使用）
-const cardList = ref<{ [prop: string]: any }[]>([
-  {
-    title: "one",
-    active: true,
-    url: new URL("../../assets/imgs/001.jpg", import.meta.url).href,
-  },
-  {
-    title: "two",
-    active: false,
-    url: "src/assets/imgs/002.jpg",
-  },
-  {
-    title: "three",
-    active: false,
-    url: "src/assets/imgs/003.png",
-  },
-  {
-    title: "four",
-    active: false,
-    url: "src/assets/imgs/004.jpg",
-  },
-  {
-    title: "five",
-    active: false,
-    url: "src/assets/imgs/005.jpg",
-  },
-])
-</script>
-
 <style scoped lang="scss">
-@import "./index.scss";
+@use './index.scss';
 </style>

@@ -1,21 +1,12 @@
-import axios from "axios"
+import axios from 'axios'
 
 const service = axios.create({
-  baseURL: "/",
+  baseURL: '/',
   timeout: 10000,
-})
-
-service.interceptors.request.use(
-  (config) => {
-    config.headers = {
-      Accept: "application/json",
-    }
-    return config
+  headers: {
+    Accept: 'application/json',
   },
-  (error) => {
-    return Promise.reject(error)
-  }
-)
+})
 
 service.interceptors.response.use(
   (response) => {
@@ -24,7 +15,7 @@ service.interceptors.response.use(
   },
   (error) => {
     return Promise.reject(error)
-  }
+  },
 )
 
 export default service

@@ -1,18 +1,16 @@
+<script setup lang="ts">
+const toggle = ref('')
+</script>
+
 <template>
-  <div class="body">
+  <div class="body base_container">
     <div
-      :class="[
-        'container',
-        toggle == 'left'
-          ? 'hover-left'
-          : toggle == 'right'
-          ? 'hover-right'
-          : '',
-      ]"
+      class="container"
+      :class="[toggle || '']"
     >
       <div
         class="split left"
-        @mouseenter="toggle = 'left'"
+        @mouseenter="toggle = 'hover-left'"
         @mouseleave="toggle = ''"
       >
         <h1>Title One</h1>
@@ -20,7 +18,7 @@
       </div>
       <div
         class="split right"
-        @mouseenter="toggle = 'right'"
+        @mouseenter="toggle = 'hover-right'"
         @mouseleave="toggle = ''"
       >
         <h1>Title Two</h1>
@@ -30,10 +28,6 @@
   </div>
 </template>
 
-<script setup lang="ts">
-const toggle = ref<string>("")
-</script>
-
 <style scoped lang="scss">
-@import "./index.scss";
+@use './index.scss';
 </style>

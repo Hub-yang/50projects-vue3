@@ -7,10 +7,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  width: 100vw;
   overflow: hidden;
-  margin: 0;
 
   .container {
     width: 500px;
@@ -49,6 +46,5 @@
     .tag.highlight {
       background-color: #273c75;
     }
-
   }
 }

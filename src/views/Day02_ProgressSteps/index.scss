@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 
-$line-border-fill:#3498db;
-$line-border-empty:#e0e0e0;
+$line-border-fill: #3498db;
+$line-border-empty: #e0e0e0;
 
 .container {
-  text-align: center;
-  height: 100vh;
-  margin-top: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   .progress_container {
     display: flex;
@@ -18,7 +19,7 @@ $line-border-empty:#e0e0e0;
   }
 
   .progress_container::before {
-    content: "";
+    content: '';
     background-color: $line-border-empty;
     position: absolute;
     top: 50%;
@@ -38,7 +39,7 @@ $line-border-empty:#e0e0e0;
     height: 4px;
     width: 0%;
     z-index: -1;
-    transition: .4s ease;
+    transition: 0.4s ease;
   }
 
   .circle {
@@ -51,7 +52,7 @@ $line-border-empty:#e0e0e0;
     align-items: center;
     justify-content: center;
     border: 3px solid $line-border-empty;
-    transition: .4s ease;
+    transition: 0.4s ease;
   }
 
   .circle.active {
@@ -84,5 +85,4 @@ $line-border-empty:#e0e0e0;
     background-color: $line-border-empty;
     cursor: not-allowed;
   }
-
 }

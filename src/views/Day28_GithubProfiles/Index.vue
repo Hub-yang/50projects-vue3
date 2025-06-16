@@ -1,14 +1,58 @@
+<script setup lang="ts">
+import { getUserInfo, getUserRepos } from '~/api/http'
+
+interface AnyKey { [prop: string]: string }
+
+const user = ref<AnyKey>({})
+const errMsg = ref('')
+const repoList = ref<AnyKey[]>([])
+const username = ref('')
+const loading = ref(false)
+
+async function getUser(username: string): Promise<void> {
+  loading.value = true
+  try {
+    user.value = (await getUserInfo(username)) as any
+    // 获取项目信息
+    getRepos(username)
+  }
+  catch (error: any) {
+    if (+error?.response?.status === 404)
+      errMsg.value = 'No profile with this username'
+  }
+  finally {
+    loading.value = false
+  }
+}
+
+async function getRepos(username: string) {
+  try {
+    const repos = (await getUserRepos(username)) as any
+    repoList.value = repos.slice(0, 5)
+  }
+  catch (error) {
+    console.error(`${error}`)
+    errMsg.value = 'Problem fetching repos'
+  }
+}
+
+function handleSubmit() {
+  if (username.value)
+    getUser(username.value)
+}
+</script>
+
 <template>
-  <div class="body">
-    <form class="user-form" id="form" @submit.prevent="handleSubmit">
+  <div class="body base_container">
+    <form class="user-form" @submit.prevent="handleSubmit">
       <input
+        v-model.trim.lazy="username"
         type="text"
         placeholder="Search a Github User"
-        v-model.trim.lazy="username"
-      />
+      >
     </form>
 
-    <main id="main">
+    <main>
       <div
         v-if="!Object.getOwnPropertyNames(user).length && !errMsg && loading"
       >
@@ -16,11 +60,11 @@
       </div>
 
       <div
-        class="card"
         v-else-if="Object.getOwnPropertyNames(user).length && !errMsg"
+        class="card"
       >
         <div>
-          <img :src="user.avatar_url" :alt="user.name" class="avatar" />
+          <img :src="user.avatar_url" :alt="user.name" class="avatar">
         </div>
         <div class="user-info">
           <h2>{{ user.name || user.login }}</h2>
@@ -38,8 +82,7 @@
               :href="repo.html_url"
               class="repo"
               target="_blank"
-              >{{ repo.name }}</a
-            >
+            >{{ repo.name }}</a>
           </div>
         </div>
       </div>
@@ -51,48 +94,6 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { getUserInfo, getUserRepos } from "../../api/http"
-
-const user = ref<{ [prop: string]: string }>({})
-const errMsg = ref("")
-const repoList = ref<{ [prop: string]: string }[]>([])
-const username = ref("")
-const loading = ref(false)
-
-async function getUser(username: string): Promise<void> {
-  try {
-    user.value = (await getUserInfo(username)) as any
-    loading.value = false
-    // 获取项目信息
-    getRepos(username)
-  } catch (error: any) {
-    loading.value = false
-    if (error.response.status == 404) {
-      errMsg.value = "No profile with this username"
-    }
-  }
-}
-
-async function getRepos(username: string) {
-  try {
-    const repos = (await getUserRepos(username)) as any
-    repoList.value = repos.slice(0, 5)
-    loading.value = false
-  } catch (error) {
-    loading.value = false
-    errMsg.value = "Problem fetching repos"
-  }
-}
-
-function handleSubmit() {
-  loading.value = true
-  if (username.value) {
-    getUser(username.value)
-  }
-}
-</script>
-
 <style scoped lang="scss">
-@import "./index.scss";
+@use './index.scss';
 </style>

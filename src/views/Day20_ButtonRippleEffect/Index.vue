@@ -1,43 +1,49 @@
-<template>
-  <div class="body">
-    <button
-      class="ripple"
-      :style="{ '--color': btn.color }"
-      v-for="(btn, index) in btnList"
-      :key="index"
-      @click="handleClick(index, $event)"
-    >
-      {{ btn.text }}<span v-show="btn.show" class="circle" ref="span"></span>
-    </button>
-  </div>
-</template>
-
 <script setup lang="ts">
-const span = ref<any>(null)
-const btnList = reactive<{ text: string; show: boolean; color: string }[]>([
-  { text: "Click Me", show: false, color: "purple" },
-  { text: "Click Me", show: false, color: "skyblue" },
-  { text: "Click Me", show: false, color: "orange" },
+import type { VNodeRef } from 'vue'
+
+interface BtnItem {
+  show: boolean
+  color: string
+}
+const spanEl = ref<VNodeRef | null>(null)
+const btnList = reactive<BtnItem[]>([
+  { show: false, color: 'purple' },
+  { show: false, color: 'skyblue' },
+  { show: false, color: 'orange' },
 ])
 
-const handleClick = (index: number, e: Event) => {
-  btnList[index].show = true
-  const x = (e as any).clientX
-  const y = (e as any).clientY
+function handleClick(idx: number, e: MouseEvent) {
+  btnList[idx].show = true
+  const x = e.clientX
+  const y = e.clientY
 
-  const buttonTop = (e as any).target.offsetTop
-  const buttonLeft = (e as any).target.offsetLeft
+  const buttonTop = (e.target as any).offsetTop
+  const buttonLeft = (e.target as any).offsetLeft
 
   const xInside = x - buttonLeft
   const yInside = y - buttonTop
 
-  span.value[index].style.top = yInside + "px"
-  span.value[index].style.left = xInside + "px"
+  spanEl.value[idx].style.top = `${yInside}px`
+  spanEl.value[idx].style.left = `${xInside}px`
 
-  setTimeout(() => (btnList[index].show = false), 500)
+  setTimeout(() => (btnList[idx].show = false), 500)
 }
 </script>
 
+<template>
+  <div class="body base_container">
+    <button
+      v-for="({ show, color }, idx) in btnList"
+      :key="color"
+      class="ripple"
+      :style="{ '--color': color }"
+      @click="handleClick(idx, $event)"
+    >
+      Click Me<span v-show="show" ref="spanEl" class="circle" />
+    </button>
+  </div>
+</template>
+
 <style scoped lang="scss">
-@import "./index.scss";
+@use './index.scss';
 </style>

@@ -1,44 +1,15 @@
-<template>
-  <div class="body">
-    <button class="add" id="add" @click="addNote">
-      <i class="fas fa-plus"></i> Add note
-    </button>
-
-    <div class="note" v-for="(note, index) in notesList" :key="index">
-      <div class="tools">
-        <button class="edit" @click="editNote(index)">
-          <i class="fas fa-edit"></i>
-        </button>
-        <button class="delete" @click="removeNote(index)">
-          <i class="fas fa-trash-alt"></i>
-        </button>
-      </div>
-
-      <div :class="['main', note.text && note.showMain ? '' : 'hidden']">
-        {{ note.text }}
-      </div>
-      <textarea
-        :class="note.text && note.showTextArea ? 'hidden' : ''"
-        v-model.lazy="note.text"
-      ></textarea>
-    </div>
-  </div>
-</template>
-
 <script setup>
-import { onMounted, ref, reactive, nextTick, watch } from "vue"
+const notesList = ref([])
 
 onMounted(() => {
-  notesList.value = JSON.parse(localStorage.getItem("noteslist"))
-    ? JSON.parse(localStorage.getItem("noteslist"))
+  notesList.value = JSON.parse(localStorage.getItem('noteslist'))
+    ? JSON.parse(localStorage.getItem('noteslist'))
     : []
 })
 
-const notesList = ref([])
-
 function addNote() {
-  let obj = reactive({
-    text: "",
+  const obj = reactive({
+    text: '',
     showMain: true,
     showTextArea: true,
   })
@@ -57,12 +28,39 @@ function removeNote(idx) {
 watch(
   notesList,
   (val) => {
-    localStorage.setItem("noteslist", JSON.stringify(val))
+    localStorage.setItem('noteslist', JSON.stringify(val))
   },
-  { deep: true }
+  { deep: true },
 )
 </script>
 
+<template>
+  <div class="body">
+    <button id="add" class="add" @click="addNote">
+      <i class="fas fa-plus" /> Add note
+    </button>
+
+    <div v-for="(note, index) in notesList" :key="index" class="note">
+      <div class="tools">
+        <button class="edit" @click="editNote(index)">
+          <i class="fas fa-edit" />
+        </button>
+        <button class="delete" @click="removeNote(index)">
+          <i class="fas fa-trash-alt" />
+        </button>
+      </div>
+
+      <div class="main" :class="[note.text && note.showMain ? '' : 'hidden']">
+        {{ note.text }}
+      </div>
+      <textarea
+        v-model.lazy="note.text"
+        :class="note.text && note.showTextArea ? 'hidden' : ''"
+      />
+    </div>
+  </div>
+</template>
+
 <style scoped lang="scss">
-@import "./index.scss";
+@use './index.scss';
 </style>

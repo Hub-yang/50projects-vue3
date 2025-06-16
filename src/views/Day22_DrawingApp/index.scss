@@ -7,9 +7,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
 
   canvas {
     border: 2px solid steelblue;
@@ -23,7 +20,7 @@
     padding: 1rem;
   }
 
-  .toolbox>* {
+  .toolbox > * {
     background-color: #fff;
     border: none;
     display: inline-flex;
@@ -37,7 +34,7 @@
     cursor: pointer;
   }
 
-  .toolbox>*:last-child {
+  .toolbox > *:last-child {
     margin-left: auto;
   }
 }

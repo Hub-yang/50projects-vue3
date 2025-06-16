@@ -3,8 +3,6 @@
 .body {
   font-family: 'Muli', sans-serif;
   background-color: #fff;
-  height: 100vh;
-  width: 100vw;
   overflow: hidden;
   margin: 0;
 
@@ -30,7 +28,9 @@
 
     .faq.active {
       background-color: #fff;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
+      box-shadow:
+        0 3px 6px rgba(0, 0, 0, 0.1),
+        0 3px 6px rgba(0, 0, 0, 0.1);
     }
 
     .faq.active::before,

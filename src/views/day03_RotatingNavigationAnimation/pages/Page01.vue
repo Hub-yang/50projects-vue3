@@ -17,7 +17,7 @@
     </p>
 
     <h3>Img01</h3>
-    <img src="../../../assets/imgs/006.jpg" alt="error" />
+    <img src="../../../assets/imgs/006.jpg" alt="error">
     <p>
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit libero
       deleniti rerum quo, incidunt vel consequatur culpa ullam. Magnam facere
@@ -31,9 +31,6 @@
   </div>
 </template>
 
-<script setup>
-</script>
-
 <style scoped lang="scss">
-@import "../index.scss";
+@use '../index.scss';
 </style>

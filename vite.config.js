@@ -1,26 +1,31 @@
-import { defineConfig } from "vite"
-import vue from "@vitejs/plugin-vue"
-import AutoImport from "unplugin-auto-import/vite"
+import path from 'node:path'
+import vue from '@vitejs/plugin-vue'
+import AutoImport from 'unplugin-auto-import/vite'
+import { defineConfig } from 'vite'
+import VueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  resolve: {
+    alias: {
+      '~/': `${path.resolve(__dirname, 'src')}/`,
+    },
+  },
   plugins: [
     vue(),
+    VueDevTools(),
     AutoImport({
-      imports: ["vue", "pinia", "vue-router"],
-      // 指定配置文件生成的位置与文件名
-      dts: "./src/automatic/auto-imports.d.ts",
-      dirs: ["./src/api/**"],
-      resolvers: [],
+      imports: ['vue', 'vue-router', '@vueuse/core'],
+      dirs: ['./src/api/**'],
     }),
   ],
   server: {
     open: true,
     hmr: true,
-    host: "0.0.0.0",
-    port: "5173",
+    host: '0.0.0.0',
+    port: '5173',
   },
   devServer: {
-    proxy: "http://127.0.0.1:5173/",
+    proxy: 'http://127.0.0.1:5173/',
   },
 })

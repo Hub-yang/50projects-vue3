@@ -7,10 +7,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-  margin: 0;
 
   button {
     background-color: var(--color);
@@ -23,6 +19,7 @@
     overflow: hidden;
     margin: 10px 0;
     position: relative;
+    cursor: pointer;
   }
 
   button:focus {

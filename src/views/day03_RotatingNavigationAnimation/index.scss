@@ -5,7 +5,6 @@
   background-color: #333;
   color: #222;
   overflow-x: hidden;
-  height: 100vh;
   margin: 0;
 }
 
@@ -13,8 +12,6 @@
   background-color: #fafafa;
   transform-origin: top left;
   transition: transform 0.5s linear;
-  width: 100vw;
-
   padding: 50px;
 }
 
@@ -67,14 +64,14 @@
   transform-origin: top left;
 }
 
-.container.show-nav+nav li {
+.container.show-nav + nav li {
   transform: translateX(0);
   transition-delay: 0.3s;
 }
 
 nav {
   position: fixed;
-  bottom: 40px;
+  bottom: 90px;
   left: 0;
   z-index: 100;
 }
@@ -97,12 +94,12 @@ nav ul li i {
   margin-right: 10px;
 }
 
-nav ul li+li {
+nav ul li + li {
   margin-left: 15px;
   transform: translateX(-150%);
 }
 
-nav ul li+li+li {
+nav ul li + li + li {
   margin-left: 30px;
   transform: translateX(-200%);
 }
@@ -114,7 +111,7 @@ nav span {
 }
 
 nav span:hover {
-  color: #FF7979;
+  color: #ff7979;
   cursor: pointer;
   font-weight: bold;
 }

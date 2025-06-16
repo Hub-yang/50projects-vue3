@@ -1,0 +1,49 @@
+on:
+  push:
+    branches:
+      - main # 触发分支
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # - name: Check commit message
+      # if: contains(github.event.head_commit.message, '[deploy]') == false
+      # run: |
+      #   echo "Not found keyword '[Deploy]' in commit message. Exiting workflow."
+      #   exit 0
+      - name: Checkout code # 检查存储库的操作
+        uses: actions/checkout@v4
+
+      - name: Install dependencies and build # 安装依赖，打包
+        run: |
+          npx pnpm install
+          npx pnpm run build
+
+      - name: Compressed file # 压缩dist目录下文件和目录
+        run: |
+          tar -czf dist.tar.gz -C dist .
+
+      - name: Copy file via ssh password # 连接服务器并将压缩包拷贝至指定目录
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          port: 22
+          source: dist.tar.gz
+          target: /www/wwwroot/50projects-vue3
+          #
+
+      - name: SSH into server and execute commands # 连接服务器并在服务器执行操作
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          port: 22
+          script: | # 进入服务器指定目录，删除除压缩包外所有文件，解压并删除压缩包
+            cd /www/wwwroot/50projects-vue3/
+            find . -mindepth 1 ! -name 'dist.tar.gz' -exec rm -rf {} +
+            tar -xzf dist.tar.gz
+            rm dist.tar.gz

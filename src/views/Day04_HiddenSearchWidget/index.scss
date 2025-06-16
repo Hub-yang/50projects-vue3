@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 .body {
-  width: 100vw;
-  height: 100vh;
   background-image: linear-gradient(90deg, #7d5fff, #7158e2);
   display: flex;
   justify-content: center;
@@ -18,7 +16,7 @@
       padding: 15px;
       height: 50px;
       width: 50px;
-      transition: width .3s ease;
+      transition: width 0.3s ease;
     }
 
     .btn {

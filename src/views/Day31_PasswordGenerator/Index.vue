@@ -1,3 +1,4 @@
+
 <template>
   <div class="body">
     <div class="container">
@@ -48,6 +49,7 @@ interface RandomFunc {
 }
 
 const resPassword = ref<string>("")
+
 const length = ref<number>(5)
 
 interface passwordConfig {
@@ -76,7 +78,8 @@ const randomFunc: RandomFunc = {
 async function handleCopy(text: string): Promise<void> {
   if (resPassword.value) {
     await navigator.clipboard.writeText(text)
-    alert("密码已复制到剪切板！")
+    // eslint-disable-next-line no-alert
+    alert('密码已复制到剪切板！')
   }
 }
 
@@ -96,16 +99,15 @@ function generatePassword(
   const typesCount =
     Number(config.lower) + Number(config.upper) + Number(config.number) + Number(config.symbol)
   const typesArr = ["lower", "upper", "number", "symbol"]
-
   if (typesCount === 0) {
-    alert("至少选择一项")
-    return ""
+    // eslint-disable-next-line no-alert
+    alert('至少选择一项')
+    return ''
   }
 
   for (let i = 0; i < length; i += typesCount) {
     // 数组重排
     typesArr.sort(() => Math.random() - 0.5)
-    console.log(typesArr)
     typesArr.forEach((type) => {
       if (config[type]) {
         generatedPassword += randomFunc[type]()
@@ -130,11 +132,11 @@ function getRandomNumber() {
 }
 
 function getRandomSymbol() {
-  const symbols = "!@#$%^&*(){}[]=<>/,."
+  const symbols = '!@#$%^&*(){}[]=<>/,.'
   return symbols[Math.floor(Math.random() * symbols.length)]
 }
 </script>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@use './index.scss';
 </style>
