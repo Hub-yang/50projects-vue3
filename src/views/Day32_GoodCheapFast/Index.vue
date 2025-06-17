@@ -1,67 +1,39 @@
 <script setup>
-import { ref } from 'vue'
-
-const good = ref(false)
-const cheap = ref(false)
-const fast = ref(false)
+const typeOption = reactive({
+  good: false,
+  cheap: false,
+  fast: false,
+})
 function handleChange(flag) {
-  if (good.value && cheap.value && fast.value) {
+  if (typeOption.good && typeOption.cheap && typeOption.fast) {
     if (flag === 'good')
-      fast.value = false
+      typeOption.fast = false
 
     if (flag === 'cheap')
-      good.value = false
+      typeOption.good = false
 
     if (flag === 'fast')
-      cheap.value = false
+      typeOption.cheap = false
   }
 }
 </script>
 
 <template>
-  <div class="body">
+  <div class="body base_container">
     <h2>How do you want your project to be?</h2>
 
-    <div class="toggle-container">
+    <div v-for="key in Object.keys(typeOption)" :key class="toggle-container">
       <input
-        id="good"
-        v-model="good"
+        :id="key"
+        v-model="typeOption[key]"
         type="checkbox"
         class="toggle"
-        @change="handleChange('good')"
+        @change="handleChange(key)"
       >
-      <label for="good" class="label">
+      <label :for="key" class="label">
         <div class="ball" />
       </label>
-      <span>Good</span>
-    </div>
-
-    <div class="toggle-container">
-      <input
-        id="cheap"
-        v-model="cheap"
-        type="checkbox"
-        class="toggle"
-        @change="handleChange('cheap')"
-      >
-      <label for="cheap" class="label">
-        <div class="ball" />
-      </label>
-      <span>Cheap</span>
-    </div>
-
-    <div class="toggle-container">
-      <input
-        id="fast"
-        v-model="fast"
-        type="checkbox"
-        class="toggle"
-        @change="handleChange('fast')"
-      >
-      <label for="fast" class="label">
-        <div class="ball" />
-      </label>
-      <span>Fast</span>
+      <span>{{ key.charAt(0).toUpperCase() + key.slice(1) }}</span>
     </div>
   </div>
 </template>

@@ -4,10 +4,9 @@
   background-color: #7bdaf3;
   font-family: 'Poppins', sans-serif;
   display: flex;
+  height: fit-content;
+  min-height: calc(100vh - 100px);
   flex-wrap: wrap;
-  margin: 0;
-  min-height: 100vh;
-  width: 100vw;
   padding-top: 3rem;
 
   .add {

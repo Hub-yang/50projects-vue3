@@ -1,12 +1,8 @@
 <script setup>
-import { onMounted, ref } from 'vue'
-
 const count = ref(3)
 let timer
 const infinity = ref('infinite')
-onMounted(() => {
-  runAnimation()
-})
+onMounted(() => runAnimation())
 
 function replay() {
   count.value = 3
@@ -25,19 +21,20 @@ function runAnimation() {
     }
   }, 1000)
 }
+
+onUnmounted(() => clearInterval(timer))
 </script>
 
 <template>
-  <div class="body">
+  <div class="body base_container">
     <div class="counter" :class="[infinity ? '' : 'hide']">
       <div class="nums">
-        <span class="in_out" :style="{ '--infinite': infinity }">{{
-          count
-        }}</span>
+        <span class="in_out" :style="{ '--infinite': infinity }">
+          {{ count }}
+        </span>
       </div>
       <h4>Get Ready</h4>
     </div>
-
     <div class="final" :class="[infinity ? '' : 'show']">
       <h1>GO</h1>
       <button class="replay" @click="replay">

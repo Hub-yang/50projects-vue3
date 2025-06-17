@@ -1,7 +1,5 @@
 <script setup>
-import { computed, onMounted, reactive, ref } from 'vue'
-
-const imgList = reactive([
+const imgList = [
   {
     url: 'src/assets/imgs/001.jpg',
     alt: 'first-image',
@@ -18,15 +16,14 @@ const imgList = reactive([
     url: 'src/assets/imgs/004.jpg',
     alt: 'fourth-image',
   },
-])
+]
 
 const idx = ref(0)
 const translateX = ref(0)
 const imgWidth = ref(850)
-let interval
-onMounted(() => {
-  interval = setInterval(run, 2000)
-})
+let timer
+onMounted(() => timer = setInterval(run, 2000))
+onUnmounted(() => clearInterval(timer))
 
 const refTranslateX = computed(() => `${translateX.value}px`)
 const refImgWidth = computed(() => `${imgWidth.value}px`)
@@ -46,8 +43,8 @@ function run() {
 }
 
 function resetInterval() {
-  clearInterval(interval)
-  interval = setInterval(run, 2000)
+  clearInterval(timer)
+  timer = setInterval(run, 2000)
 }
 
 function prevImg() {
@@ -64,15 +61,15 @@ function nextImg() {
 </script>
 
 <template>
-  <div class="body">
+  <div class="body base_container">
     <div class="carousel" :style="{ '--imgWidth': refImgWidth }">
       <div class="image-container" :style="{ '--translateX': refTranslateX }">
         <img
-          v-for="(img, index) in imgList"
-          :key="index"
+          v-for="({ url: src, alt }) in imgList"
+          :key="src"
           :style="{ '--imgWidth': refImgWidth }"
-          :src="img.url"
-          :alt="img.alt"
+          :src
+          :alt
         >
       </div>
 

@@ -1,6 +1,4 @@
 <script setup>
-import { ref } from 'vue'
-
 // 面板背景色
 const bgColor = ref('#1d1d1d')
 // 颜色列表
@@ -24,11 +22,11 @@ function getRandomColor() {
 </script>
 
 <template>
-  <div class="body">
+  <div class="body base_container">
     <div id="container" class="container">
       <div
-        v-for="i in 500"
-        :key="i"
+        v-for="key in 500"
+        :key
         class="square"
         @mouseover="setColor"
         @mouseout="removeColor"
