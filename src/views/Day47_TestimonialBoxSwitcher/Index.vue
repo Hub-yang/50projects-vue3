@@ -1,40 +1,41 @@
-<script setup>
+<script setup lang="ts">
 const userList = ref([])
 const currentUser = ref()
 const idx = ref(1)
 const delay = 5000
 const animateDelay = computed(() => `${delay / 1000}s`)
-let timer
-onMounted(() => {
-  getData()
-})
+let timer: number
+onMounted(() => getData())
 
-onUnmounted(() => {
-  clearInterval(timer)
-})
+onUnmounted(() => clearInterval(timer))
 
-function toggleUser(idx) {
+function toggleUser(idx: number) {
   currentUser.value = userList.value[idx]
 }
 
 async function getData() {
-  const { data } = await getUserList()
-  if (Object.keys(data).length) {
-    userList.value = data.testimonials
-    toggleUser(0)
-    timer = setInterval(() => {
-      toggleUser(idx.value)
-      if (idx.value === userList.value.length - 1)
-        idx.value = 0
-      else
-        idx.value++
-    }, delay)
+  try {
+    const { data } = await getUserList()
+    if (Object.keys(data).length) {
+      userList.value = data?.testimonials ?? []
+      toggleUser(0)
+      timer = setInterval(() => {
+        toggleUser(idx.value)
+        if (idx.value === userList.value.length - 1)
+          idx.value = 0
+        else
+          idx.value++
+      }, delay)
+    }
+  }
+  catch (error) {
+    throw new Error(`${error}`)
   }
 }
 </script>
 
 <template>
-  <div class="body">
+  <div class="body base_container">
     <div class="testimonial-container">
       <div v-if="!currentUser">
         Loading...

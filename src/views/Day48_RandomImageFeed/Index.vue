@@ -15,7 +15,7 @@ async function getImgList() {
     <div class="container">
       <template v-if="imgList.length">
         <!-- 懒加载 -->
-        <img v-for="(src, index) in imgList" :key="index" v-lazy="src">
+        <img v-for="(src, index) in imgList" :key="index" :src>
       </template>
     </div>
   </div>

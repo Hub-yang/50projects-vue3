@@ -11,7 +11,7 @@ export const routes = [
     meta: {
       title: 'Expanding Cards',
     },
-    component: () => import('~/views/Day01_ExpandingCards/Index.vue'),
+    component: () => import('~/views/Day01_ExpandingCards/index.vue'),
   },
   {
     path: '/day02',
@@ -19,7 +19,7 @@ export const routes = [
     meta: {
       title: 'Progress Steps',
     },
-    component: () => import('~/views/Day02_ProgressSteps/Index.vue'),
+    component: () => import('~/views/Day02_ProgressSteps/index.vue'),
   },
   {
     path: '/day03',
@@ -28,7 +28,7 @@ export const routes = [
     meta: {
       title: 'Rotating Navigation Animation',
     },
-    component: () => import('~/views/day03_RotatingNavigationAnimation/Index.vue'),
+    component: () => import('~/views/day03_RotatingNavigationAnimation/index.vue'),
     children: [
       {
         path: 'page01',
@@ -53,7 +53,7 @@ export const routes = [
     meta: {
       title: 'Hidden Search Widget',
     },
-    component: () => import('~/views/Day04_HiddenSearchWidget/Index.vue'),
+    component: () => import('~/views/Day04_HiddenSearchWidget/index.vue'),
   },
   {
     path: '/day05',
@@ -61,7 +61,7 @@ export const routes = [
     meta: {
       title: 'Blurry Loading',
     },
-    component: () => import('~/views/Day05_BlurryLoading/Index.vue'),
+    component: () => import('~/views/Day05_BlurryLoading/index.vue'),
   },
   {
     path: '/day06',
@@ -69,7 +69,7 @@ export const routes = [
     meta: {
       title: 'Scroll Animation',
     },
-    component: () => import('~/views/day06_ScrollAnimation/Index.vue'),
+    component: () => import('~/views/day06_ScrollAnimation/index.vue'),
   },
   {
     path: '/day07',
@@ -77,7 +77,7 @@ export const routes = [
     meta: {
       title: 'Split Landing Page',
     },
-    component: () => import('~/views/Day07_SplitLandingPage/Index.vue'),
+    component: () => import('~/views/Day07_SplitLandingPage/index.vue'),
   },
   {
     path: '/day08',
@@ -85,7 +85,7 @@ export const routes = [
     meta: {
       title: 'Form Input Wave',
     },
-    component: () => import('~/views/Day08_FormInputWave/Index.vue'),
+    component: () => import('~/views/Day08_FormInputWave/index.vue'),
   },
   {
     path: '/day09',
@@ -93,7 +93,7 @@ export const routes = [
     meta: {
       title: 'Sound Board',
     },
-    component: () => import('~/views/Day09_SoundBoard/Index.vue'),
+    component: () => import('~/views/Day09_SoundBoard/index.vue'),
   },
   {
     path: '/day10',
@@ -101,7 +101,7 @@ export const routes = [
     meta: {
       title: 'Dad Jokes',
     },
-    component: () => import('~/views/Day10_DadJokes/Index.vue'),
+    component: () => import('~/views/Day10_DadJokes/index.vue'),
   },
   {
     path: '/day11',
@@ -109,7 +109,7 @@ export const routes = [
     meta: {
       title: 'Event KeyCodes',
     },
-    component: () => import('~/views/Day11_EventKeyCodes/Index.vue'),
+    component: () => import('~/views/Day11_EventKeyCodes/index.vue'),
   },
   {
     path: '/day12',
@@ -117,7 +117,7 @@ export const routes = [
     meta: {
       title: 'Faq Collapse',
     },
-    component: () => import('~/views/Day12_FaqCollapse/Index.vue'),
+    component: () => import('~/views/Day12_FaqCollapse/index.vue'),
   },
   {
     path: '/day13',
@@ -125,7 +125,7 @@ export const routes = [
     meta: {
       title: 'Random Choice Picker',
     },
-    component: () => import('~/views/Day13_RandomChoicePicker/Index.vue'),
+    component: () => import('~/views/Day13_RandomChoicePicker/index.vue'),
   },
   {
     path: '/day14',
@@ -133,7 +133,7 @@ export const routes = [
     meta: {
       title: 'Animated Navigation',
     },
-    component: () => import('~/views/Day14_AnimatedNavigation/Index.vue'),
+    component: () => import('~/views/Day14_AnimatedNavigation/index.vue'),
   },
   {
     path: '/day15',
@@ -141,7 +141,7 @@ export const routes = [
     meta: {
       title: 'Incrementing Counter',
     },
-    component: () => import('~/views/Day15_IncrementingCounter/Index.vue'),
+    component: () => import('~/views/Day15_IncrementingCounter/index.vue'),
   },
   {
     path: '/day16',
@@ -149,7 +149,7 @@ export const routes = [
     meta: {
       title: 'Drink Water',
     },
-    component: () => import('~/views/Day16_DrinkWater/Index.vue'),
+    component: () => import('~/views/Day16_DrinkWater/index.vue'),
   },
   {
     path: '/day18',
@@ -157,7 +157,7 @@ export const routes = [
     meta: {
       title: 'Background Slider',
     },
-    component: () => import('~/views/Day18_BackgroundSlider/Index.vue'),
+    component: () => import('~/views/Day18_BackgroundSlider/index.vue'),
   },
   {
     path: '/day19',
@@ -165,7 +165,7 @@ export const routes = [
     meta: {
       title: 'Theme Clock',
     },
-    component: () => import('~/views/Day19_ThemeClock/Index.vue'),
+    component: () => import('~/views/Day19_ThemeClock/index.vue'),
   },
   {
     path: '/day20',
@@ -173,7 +173,7 @@ export const routes = [
     meta: {
       title: 'Button Ripple Effect',
     },
-    component: () => import('~/views/Day20_ButtonRippleEffect/Index.vue'),
+    component: () => import('~/views/Day20_ButtonRippleEffect/index.vue'),
   },
   {
     path: '/day21',
@@ -181,7 +181,7 @@ export const routes = [
     meta: {
       title: 'Drag N Drop',
     },
-    component: () => import('~/views/Day21_DragNDrop/Index.vue'),
+    component: () => import('~/views/Day21_DragNDrop/index.vue'),
   },
   {
     path: '/day22',
@@ -189,7 +189,7 @@ export const routes = [
     meta: {
       title: 'Drawing App',
     },
-    component: () => import('~/views/Day22_DrawingApp/Index.vue'),
+    component: () => import('~/views/Day22_DrawingApp/index.vue'),
   },
   {
     path: '/day23',
@@ -197,7 +197,7 @@ export const routes = [
     meta: {
       title: 'Kinetic Loader',
     },
-    component: () => import('~/views/Day23_KineticLoader/Index.vue'),
+    component: () => import('~/views/Day23_KineticLoader/index.vue'),
   },
   {
     path: '/day24',
@@ -205,7 +205,7 @@ export const routes = [
     meta: {
       title: 'Content Placeholder',
     },
-    component: () => import('~/views/Day24_ContentPlaceholder/Index.vue'),
+    component: () => import('~/views/Day24_ContentPlaceholder/index.vue'),
   },
   {
     path: '/day25',
@@ -213,7 +213,7 @@ export const routes = [
     meta: {
       title: 'Sticky Navigation',
     },
-    component: () => import('~/views/Day25_StickyNavigation/Index.vue'),
+    component: () => import('~/views/Day25_StickyNavigation/index.vue'),
   },
   // Double Vertical Slider
   {
@@ -222,7 +222,7 @@ export const routes = [
     meta: {
       title: 'Double Vertical Slider',
     },
-    component: () => import('~/views/Day26_DoubleVerticalSlider/Index.vue'),
+    component: () => import('~/views/Day26_DoubleVerticalSlider/index.vue'),
   },
   {
     path: '/day27',
@@ -230,7 +230,7 @@ export const routes = [
     meta: {
       title: 'Toast Notification',
     },
-    component: () => import('~/views/Day27_ToastNotification/Index.vue'),
+    component: () => import('~/views/Day27_ToastNotification/index.vue'),
   },
   {
     path: '/day28',
@@ -238,7 +238,7 @@ export const routes = [
     meta: {
       title: 'Github Profiles',
     },
-    component: () => import('~/views/Day28_GithubProfiles/Index.vue'),
+    component: () => import('~/views/Day28_GithubProfiles/index.vue'),
   },
   {
     path: '/day29',
@@ -246,7 +246,7 @@ export const routes = [
     meta: {
       title: 'Double Click Heart',
     },
-    component: () => import('~/views/Day29_DoubleClickHeart/Index.vue'),
+    component: () => import('~/views/Day29_DoubleClickHeart/index.vue'),
   },
   {
     path: '/day30',
@@ -254,7 +254,7 @@ export const routes = [
     meta: {
       title: 'Auto Text Effect',
     },
-    component: () => import('~/views/Day30_AutoTextEffect/Index.vue'),
+    component: () => import('~/views/Day30_AutoTextEffect/index.vue'),
   },
   {
     path: '/day31',
@@ -262,7 +262,7 @@ export const routes = [
     meta: {
       title: 'Password Generator',
     },
-    component: () => import('~/views/Day31_PasswordGenerator/Index.vue'),
+    component: () => import('~/views/Day31_PasswordGenerator/index.vue'),
   },
   {
     path: '/day32',
@@ -270,7 +270,7 @@ export const routes = [
     meta: {
       title: 'Good Cheap Fast',
     },
-    component: () => import('~/views/Day32_GoodCheapFast/Index.vue'),
+    component: () => import('~/views/Day32_GoodCheapFast/index.vue'),
   },
   {
     path: '/day33',
@@ -278,7 +278,7 @@ export const routes = [
     meta: {
       title: 'Notes App',
     },
-    component: () => import('~/views/Day33_NotesApp/Index.vue'),
+    component: () => import('~/views/Day33_NotesApp/index.vue'),
   },
   {
     path: '/day34',
@@ -286,7 +286,7 @@ export const routes = [
     meta: {
       title: 'Animated Countdown',
     },
-    component: () => import('~/views/Day34_AnimatedCountdown/Index.vue'),
+    component: () => import('~/views/Day34_AnimatedCountdown/index.vue'),
   },
   {
     path: '/day35',
@@ -294,7 +294,7 @@ export const routes = [
     meta: {
       title: 'Image Carousel',
     },
-    component: () => import('~/views/Day35_ImageCarousel/Index.vue'),
+    component: () => import('~/views/Day35_ImageCarousel/index.vue'),
   },
   {
     path: '/day36',
@@ -302,7 +302,7 @@ export const routes = [
     meta: {
       title: 'Hover Board',
     },
-    component: () => import('~/views/Day36_HoverBoard/Index.vue'),
+    component: () => import('~/views/Day36_HoverBoard/index.vue'),
   },
   {
     path: '/day38',
@@ -310,7 +310,7 @@ export const routes = [
     meta: {
       title: 'Mobile Tab Navigation',
     },
-    component: () => import('~/views/Day38_MobileTabNavigation/Index.vue'),
+    component: () => import('~/views/Day38_MobileTabNavigation/index.vue'),
   },
   {
     path: '/day40',
@@ -318,7 +318,7 @@ export const routes = [
     meta: {
       title: '3d Background Boxes',
     },
-    component: () => import('~/views/Day40_3dBackgroundBoxes/Index.vue'),
+    component: () => import('~/views/Day40_3dBackgroundBoxes/index.vue'),
   },
   {
     path: '/day41',
@@ -326,7 +326,7 @@ export const routes = [
     meta: {
       title: 'Verify Account Ui',
     },
-    component: () => import('~/views/Day41_VerifyAccountUi/Index.vue'),
+    component: () => import('~/views/Day41_VerifyAccountUi/index.vue'),
   },
   {
     path: '/day42',
@@ -334,7 +334,7 @@ export const routes = [
     meta: {
       title: 'Live User Filter',
     },
-    component: () => import('~/views/Day42_LiveUserFilter/Index.vue'),
+    component: () => import('~/views/Day42_LiveUserFilter/index.vue'),
   },
   {
     path: '/day43',
@@ -342,7 +342,7 @@ export const routes = [
     meta: {
       title: 'Feedback Ui Design',
     },
-    component: () => import('~/views/Day43_FeedbackUiDesign/Index.vue'),
+    component: () => import('~/views/Day43_FeedbackUiDesign/index.vue'),
   },
   {
     path: '/day44',
@@ -350,7 +350,7 @@ export const routes = [
     meta: {
       title: 'Custom Range Slider',
     },
-    component: () => import('~/views/Day44_CustomRangeSlider/Index.vue'),
+    component: () => import('~/views/Day44_CustomRangeSlider/index.vue'),
   },
   {
     path: '/day45',
@@ -359,7 +359,7 @@ export const routes = [
       title: 'Netflix Mobile Navigation',
     },
     component: () =>
-      import('~/views/Day45_NetflixMobileNavigation/Index.vue'),
+      import('~/views/Day45_NetflixMobileNavigation/index.vue'),
   },
   {
     path: '/day46',
@@ -367,7 +367,7 @@ export const routes = [
     meta: {
       title: 'Quiz App',
     },
-    component: () => import('~/views/Day46_QuizApp/Index.vue'),
+    component: () => import('~/views/Day46_QuizApp/index.vue'),
   },
   {
     path: '/day47',
@@ -376,7 +376,7 @@ export const routes = [
       title: 'Testimonial Box Switcher',
     },
     component: () =>
-      import('~/views/Day47_TestimonialBoxSwitcher/Index.vue'),
+      import('~/views/Day47_TestimonialBoxSwitcher/index.vue'),
   },
   {
     path: '/day49',
@@ -384,7 +384,7 @@ export const routes = [
     meta: {
       title: 'ToToList',
     },
-    component: () => import('~/views/Day49_ToDoList/Index.vue'),
+    component: () => import('~/views/Day49_ToDoList/index.vue'),
   },
   {
     path: '/day50',
@@ -392,7 +392,7 @@ export const routes = [
     meta: {
       title: 'Insect Catch Game',
     },
-    component: () => import('~/views/Day50_InsectCatchGame/Index.vue'),
+    component: () => import('~/views/Day50_InsectCatchGame/index.vue'),
   },
   {
     path: '/day51',
@@ -400,7 +400,7 @@ export const routes = [
     meta: {
       title: 'Gluttonous Snake',
     },
-    component: () => import('~/views/Day51_GluttonousSnake/Index.vue'),
+    component: () => import('~/views/Day51_GluttonousSnake/index.vue'),
   },
 ]
 

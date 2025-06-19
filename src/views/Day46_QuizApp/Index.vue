@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const quizData = reactive([
   {
     id: 'a',
@@ -49,9 +49,7 @@ const quizData = reactive([
 const answer = ref('')
 const currentQuiz = ref(0)
 const score = ref(0)
-const quizText = computed(() => {
-  return quizData[currentQuiz.value].question
-})
+const quizText = computed(() => quizData[currentQuiz.value].question)
 
 function handlerSumit() {
   if (answer.value) {
@@ -66,7 +64,7 @@ function handlerSumit() {
 </script>
 
 <template>
-  <div class="body">
+  <div class="body base_container">
     <div class="quiz-container">
       <div v-if="currentQuiz === quizData.length" class="result">
         <h2>你答对了 {{ `${score}/${quizData.length}` }} 道题</h2>
@@ -79,9 +77,9 @@ function handlerSumit() {
           <h2 id="question">
             {{ quizText }}
           </h2>
-          <template v-for="(quiz, index) in quizData" :key="quiz.id">
-            <ul v-if="currentQuiz === index">
-              <li v-for="item in quiz.quizList" :key="item.id">
+          <template v-for="({ id: key, quizList }, idx) in quizData" :key>
+            <ul v-if="currentQuiz === idx">
+              <li v-for="item in quizList" :key="item.id">
                 <input :id="item.id" v-model="answer" type="radio" name="answer" :value="item.id" class="answer">
                 <label :for="item.id">{{ item.text }}</label>
               </li>

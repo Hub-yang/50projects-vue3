@@ -1,22 +1,34 @@
-<script setup>
+<script setup lang="ts">
+import type { VNodeRef } from 'vue'
 import { nanoid } from 'nanoid'
 
-let timer
+interface InsectItem {
+  id: string
+  name: string
+  src: string
+  alt: string
+}
+let timer: number
 const start = ref(false)
 const startgame = ref(false)
 const visible = ref(false)
 const seconds = ref(0)
 const score = ref(0)
-const curInsect = ref()
-const gameContainer = ref()
-const insectsList = ref([
-  { id: nanoid(), insert: 'Fly', src: 'http://pngimg.com/uploads/fly/fly_PNG3946.png', alt: 'fly' },
-  { id: nanoid(), insert: 'Mosquito', src: 'http://pngimg.com/uploads/mosquito/mosquito_PNG18175.png', alt: 'mosquito' },
-  { id: nanoid(), insert: 'Spider', src: 'http://pngimg.com/uploads/spider/spider_PNG12.png', alt: 'spider' },
-  { id: nanoid(), insert: 'Roach', src: 'http://pngimg.com/uploads/roach/roach_PNG12163.png', alt: 'roach' },
-])
+const curInsect = ref<InsectItem>({
+  id: '',
+  name: '',
+  src: '',
+  alt: '',
+})
+const gameContainer = ref<VNodeRef>()
+const insectsList: InsectItem[] = [
+  { id: nanoid(), name: 'Fly', src: 'http://pngimg.com/uploads/fly/fly_PNG3946.png', alt: 'fly' },
+  { id: nanoid(), name: 'Mosquito', src: 'http://pngimg.com/uploads/mosquito/mosquito_PNG18175.png', alt: 'mosquito' },
+  { id: nanoid(), name: 'Spider', src: 'http://pngimg.com/uploads/spider/spider_PNG12.png', alt: 'spider' },
+  { id: nanoid(), name: 'Roach', src: 'http://pngimg.com/uploads/roach/roach_PNG12163.png', alt: 'roach' },
+]
 
-function startGame(insert) {
+function startGame(insert: InsectItem) {
   startgame.value = true
   curInsect.value = insert
   setTimeout(createInsect, 1000)
@@ -26,10 +38,10 @@ function startGame(insert) {
 }
 
 const increaseTime = computed(() => {
-  let m = Math.floor(seconds.value / 60)
-  let s = seconds.value % 60
-  m = m < 10 ? `0${m}` : m
-  s = s < 10 ? `0${s}` : s
+  let m = `${Math.floor(seconds.value / 60)}`
+  let s = `${seconds.value % 60}`
+  m = +m < 10 ? `0${m}` : m
+  s = +s < 10 ? `0${s}` : s
   return `Time: ${m}:${s}`
 })
 
@@ -44,7 +56,7 @@ function createInsect() {
 
   insect.addEventListener('click', catchInsect)
 
-  gameContainer.value.appendChild(insect)
+  ;(gameContainer.value as any)!.appendChild(insect)
 }
 
 function getRandomLocation() {
@@ -55,8 +67,8 @@ function getRandomLocation() {
   return { x, y }
 }
 
-function catchInsect(e) {
-  const item = e.currentTarget
+function catchInsect(e: MouseEvent) {
+  const item = e.currentTarget as any
   score.value++
   item.classList.add('caught')
   setTimeout(() => item.remove(), 2000)
@@ -73,13 +85,11 @@ watch(score, (val) => {
     visible.value = true
 })
 
-onUnmounted(() => {
-  clearInterval(timer)
-})
+onUnmounted(() => clearInterval(timer))
 </script>
 
 <template>
-  <div class="body">
+  <div class="body base_container">
     <div class="screen" :class="[start ? 'up' : '']">
       <h1>Catch The Insect</h1>
       <button id="start-btn" class="btn" @click="start = true">

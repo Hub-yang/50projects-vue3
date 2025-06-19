@@ -224,30 +224,32 @@ onMounted(() => {
 </script>
 
 <template>
-  <!-- 创建游戏的主容器 -->
-  <div id="main">
-    <!-- 设置游戏的舞台 -->
-    <div id="stage">
-      <!-- 设置蛇 -->
-      <div id="snake">
-        <!-- snake内部的div 表示蛇的各部分 -->
-        <div />
+  <div>
+    <!-- 创建游戏的主容器 -->
+    <div id="main" class="base_container">
+      <!-- 设置游戏的舞台 -->
+      <div id="stage">
+        <!-- 设置蛇 -->
+        <div id="snake">
+          <!-- snake内部的div 表示蛇的各部分 -->
+          <div />
+        </div>
+
+        <!-- 设置食物 -->
+        <div id="food">
+          <!-- 添加四个小div 来设置食物的样式 -->
+          <div />
+          <div />
+          <div />
+          <div />
+        </div>
       </div>
 
-      <!-- 设置食物 -->
-      <div id="food">
-        <!-- 添加四个小div 来设置食物的样式 -->
-        <div />
-        <div />
-        <div />
-        <div />
+      <!-- 设置游戏的积分牌 -->
+      <div id="score-panel">
+        <div>SCORE:<span id="score">0</span></div>
+        <div>LEVEL:<span id="level">1</span></div>
       </div>
-    </div>
-
-    <!-- 设置游戏的积分牌 -->
-    <div id="score-panel">
-      <div>SCORE:<span id="score">0</span></div>
-      <div>LEVEL:<span id="level">1</span></div>
     </div>
   </div>
 </template>
