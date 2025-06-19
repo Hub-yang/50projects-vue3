@@ -19,7 +19,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="body">
+  <div class="body base_container">
     <div class="container">
       <h2>Verify Your Account</h2>
       <p>

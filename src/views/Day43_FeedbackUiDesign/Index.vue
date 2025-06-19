@@ -1,6 +1,4 @@
 <script setup>
-import { reactive, ref } from 'vue'
-
 const showRes = ref(false)
 const imgList = reactive([
   { active: true, rating: 'Unhappy', url: 'src/assets/imgs/external-emoji-neumojis-smiley-neu-royyan-wijaya-17.png' },
@@ -12,9 +10,7 @@ const review = ref(imgList[0].rating)
 function saveReview(rating, idx) {
   review.value = rating
   imgList.forEach((item, index) => {
-    item.active = false
-    if (index === idx)
-      item.active = true
+    item.active = index === idx
   })
 }
 
@@ -24,17 +20,17 @@ function sendReview() {
 </script>
 
 <template>
-  <div class="body">
+  <div class="body base_container">
     <div id="panel" class="panel-container">
       <template v-if="!showRes">
         <strong>How satisfied are you with our <br> customer support performance?</strong>
         <div class="ratings-container">
           <div
-            v-for="(img, index) in imgList" :key="index" class="rating" :class="[img.active ? 'active' : '']"
-            @click="saveReview(img.rating, index)"
+            v-for="({ rating, active, url: src }, index) in imgList" :key="rating" class="rating" :class="{ active: !!active }"
+            @click="saveReview(rating, index)"
           >
-            <img :src="img.url" alt="">
-            <small>{{ img.rating }}</small>
+            <img :src alt="">
+            <small>{{ rating }}</small>
           </div>
         </div>
       </template>

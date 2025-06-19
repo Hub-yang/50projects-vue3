@@ -1,6 +1,4 @@
 <script setup>
-import { ref } from 'vue'
-
 const showBig = ref(false)
 function handleClick() {
   showBig.value = !showBig.value
@@ -8,11 +6,11 @@ function handleClick() {
 </script>
 
 <template>
-  <div class="body">
+  <div class="body base_container">
     <button id="btn" class="magic" @click="handleClick">
       Magic 🎩
     </button>
-    <div id="boxes" class="boxes" :class="[showBig ? 'big' : '']">
+    <div id="boxes" class="boxes" :class="{ big: !!showBig }">
       <template v-for="i in 4" :key="i">
         <div
           v-for="j in 4" :key="j" class="box"

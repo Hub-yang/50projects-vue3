@@ -1,20 +1,24 @@
 <script setup>
-import { onMounted, ref, watchEffect } from 'vue'
-import { getItemList } from '../../api/http'
+import { getItemList } from '~/api/http'
 
 const listItems = ref([])
 const filteredList = ref([])
 const keyWords = ref('')
 const firstRender = ref(true)
 
-onMounted(() => {
-  getData()
-})
+onMounted(() => getData())
 
 async function getData() {
-  const { results } = await getItemList()
-  firstRender.value = false
-  listItems.value = results
+  try {
+    const { results } = await getItemList()
+    listItems.value = results ?? []
+  }
+  catch (error) {
+    throw new Error(`${error}`)
+  }
+  finally {
+    firstRender.value = false
+  }
 }
 
 function filterData() {
@@ -28,7 +32,7 @@ watchEffect(filterData)
 </script>
 
 <template>
-  <div class="body">
+  <div class="body base_container">
     <div class="container">
       <header class="header">
         <h4 class="title">
