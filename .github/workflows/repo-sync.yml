@@ -1,0 +1,120 @@
+name: 同步文件到多个仓库 (替代方案)
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/**'
+      - 'shared/**'
+  workflow_dispatch:
+
+jobs:
+  sync-to-repos:
+    name: 同步文件到指定仓库
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # 在这里明确列出要同步的目标仓库
+        repo:
+          - 'Hub-yang/50projects-vue3'
+      fail-fast: false  # 即使某个仓库失败,继续同步其他仓库
+    
+    steps:
+      - name: Checkout 源仓库
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          path: source
+      
+      - name: Checkout 目标仓库
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ matrix.repo }}
+          token: ${{ secrets.REPO_SYNC_TOKEN }}
+          path: target
+      
+      - name: 同步文件
+        run: |
+          # 复制指定的文件和目录到目标仓库
+          # 根据需要修改这些路径
+          
+          # 同步 workflows 目录
+          if [ -d "source/.github/workflows" ]; then
+            mkdir -p target/.github/workflows
+            cp -r source/.github/workflows/* target/.github/workflows/ || true
+            # 删除同步工作流本身,避免循环
+            rm -f target/.github/workflows/alternative-sync.yml
+          fi
+          
+          # 同步 shared 目录
+          if [ -d "source/shared" ]; then
+            mkdir -p target/shared
+            cp -r source/shared/* target/shared/ || true
+          fi
+          
+          # 同步指定的文件
+          [ -f "source/README.md" ] && cp source/README.md target/ || true
+          [ -f "source/LICENSE" ] && cp source/LICENSE target/ || true
+      
+      - name: 检查变更
+        id: check_changes
+        working-directory: target
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          git add -A
+          
+          if git diff --staged --quiet; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "没有文件变更"
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "检测到文件变更"
+          fi
+      
+      - name: 创建 Pull Request
+        if: steps.check_changes.outputs.has_changes == 'true'
+        working-directory: target
+        env:
+          GH_TOKEN: ${{ secrets.REPO_SYNC_TOKEN }}
+        run: |
+          BRANCH_NAME="repo-sync/template-update-$(date +%s)"
+          
+          # 创建并切换到新分支
+          git checkout -b $BRANCH_NAME
+          
+          # 提交变更
+          git commit -m "chore: 从模板仓库同步文件
+          
+          自动从 ${{ github.repository }} 同步更新"
+          
+          # 推送分支
+          git push origin $BRANCH_NAME
+          
+          # 创建 Pull Request
+          gh pr create \
+            --title "🔄 从模板仓库同步文件" \
+            --body "此 PR 自动同步了模板仓库的最新变更。
+
+          **同步的内容:**
+          - GitHub Actions workflows
+          - Shared 配置文件
+          - README 和 LICENSE 文件
+          
+          **源仓库:** ${{ github.repository }}
+          **源提交:** ${{ github.sha }}
+          
+          请检查变更内容后合并。" \
+            --base main \
+            --head $BRANCH_NAME
+      
+      - name: 同步结果
+        if: always()
+        run: |
+          if [ "${{ steps.check_changes.outputs.has_changes }}" == "true" ]; then
+            echo "✅ 成功同步到 ${{ matrix.repo }}"
+          else
+            echo "ℹ️  ${{ matrix.repo }} 无需更新"
+          fi

@@ -1,0 +1,42 @@
+name: Auto Update README
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'README.md'
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Replace variable placeholder
+        run: |
+          # 使用sed替换 README.md 中的变量
+          # 获取当前仓库名替换REPO_NAME变量
+          REPO_NAME=${{ github.event.repository.name }}
+          sed -i "s/{{REPO_NAME}}/$REPO_NAME/g" README.md
+          # 获取当前用户名替换USER_NAME变量
+          USER_NAME=${{ github.repository_owner }}
+          sed -i "s/{{USER_NAME}}/$USER_NAME/g" README.md
+
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # 检查是否有文件变动，避免没有变动时 commit 报错
+          if [[ -n $(git status --porcelain) ]]; then
+            git add README.md
+            git commit -m "feat: update README.md"
+            git push
+          else
+            echo "No changes detected"
+          fi
