@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" vapor>
 import type { VNodeRef } from 'vue'
 
 const clicks = ref(0)
@@ -19,7 +19,7 @@ function createHeart(e: MouseEvent) {
   heart.style.top = `${y - topOffset}px`
   heart.style.left = `${x - leftOffset}px`
   heart.style.color
-    = colorList[Math.floor(Math.random() * (colorList.length - 1))]
+    = `${colorList[Math.floor(Math.random() * (colorList.length - 1))]}`
 
   loveMe.value.appendChild(heart)
   clicks.value++

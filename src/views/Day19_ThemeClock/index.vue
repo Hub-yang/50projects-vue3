@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" vapor>
 const timer = ref<any>(null)
 
 const darkTheme = ref(false)

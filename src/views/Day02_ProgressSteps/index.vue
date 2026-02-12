@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" vapor>
 interface Item { id: number, active: boolean }
 const circles = reactive<Item[]>([
   { id: 1, active: true },

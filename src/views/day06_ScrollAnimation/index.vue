@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" vapor>
 onMounted(async () => {
   await nextTick()
   document.documentElement.style.setProperty('--body-overflow', 'auto')
@@ -21,6 +21,8 @@ function checkBoxes() {
       box.classList.remove('show')
   })
 }
+
+const router = useRouter()
 </script>
 
 <template>
@@ -31,11 +33,11 @@ function checkBoxes() {
     </div>
 
     <div class="pagenation">
-      <button @click="$router.push('/day05')">
+      <button @click="router.push('/day05')">
         <i class="fas fa-arrow-left" />&nbsp;
         上一页
       </button>
-      <button @click="$router.push('/day07')">
+      <button @click="router.push('/day07')">
         下一页
         &nbsp;<i class="fas fa-arrow-right" />
       </button>

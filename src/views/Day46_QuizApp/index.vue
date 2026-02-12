@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" vapor>
 const quizData = reactive([
   {
     id: 'a',
@@ -49,11 +49,11 @@ const quizData = reactive([
 const answer = ref('')
 const currentQuiz = ref(0)
 const score = ref(0)
-const quizText = computed(() => quizData[currentQuiz.value].question)
+const quizText = computed(() => quizData?.[currentQuiz.value]?.question)
 
 function handlerSumit() {
   if (answer.value) {
-    if (answer.value === quizData[currentQuiz.value].correct)
+    if (answer.value === quizData?.[currentQuiz.value]?.correct)
       score.value++
     answer.value = ''
     currentQuiz.value++

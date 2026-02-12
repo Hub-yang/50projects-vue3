@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" vapor>
 const audioList = [
   { id: 'boo', src: 'src/views/Day09_SoundBoard/audios/boo.mp3' },
   { id: 'gasp', src: 'src/views/Day09_SoundBoard/audios/gasp.mp3' },

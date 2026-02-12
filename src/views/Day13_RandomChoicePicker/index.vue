@@ -57,7 +57,7 @@ function randomSelect() {
 }
 
 function pickRandomTag(): Listitem {
-  return tagList.value[Math.floor(Math.random() * tagList.value.length)]
+  return tagList.value[Math.floor(Math.random() * tagList.value.length)] as any
 }
 </script>
 

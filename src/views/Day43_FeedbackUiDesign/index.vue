@@ -1,13 +1,13 @@
-<script setup>
+<script setup lang="ts" vapor>
 const showRes = ref(false)
-const imgList = reactive([
+const imgList = reactive<any[]>([
   { active: true, rating: 'Unhappy', url: 'src/assets/imgs/external-emoji-neumojis-smiley-neu-royyan-wijaya-17.png' },
   { active: false, rating: 'Neutral', url: 'src/assets/imgs/external-emoji-neumojis-smiley-neu-royyan-wijaya-3.png' },
   { active: false, rating: 'Satisfied', url: 'src/assets/imgs/external-emoji-neumojis-smiley-neu-royyan-wijaya-30.png' },
 ])
-const review = ref(imgList[0].rating)
+const review = ref<string>(imgList[0].rating)
 
-function saveReview(rating, idx) {
+function saveReview(rating: string, idx: number) {
   review.value = rating
   imgList.forEach((item, index) => {
     item.active = index === idx

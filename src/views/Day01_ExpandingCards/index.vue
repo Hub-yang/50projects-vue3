@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" vapor>
 interface CardItem {
   title: string
   active: boolean

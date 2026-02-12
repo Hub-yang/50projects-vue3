@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" vapor>
 interface RandomFunc {
   lower: () => string
   upper: () => string
@@ -105,9 +105,9 @@ function getRandomNumber() {
   return String.fromCharCode(Math.floor(Math.random() * 10) + 48)
 }
 
-function getRandomSymbol() {
+function getRandomSymbol(): string {
   const symbols = '!@#$%^&*(){}[]=<>/,.'
-  return symbols[Math.floor(Math.random() * symbols.length)]
+  return `${symbols[Math.floor(Math.random() * symbols.length)]}`
 }
 </script>
 

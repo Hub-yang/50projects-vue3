@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" vapor>
 const userList = ref([])
 const currentUser = ref()
 const idx = ref(1)

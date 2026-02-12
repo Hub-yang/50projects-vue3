@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" vapor>
 const showSearchBar = ref(false)
 
 const input = ref<HTMLDivElement | null>(null)

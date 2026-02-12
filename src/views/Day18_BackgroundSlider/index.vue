@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" vapor>
 const imgList = reactive<{ active: boolean, url: string }[]>([
   { active: true, url: 'src/assets/imgs/001.jpg' },
   { active: false, url: 'src/assets/imgs/002.jpg' },
@@ -30,9 +30,9 @@ function rightClick() {
 }
 
 function publicFn() {
-  bgImgUrl.value = imgList[activeSlide.value].url
+  bgImgUrl.value = (imgList[activeSlide.value] as any).url || ''
   imgList.forEach(slide => (slide.active = false))
-  imgList[activeSlide.value].active = true
+  ;(imgList[activeSlide.value] as any).active = true
 }
 </script>
 

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" vapor>
 import { getUserInfo, getUserRepos } from '~/api/http'
 
 interface AnyKey { [prop: string]: string }

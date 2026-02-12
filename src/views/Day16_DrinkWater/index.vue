@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" vapor>
 const cupsList = reactive<{ capacity: number, isFull: boolean }[]>([
   { capacity: 250, isFull: false },
   { capacity: 250, isFull: false },
@@ -11,9 +11,9 @@ const cupsList = reactive<{ capacity: number, isFull: boolean }[]>([
 ])
 
 function highlightCups(idx: number) {
-  if (idx === 7 && cupsList[idx].isFull)
+  if (idx === 7 && cupsList?.[idx]?.isFull)
     idx--
-  else if (cupsList[idx].isFull && !cupsList[idx + 1].isFull)
+  else if (cupsList?.[idx]?.isFull && !cupsList?.[idx + 1]?.isFull)
     idx--
 
   cupsList.forEach((cup, idx2) => {

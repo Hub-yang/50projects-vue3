@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts" vapor>
 const imgList = [
   {
     url: 'src/assets/imgs/001.jpg',
@@ -21,7 +21,7 @@ const imgList = [
 const idx = ref(0)
 const translateX = ref(0)
 const imgWidth = ref(850)
-let timer
+let timer: any
 onMounted(() => timer = setInterval(run, 2000))
 onUnmounted(() => clearInterval(timer))
 

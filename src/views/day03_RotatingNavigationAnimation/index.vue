@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" vapor>
 interface NavItem {
   id: number
   path: string
@@ -36,9 +36,7 @@ function switchNav(path: string) {
       </div>
 
       <router-view #="{ Component }">
-        <keep-alive>
-          <component :is="Component" />
-        </keep-alive>
+        <component :is="Component" />
       </router-view>
     </div>
 

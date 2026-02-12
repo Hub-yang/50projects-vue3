@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import { createApp } from 'vue'
+import { createApp, vaporInteropPlugin } from 'vue'
 import App from './App.vue'
 
 import { router } from './router'
@@ -15,4 +15,4 @@ const app = createApp(App)
 
 dayjs.locale('zh-cn')
 app.config.globalProperties.dayjs = dayjs
-app.use(router).mount('#app')
+app.use(router).use(vaporInteropPlugin).mount('#app')

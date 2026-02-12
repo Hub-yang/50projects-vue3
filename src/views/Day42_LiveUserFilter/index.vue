@@ -1,8 +1,10 @@
-<script setup>
+<script setup lang="ts" vapor>
 import { getItemList } from '~/api/http'
 
-const listItems = ref([])
-const filteredList = ref([])
+type AnyKey = Record<string, any>
+
+const listItems = ref<AnyKey[]>([])
+const filteredList = ref<AnyKey[]>([])
 const keyWords = ref('')
 const firstRender = ref(true)
 
@@ -10,7 +12,7 @@ onMounted(() => getData())
 
 async function getData() {
   try {
-    const { results } = await getItemList()
+    const { results }: AnyKey = await getItemList() || {}
     listItems.value = results ?? []
   }
   catch (error) {
@@ -22,7 +24,7 @@ async function getData() {
 }
 
 function filterData() {
-  filteredList.value = listItems.value.filter((item) => {
+  filteredList.value = listItems.value.filter((item: AnyKey) => {
     const objRef = (item.name.first + item.name.last).toLowerCase()
     return objRef.includes(keyWords.value.toLowerCase())
   })

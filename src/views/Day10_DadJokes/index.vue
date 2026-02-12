@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" vapor>
 import { getJokes } from '~/api/http'
 
 const joke = ref('')

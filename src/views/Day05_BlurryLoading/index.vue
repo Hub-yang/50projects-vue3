@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" vapor>
 const url = new URL('~/assets/imgs/009.jpg', import.meta.url).href
 const load = ref(0)
 const loading = shallowRef<any>(null)

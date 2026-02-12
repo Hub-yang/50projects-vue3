@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts" vapor>
 const showBig = ref(false)
 function handleClick() {
   showBig.value = !showBig.value

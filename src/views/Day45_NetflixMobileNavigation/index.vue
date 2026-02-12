@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts" vapor>
 const visible = ref(false)
 const active = ref(true)
 const itemList = [
@@ -15,8 +15,8 @@ const itemList = [
   },
 ]
 
-function handlerClick(bool) {
-  if (bool)
+function handlerClick(valid: boolean) {
+  if (valid)
     active.value = !active.value
 }
 </script>
@@ -45,7 +45,7 @@ function handlerClick(bool) {
           <ul class="list">
             <li
               v-for="({ name, children }) in itemList" :key="name"
-              @click="handlerClick(children?.length)"
+              @click="handlerClick(!!children?.length)"
             >
               <a href="#">{{ name }}</a>
               <i

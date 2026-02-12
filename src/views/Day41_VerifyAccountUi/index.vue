@@ -1,10 +1,10 @@
-<script setup>
+<script setup lang="ts" vapor>
 onMounted(() => {
-  const codes = document.querySelectorAll('.code')
-  codes[0].focus()
+  const codes: NodeListOf<any> = document.querySelectorAll('.code')
+  codes?.[0]?.focus?.()
 
   codes.forEach((code, idx) => {
-    code.addEventListener('keydown', (e) => {
+    code.addEventListener('keydown', (e: any) => {
       if (e.key >= 0 && e.key <= 9) {
         codes[idx].value = ''
         if (idx < codes.length - 1)

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" vapor>
 import type { VNodeRef } from 'vue'
 
 const messages = ['Message One', 'Message Two', 'Message Three', 'Message Four']
@@ -20,8 +20,8 @@ function createNotification(message: string, type: string) {
   }, 1000)
 }
 
-function getRandomMessage() {
-  return messages[Math.floor(Math.random() * messages.length)]
+function getRandomMessage(): string {
+  return `${messages[Math.floor(Math.random() * messages.length)]}`
 }
 </script>
 

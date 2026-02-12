@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" vapor>
 import type { VNodeRef } from 'vue'
 
 const canvas = ref<VNodeRef | null>(null)

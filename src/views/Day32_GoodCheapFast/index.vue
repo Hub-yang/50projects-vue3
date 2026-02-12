@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" vapor>
 const typeOption = reactive<{ [key: string]: boolean }>({
   good: false,
   cheap: false,

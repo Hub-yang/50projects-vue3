@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" vapor>
 import type { VNodeRef } from 'vue'
 
 interface BtnItem {
@@ -13,7 +13,7 @@ const btnList = reactive<BtnItem[]>([
 ])
 
 function handleClick(idx: number, e: MouseEvent) {
-  btnList[idx].show = true
+  btnList[idx] && (btnList[idx].show = true)
   const x = e.clientX
   const y = e.clientY
 
@@ -26,7 +26,7 @@ function handleClick(idx: number, e: MouseEvent) {
   spanEl.value[idx].style.top = `${yInside}px`
   spanEl.value[idx].style.left = `${xInside}px`
 
-  setTimeout(() => (btnList[idx].show = false), 500)
+  setTimeout(() => (btnList[idx] && (btnList[idx].show = false)), 500)
 }
 </script>
 

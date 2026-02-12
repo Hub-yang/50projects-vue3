@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" vapor>
 const speed = ref(1)
 const text = 'We Love Programming!'
 const idx = ref(1)

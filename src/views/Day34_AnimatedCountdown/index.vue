@@ -1,6 +1,6 @@
-<script setup>
+<script setup lang="ts" vapor>
 const count = ref(3)
-let timer
+let timer: any
 const infinity = ref('infinite')
 onMounted(() => runAnimation())
 

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" vapor>
 const toggleActive = ref<boolean>(true)
 
 const navList: { title: string }[] = [

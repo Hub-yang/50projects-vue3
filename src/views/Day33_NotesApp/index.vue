@@ -1,8 +1,8 @@
-<script setup>
-const notesList = ref([])
+<script setup lang="ts" vapor>
+const notesList = ref<any[]>([])
 
 onMounted(() => {
-  const cache = JSON.parse(localStorage.getItem('noteslist'))
+  const cache = JSON.parse(`${localStorage.getItem('noteslist')}`)
   notesList.value = cache || []
 })
 
@@ -16,11 +16,11 @@ function addNote() {
   notesList.value.push(note)
 }
 
-function editNote(idx) {
+function editNote(idx: number) {
   notesList.value[idx].showMain = !notesList.value[idx].showMain
   notesList.value[idx].showTextArea = !notesList.value[idx].showTextArea
 }
-function removeNote(idx) {
+function removeNote(idx: number) {
   notesList.value = notesList.value.filter((_, index) => index !== idx)
 }
 

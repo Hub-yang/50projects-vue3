@@ -1,11 +1,9 @@
-<script setup>
-onMounted(() => {
-  getImgList()
-})
+<script setup lang="ts" vapor>
+onMounted(() => getImgList())
 
-const imgList = ref([])
+const imgList = ref<any[]>([])
 async function getImgList() {
-  imgList.value = await getRandomImg()
+  imgList.value = await getRandomImg() as any
 }
 </script>
 

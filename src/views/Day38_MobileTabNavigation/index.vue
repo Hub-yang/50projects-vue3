@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts" vapor>
 const imgList = reactive([
   { imgUrl: 'src/assets/imgs/001.jpg', imgAlt: 'home', show: true },
   { imgUrl: 'src/assets/imgs/002.jpg', imgAlt: 'work', show: false },
@@ -13,7 +13,7 @@ const tabList = reactive([
   { tabClass: 'fa-users', tab: 'About', active: false },
 ])
 
-function handleClick(i) {
+function handleClick(i: number) {
   imgList.forEach((img, idx) => {
     img.show = idx === i
   })
