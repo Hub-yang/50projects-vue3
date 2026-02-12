@@ -1,10 +1,10 @@
-<script setup>
-const typeOption = reactive({
+<script setup lang="ts">
+const typeOption = reactive<{ [key: string]: boolean }>({
   good: false,
   cheap: false,
   fast: false,
 })
-function handleChange(flag) {
+function handleChange(flag: string) {
   if (typeOption.good && typeOption.cheap && typeOption.fast) {
     if (flag === 'good')
       typeOption.fast = false

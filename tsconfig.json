@@ -1,32 +1,7 @@
 {
-  "compilerOptions": {
-    "target": "esnext",
-    "jsx": "preserve",
-    "baseUrl": ".",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "paths": {
-      "~/*": ["src/*"]
-    },
-    "types": [
-      "vite/client"
-    ],
-    "allowJs": true,
-    "strict": true,
-    "importHelpers": true,
-    "sourceMap": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true
-  },
-  "include": [
-    "src/**/*",
-    "auto-imports.d.ts"
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
   ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "eslint.config.js",
-    "commitlint.config.js"
-  ]
+  "files": []
 }

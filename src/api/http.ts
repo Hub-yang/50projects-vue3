@@ -21,16 +21,14 @@ export function getUserRepos(username: string) {
   })
 }
 
-// day42
 export function getItemList() {
   return service('https://randomuser.me/api?results=50')
 }
 
-// day47
 export function getUserList() {
   return service('/mock/getuserlist')
 }
-// day48
+
 export function getRandomImg() {
   return service(
     'https://shibe.online/api/shibes?count=30&urls=true&httpsUrls=true',

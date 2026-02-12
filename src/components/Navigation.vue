@@ -13,12 +13,14 @@ watch(() => route.fullPath, (fullPath) => {
 
 function goPrev() {
   const prev = routes[currentRouteIdx.value - 1]
-  router.push(prev.path)
+  if (prev)
+    router.push(prev.path)
 }
 
 function goNext() {
   const next = routes[currentRouteIdx.value + 1]
-  router.push(next.path)
+  if (next)
+    router.push(next.path)
 }
 </script>
 

@@ -1,22 +1,18 @@
-<script setup lang="ts">
-import Navigation from '~/components/Navigation.vue'
-</script>
-
 <template>
   <div v-if="$route.path !== '/day06'" class="layout">
     <main class="base-main-h">
       <router-view v-slot="{ Component }">
-        <Transition name="nested">
+        <transition name="nested">
           <component :is="Component" />
-        </Transition>
+        </transition>
       </router-view>
     </main>
     <Navigation />
   </div>
   <router-view v-else v-slot="{ Component }">
-    <Transition name="nested">
+    <transition name="nested">
       <component :is="Component" />
-    </Transition>
+    </transition>
   </router-view>
 </template>
 
@@ -38,9 +34,6 @@ import Navigation from '~/components/Navigation.vue'
   overflow: hidden;
 
   main {
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
     overflow-x: hidden;
     overflow-y: scroll;
   }

@@ -1,17 +1,18 @@
 import dayjs from 'dayjs'
 import { createApp } from 'vue'
 import App from './App.vue'
+
 import { router } from './router'
 import './styles/init.css'
-
 import './mock'
 
-// 设置title
-router.beforeEach((to, _from, next) => {
-  document.title = to.meta.title as string
+router.beforeEach((to, _, next) => {
+  globalThis.document.title = `${to.meta.title}`
   next()
 })
+
 const app = createApp(App)
 
+dayjs.locale('zh-cn')
 app.config.globalProperties.dayjs = dayjs
 app.use(router).mount('#app')
