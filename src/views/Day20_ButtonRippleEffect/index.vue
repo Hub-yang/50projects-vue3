@@ -13,7 +13,9 @@ const btnList = reactive<BtnItem[]>([
 ])
 
 function handleClick(idx: number, e: MouseEvent) {
-  btnList[idx] && (btnList[idx].show = true)
+  if (btnList[idx]) {
+    btnList[idx].show = true
+  }
   const x = e.clientX
   const y = e.clientY
 

@@ -23,7 +23,6 @@ function next() {
   currentActive.value++
   if (currentActive.value > circles.length)
     currentActive.value = circles.length
-
   update()
 }
 
@@ -41,34 +40,16 @@ function update() {
 <template>
   <div class="container base_container">
     <div class="progress_container">
-      <div
-        id="progress"
-        :style="{ width: `${activesWidth}%` }"
-        class="progress"
-      />
-      <div
-        v-for="{ id: key, active } in circles" :key
-        class="circle"
-        :class="[active ? 'active' : '']"
-      >
+      <div id="progress" :style="{ width: `${activesWidth}%` }" class="progress" />
+      <div v-for="{ id: key, active } in circles" :key class="circle" :class="[active ? 'active' : '']">
         {{ key }}
       </div>
     </div>
     <div class="btns">
-      <button
-        id="prev"
-        class="btn"
-        :disabled="currentActive === 1"
-        @click="prev"
-      >
+      <button id="prev" class="btn" :disabled="currentActive === 1" @click="prev">
         Prev
       </button>
-      <button
-        id="next"
-        class="btn"
-        :disabled="currentActive === circles.length"
-        @click="next"
-      >
+      <button id="next" class="btn" :disabled="currentActive === circles.length" @click="next">
         Next
       </button>
     </div>

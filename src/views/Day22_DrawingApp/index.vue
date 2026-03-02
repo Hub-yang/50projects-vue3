@@ -1,4 +1,5 @@
 <script setup lang="ts" vapor>
+// oxlint-disable no-unused-expressions
 import type { VNodeRef } from 'vue'
 
 const canvas = ref<VNodeRef | null>(null)

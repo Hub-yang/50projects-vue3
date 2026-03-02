@@ -1,4 +1,4 @@
-import service from './request'
+import service from '~/api/request'
 
 export function getJokes(): Promise<{ joke: string }> {
   return service({

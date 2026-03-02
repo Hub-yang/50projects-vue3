@@ -195,11 +195,12 @@ class GameControl {
     }
 
     // 注意等级
-    this.isLive
-    && (this.timer = setTimeout(
-      this.run.bind(this),
-      300 - (this.scorePanel.level.value - 1) * 30,
-    ))
+    if (this.isLive) {
+      this.timer = setTimeout(
+        this.run.bind(this),
+        300 - (this.scorePanel.level.value - 1) * 30,
+      )
+    }
   }
 
   checkEatOrNot(X: number, Y: number) {
