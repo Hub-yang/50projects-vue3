@@ -1,0 +1,7 @@
+allowBuilds:
+  '@parcel/watcher': false
+minimumReleaseAgeExclude:
+  - dayjs@1.11.23
+shellEmulator: true
+
+trustPolicy: no-downgrade

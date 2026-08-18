@@ -10,7 +10,7 @@ const info = reactive<{ [prop: string]: string }>({
 const showPlaceHolder = ref(true)
 
 onMounted(() => {
-  setTimeout(() => getData(), 2500)
+  setTimeout(getData, 2500)
 })
 
 function getData() {

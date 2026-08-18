@@ -29,7 +29,7 @@ function getRandomMessage(): string {
   <div class="body base_container">
     <div id="toasts" ref="toasts" />
     <div class="btns">
-      <button v-for="({ title, type }) in messageBtns" :key="type" :class="[`btn ${type}`]" @click="createNotification('', type)">
+      <button v-for="({ title, type }) in messageBtns" :key="type" class="btn" :class="[`${type}`]" @click="createNotification('', type)">
         {{ title }}
       </button>
     </div>

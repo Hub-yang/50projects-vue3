@@ -8,7 +8,7 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 export default defineConfig({
   resolve: {
     alias: {
-      '~': `${path.resolve(__dirname, 'src')}`,
+      '~': `${path.resolve(import.meta.dirname, 'src')}`,
     },
   },
   plugins: [
@@ -26,7 +26,7 @@ export default defineConfig({
   server: {
     open: true,
     hmr: true,
-    host: '0.0.0.0',
+    host: true,
     port: 5173,
   },
 })

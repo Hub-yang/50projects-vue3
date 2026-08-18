@@ -6,9 +6,8 @@ import { router } from './router'
 import './styles/init.css'
 import './mock'
 
-router.beforeEach((to, _, next) => {
+router.beforeEach((to) => {
   globalThis.document.title = `${to.meta.title}`
-  next()
 })
 
 const app = createApp(App)

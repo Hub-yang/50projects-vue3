@@ -50,7 +50,7 @@ function updateCounter(counter: Listitem) {
       :key="content"
       class="counter-container"
     >
-      <i :class="[`fab fa-3x ${className}`]" />
+      <i :class="[`${className}`]" class="fab fa-3x" />
       <div class="counter">
         {{ initial }}
       </div>
