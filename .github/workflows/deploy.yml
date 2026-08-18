@@ -18,7 +18,7 @@ jobs:
 
       - uses: pnpm/setup@v1
         with:
-          version: 11.15.1
+          version: 10.28.0
           runtime: node@24
           cache: true
           install: false
