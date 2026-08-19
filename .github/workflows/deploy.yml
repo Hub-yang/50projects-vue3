@@ -29,10 +29,6 @@ jobs:
 
       - run: tar -czf dist.tar.gz -C dist/ .
 
-      - run: |
-          echo "SSH fingerprint from GitHub Runner:"
-          ssh-keyscan -T 10 "${{ secrets.SERVER_HOST }}" 2>/dev/null | ssh-keygen -lf -
-
       - uses: appleboy/scp-action@v1.0.0
         with:
           host: ${{ secrets.SERVER_HOST }}
