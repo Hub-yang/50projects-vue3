@@ -34,7 +34,7 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_SSH_KEY }}
-          # fingerprint: ${{ secrets.SERVER_HOST_FINGERPRINT }}
+          fingerprint: ${{ secrets.SERVER_HOST_FINGERPRINT }}
           port: 22
           source: dist.tar.gz
           target: /www/wwwroot/50projects-vue3
@@ -44,7 +44,7 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_SSH_KEY }}
-          # fingerprint: ${{ secrets.SERVER_HOST_FINGERPRINT }}
+          fingerprint: ${{ secrets.SERVER_HOST_FINGERPRINT }}
           port: 22
           script: |
             cd /www/wwwroot/50projects-vue3/ || exit 1
