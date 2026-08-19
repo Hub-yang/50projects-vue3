@@ -14,13 +14,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Debug SSH target
-        run: |
-          echo "SERVER_HOST=${{ secrets.SERVER_HOST }}"
-          getent hosts "${{ secrets.SERVER_HOST }}"
-          echo "SSH fingerprint from GitHub Runner:"
-          ssh-keyscan -T 10 "${{ secrets.SERVER_HOST }}" 2>/dev/null | ssh-keygen -lf -
-
       - uses: actions/checkout@v4
 
       - uses: pnpm/setup@v1
@@ -35,6 +28,10 @@ jobs:
       - run: pnpm build
 
       - run: tar -czf dist.tar.gz -C dist/ .
+
+      - run: |
+          echo "SSH fingerprint from GitHub Runner:"
+          ssh-keyscan -T 10 "${{ secrets.SERVER_HOST }}" 2>/dev/null | ssh-keygen -lf -
 
       - uses: appleboy/scp-action@v1.0.0
         with:
